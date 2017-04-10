@@ -1,6 +1,6 @@
 angular.module('app').service('mainService',function($http){
   //info for singles games
- let singleGame = {
+ let game = {
    date: null,//date stamp
    selectPoint: null,//
    selectMatch: null,
@@ -55,4 +55,10 @@ angular.module('app').service('mainService',function($http){
    }
  }
  //get/set/update/delete from controllers and views
+ this.getGame = function(){
+   return game;
+ }
+ this.setGame = function(target){
+   
+ }
 });//closing
