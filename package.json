@@ -35,7 +35,6 @@
     "gulp-sourcemaps": "^2.4.0",
     "gulp-uglify": "^2.0.1",
     "massive": "^2.5.0",
-    "mongoose": "^4.7.7",
     "nodemailer": "^2.7.2",
     "nodemailer-express-handlebars": "^2.0.0",
     "passport": "^0.3.2",
