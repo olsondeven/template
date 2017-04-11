@@ -115,6 +115,7 @@ angular.module('app').service('mainService', function ($http) {
     } else {
       game[prop] = val;
     }
+    this.setPlayerScore = function () {};
     console.log(game);
   };
 }); //closing
@@ -132,15 +133,34 @@ angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
+angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.selectMatch = function (val) {
+    mainService.setGame('selectMatch', val);
+  };
+}); //closing
+'use strict';
+
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
   $scope.login = function (user, pass) {};
 }); //closing
 'use strict';
 
-angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.selectMatch = function (val) {
-    mainService.setGame('selectMatch', val);
+angular.module('app').controller("player2settingsCtrl", function ($scope, $stateParams, mainService, $rootScope) {
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('player2.name', val);
+      mainService.setGame('player2.color', color);
+    }
   };
 }); //closing
 'use strict';
@@ -159,25 +179,6 @@ angular.module('app').controller("player1settingsCtrl", function ($scope, $state
     } else {
       mainService.setGame('player1.name', val);
       mainService.setGame('player1.color', color);
-    }
-  };
-}); //closing
-'use strict';
-
-angular.module('app').controller("player2settingsCtrl", function ($scope, $stateParams, mainService, $rootScope) {
-  var color = null;
-  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
-  $scope.selectColor = function (val) {
-    color = val;
-    console.log(color);
-  };
-  $scope.selectName = function (val) {
-    console.log('fired', color, val);
-    if (!color || !val) {
-      return swal('Please select color and choose name');
-    } else {
-      mainService.setGame('player2.name', val);
-      mainService.setGame('player2.color', color);
     }
   };
 }); //closing

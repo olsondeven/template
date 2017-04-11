@@ -72,6 +72,9 @@ angular.module('app').service('mainService',function($http){
    }else{
      game[prop] = val;
    }
+   this.setPlayerScore = function(){
+     
+   }
   console.log(game);
  }
 });//closing
