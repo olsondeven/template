@@ -75,6 +75,8 @@ angular.module('app').service('mainService', function ($http) {
   };
   this.setGame = function (target) {};
 }); //closing
+"use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {

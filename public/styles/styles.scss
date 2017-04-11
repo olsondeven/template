@@ -1,6 +1,12 @@
 $mainBackgroundColor: #CCCCCC;
 $mainTextColor: #666666;
 $mainGreenColor: #999967;
+$mainSubGreenColor: #CCCC9A;
+$mainRedColor: #FF3333;
+$textRoboto: 'Roboto', sans-serif;
+$textOpenSans: 'Open Sans', sans-serif;
+$textOswald: 'Oswald', sans-serif;
+$textUbuntu: 'Ubuntu', sans-serif;
 body {
   margin: 0px;
   box-sizing: border-box;
@@ -11,4 +17,12 @@ main{
   margin: 0px;
   box-sizing: border-box;
   background-color: $mainBackgroundColor;
+  font-family: $textUbuntu;
+}
+.logo{
+  background-image: url("../../styles/images/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 25vh;
+  width: 60vw;
 }
