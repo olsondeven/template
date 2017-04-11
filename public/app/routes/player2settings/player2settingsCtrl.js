@@ -1,4 +1,4 @@
-angular.module('app').controller("player2settingsCtrl",function($scope, $stateParams, mainService, $rootScope){
+angular.module('app').controller("player2settingsCtrl",function($scope, $state, $stateParams, mainService, $rootScope){
   let color = null;
   $scope.colorArray = ['red','blue','green','purple','yellow'];
   $scope.selectColor = function(val){
@@ -12,6 +12,7 @@ angular.module('app').controller("player2settingsCtrl",function($scope, $statePa
     }else{
       mainService.setGame('player2.name',val);
       mainService.setGame('player2.color',color);
+      $state.go('flip')
     }
   }
 });//closing

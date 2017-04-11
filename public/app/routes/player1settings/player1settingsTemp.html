@@ -3,9 +3,10 @@
   <h1>Player One</h1>
   <div>Name: <input type="text" ng-model='name'></div>
   <div class="color-container">
+    color
     <div class="select-color" ng-repeat='color in colorArray' ng-click='selectColor(color)' style="background-color:{{color}}"></div>
   </div>
-  <div class="submit" ng-click="selectName(name)" ui-sref="player2">
+  <div class="submit" ng-click="selectName(name)">
     <h1>SUBMIT</h1>
   </div>
 </main>

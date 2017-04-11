@@ -73,7 +73,7 @@ angular.module('app').service('mainService',function($http){
      game[prop] = val;
    }
    this.setPlayerScore = function(){
-     
+
    }
   console.log(game);
  }
