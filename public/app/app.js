@@ -19,6 +19,11 @@ angular.module('app', ['ui.router'])
     templateUrl: './app/routes/game/gameTemp.html',
     controller: 'gameCtrl'
   })
+  .state('type', {
+    url: '/type',
+    templateUrl: './app/routes/type/typeTemp.html',
+    controller: 'typeCtrl'
+  })
   .state('match', {
     url: '/match',
     templateUrl: './app/routes/match/matchTemp.html',

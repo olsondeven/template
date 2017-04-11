@@ -15,6 +15,10 @@ angular.module('app', ['ui.router']).config(function ($stateProvider, $urlRouter
     url: '/game',
     templateUrl: './app/routes/game/gameTemp.html',
     controller: 'gameCtrl'
+  }).state('type', {
+    url: '/type',
+    templateUrl: './app/routes/type/typeTemp.html',
+    controller: 'typeCtrl'
   }).state('match', {
     url: '/match',
     templateUrl: './app/routes/match/matchTemp.html',
@@ -91,12 +95,16 @@ angular.module('app').service('mainService', function ($http) {
   };
   this.setGame = function (target) {};
 }); //closing
-"use strict";
-"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
+}); //closing
+'use strict';
+
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
 }); //closing
 'use strict';
 
@@ -105,7 +113,7 @@ angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+angular.module('app').controller('pointCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
 }); //closing
 'use strict';
@@ -115,7 +123,9 @@ angular.module('app').controller('matchCtrl', function ($scope, $stateParams, ma
 }); //closing
 'use strict';
 
-angular.module('app').controller('pointCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
 }); //closing
+"use strict";
+"use strict";
 //# sourceMappingURL=bundle.js.map
