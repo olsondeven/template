@@ -124,7 +124,7 @@ main {
   flex-direction: column;
   border: 2px solid #CCCC9A; }
   .home-wrapper h1 {
-    color: #999967;
+    color: #7F0B0B;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
@@ -149,13 +149,27 @@ main {
   width: 90%;
   height: 30%;
   display: flex;
-  justify-content: flex-start;
-  flex-wrap: wrap; }
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  text-align: center;
+  align-items: center; }
+  .home-login span {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    text-align: center; }
+  .home-login span:hover {
+    color: #999967; }
   .home-login button {
     font-family: "Ubuntu", sans-serif;
     color: #666666;
     border-radius: 2px;
-    font-weight: bold; }
+    font-weight: bold;
+    margin-top: 5px; }
 
 body {
   margin: 0px;
