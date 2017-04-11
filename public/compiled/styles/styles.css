@@ -407,6 +407,116 @@ main {
   border-color: #7F0B0B;
   cursor: pointer; }
 
+.player-setting-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+  border: 2px solid #CCCC9A; }
+  .player-setting-wrapper h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    padding-bottom: 10px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+
+.color-container {
+  height: auto;
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background-color: #666666;
+  border-radius: 5px;
+  padding: 5px; }
+
+.select-color {
+  height: 10vh;
+  width: 75vw;
+  border: 5px solid #666666;
+  border-radius: 5px; }
+
+.select-color:hover {
+  border: 5px solid #CCCCCC; }
+
+.submit {
+  height: 10vh;
+  width: 100vw;
+  background-color: #666666;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.submit:hover {
+  cursor: pointer; }
+
+body {
+  margin: 0px;
+  box-sizing: border-box; }
+
+main {
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  box-sizing: border-box;
+  background-color: #CCCCCC;
+  font-family: "Ubuntu", sans-serif; }
+
+.logo {
+  background-image: url("../../styles/images/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 25vh;
+  width: 60vw; }
+
+.left-arrow {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #666666;
+  position: absolute;
+  top: 5px;
+  left: 5px; }
+
+.left-arrow:hover {
+  border-right: 10px solid #7F0B0B;
+  cursor: pointer; }
+
+.right-arrow {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #666666;
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.right-arrow:hover {
+  border-color: #7F0B0B;
+  cursor: pointer; }
+
+.point-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #CCCC9A; }
+  .point-wrapper h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    padding-bottom: 10px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+
 body {
   margin: 0px;
   box-sizing: border-box; }

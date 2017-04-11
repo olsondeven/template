@@ -1,0 +1,51 @@
+@import '../styles';
+
+.player-setting-wrapper{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  text-align: center;
+  flex-direction: column;
+  border: 2px solid $mainSubGreenColor;
+  h1{
+    color: $mainRedColor;
+    font-family: $textOswald;
+    font-size: 150%;
+    padding-bottom: 10px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+.color-container{
+  height: auto;
+  width: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  background-color: $mainTextColor;
+  border-radius: 5px;
+  padding: 5px;
+}
+.select-color{
+  height: 10vh;
+  width: 75vw;
+  border: 5px solid $mainTextColor;
+  border-radius: 5px;
+}
+.select-color:hover{
+  border: 5px solid $mainBackgroundColor;
+}
+.submit{
+  height: 10vh;
+  width: 100vw;
+  background-color: $mainTextColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.submit:hover{
+  cursor: pointer;
+}

@@ -11,7 +11,8 @@ angular.module('app').service('mainService',function($http){
      matchScore: null,
      foul: null,
      let: null,
-     hasAcct: false
+     hasAcct: false,
+     color: null
    },
    player2: {
      name: null,
@@ -19,7 +20,8 @@ angular.module('app').service('mainService',function($http){
      matchScore: null,
      foul: null,
      let: null,
-     hasAcct: false
+     hasAcct: false,
+     color: null
    },
    matchWinner: null,
    matchLoser: null,
@@ -49,7 +51,7 @@ angular.module('app').service('mainService',function($http){
      gameScore: null,
      matchScore: null,
      hasAcct: false,
-     selectedSErvice: null,
+     selectedService: null,
      mate1: null,
      mate2: null
    }

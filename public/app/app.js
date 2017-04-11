@@ -14,6 +14,16 @@ angular.module('app', ['ui.router'])
     templateUrl: './app/routes/flip/flipTemp.html',
     controller: 'flipCtrl'
   })
+  .state('player1', {
+    url: '/player1',
+    templateUrl: './app/routes/player1settings/player1settingsTemp.html',
+    controller: 'player1settingsCtrl'
+  })
+  .state('player2', {
+    url: '/player2',
+    templateUrl: './app/routes/player2settings/player2settingsTemp.html',
+    controller: 'player2settingsCtrl'
+  })
   .state('game', {
     url: '/game',
     templateUrl: './app/routes/game/gameTemp.html',

@@ -1,0 +1,11 @@
+<main class="player-setting-wrapper">
+  <div class="left-arrow" ui-sref="point"></div>
+  <h1>Player One</h1>
+  <div>Name: <input type="text" ng-model='name'></div>
+  <div class="color-container">
+    <div class="select-color" ng-repeat='color in colorArray' ng-click='selectColor(color)' style="background-color:{{color}}"></div>
+  </div>
+  <div class="submit" ng-click="selectName(name)">
+    <h1>SUBMIT</h1>
+  </div>
+</main>

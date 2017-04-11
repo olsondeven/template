@@ -11,6 +11,14 @@ angular.module('app', ['ui.router']).config(function ($stateProvider, $urlRouter
     url: '/flip',
     templateUrl: './app/routes/flip/flipTemp.html',
     controller: 'flipCtrl'
+  }).state('player1', {
+    url: '/player1',
+    templateUrl: './app/routes/player1settings/player1settingsTemp.html',
+    controller: 'player1settingsCtrl'
+  }).state('player2', {
+    url: '/player2',
+    templateUrl: './app/routes/player2settings/player2settingsTemp.html',
+    controller: 'player2settingsCtrl'
   }).state('game', {
     url: '/game',
     templateUrl: './app/routes/game/gameTemp.html',
@@ -46,7 +54,8 @@ angular.module('app').service('mainService', function ($http) {
       matchScore: null,
       foul: null,
       let: null,
-      hasAcct: false
+      hasAcct: false,
+      color: null
     },
     player2: {
       name: null,
@@ -54,7 +63,8 @@ angular.module('app').service('mainService', function ($http) {
       matchScore: null,
       foul: null,
       let: null,
-      hasAcct: false
+      hasAcct: false,
+      color: null
     },
     matchWinner: null,
     matchLoser: null,
@@ -84,7 +94,7 @@ angular.module('app').service('mainService', function ($http) {
       gameScore: null,
       matchScore: null,
       hasAcct: false,
-      selectedSErvice: null,
+      selectedService: null,
       mate1: null,
       mate2: null
     }
@@ -112,6 +122,12 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
+}); //closing
+'use strict';
+
 angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.selectMatch = function (val) {
     mainService.setGame('selectMatch', val);
@@ -119,14 +135,35 @@ angular.module('app').controller('matchCtrl', function ($scope, $stateParams, ma
 }); //closing
 'use strict';
 
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
+angular.module('app').controller("player1settingsCtrl", function ($scope, $stateParams, mainService, $rootScope) {
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    mainService.setGame('player1.name', val);
+    mainService.setGame('player1.color', color);
+  };
 }); //closing
 'use strict';
 
+angular.module('app').controller("player2settingsCtrl", function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = 'helloWorld';
+}); //closing
+"use strict";
+'use strict';
+
 angular.module('app').controller('pointCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
+  $scope.selectPoint = function (val) {
+    mainService.setGame('selectPoint', val);
+    if (val === 11) {
+      mainService.setGame('switchSer', 2);
+    } else {
+      mainService.setGame('switchSer', 5);
+    }
+  };
 }); //closing
 'use strict';
 

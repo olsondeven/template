@@ -1,1 +1,17 @@
 @import '../styles';
+.point-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid $mainSubGreenColor;
+  h1{
+    color: $mainRedColor;
+    font-family: $textOswald;
+    font-size: 150%;
+    padding-bottom: 10px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
