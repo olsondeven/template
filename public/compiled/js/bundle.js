@@ -108,6 +108,10 @@ angular.module('app').service('mainService', function ($http) {
       game.player1.name = val;
     } else if (prop === 'player1.color') {
       game.player1.color = val;
+    } else if (prop === 'player2.name') {
+      game.player2.name = val;
+    } else if (prop === 'player2.color') {
+      game.player2.color = val;
     } else {
       game[prop] = val;
     }
@@ -149,16 +153,34 @@ angular.module('app').controller("player1settingsCtrl", function ($scope, $state
     console.log(color);
   };
   $scope.selectName = function (val) {
-    mainService.setGame('player1.name', val);
-    mainService.setGame('player1.color', color);
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('player1.name', val);
+      mainService.setGame('player1.color', color);
+    }
   };
 }); //closing
 'use strict';
 
 angular.module('app').controller("player2settingsCtrl", function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = 'helloWorld';
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('player2.name', val);
+      mainService.setGame('player2.color', color);
+    }
+  };
 }); //closing
-"use strict";
 'use strict';
 
 angular.module('app').controller('pointCtrl', function ($scope, $stateParams, mainService, $rootScope) {

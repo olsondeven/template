@@ -6,7 +6,12 @@ angular.module('app').controller("player1settingsCtrl",function($scope, $statePa
     console.log(color);
   };
   $scope.selectName = function(val){
-    mainService.setGame('player1.name',val);
-    mainService.setGame('player1.color',color);
+    console.log('fired',color,val);
+    if(!color || !val){
+      return swal('Please select color and choose name');
+    }else{
+      mainService.setGame('player1.name',val);
+      mainService.setGame('player1.color',color);
+    }
   }
 });//closing
