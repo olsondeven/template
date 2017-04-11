@@ -1,13 +1,13 @@
 <main class="flip-wrapper">
 <div class="left-arrow" ui-sref="player2"></div>
 <h1>Select Service</h1>
-<div class="flip-cont-one flip-hover" ng-click="selectServcie('player1')">
+<div class="flip-cont-one flip-hover" ng-click="selectService('player1')" ui-sref="game">
     <h1>{{game.player1.name}}</h1>
 </div>
-<div class="flip-cont-one flip-hover" ng-click="selectServcie('player2')">
+<div class="flip-cont-one flip-hover" ng-click="selectService('player2')" ui-sref="game">
   <h1>{{game.player2.name}}</h1>
 </div>
-<div class="flip-cont-two flip-hover">
+<div class="flip-cont-two flip-hover" ng-click="random()" ui-sref="game">
   <h1>Random</h1>
 </div>
 </main>

@@ -103,6 +103,7 @@ angular.module('app').service('mainService', function ($http) {
   this.getGame = function () {
     return game;
   };
+  //set game settings
   this.setGame = function (prop, val) {
     if (prop === 'player1.name') {
       game.player1.name = val;
@@ -115,19 +116,36 @@ angular.module('app').service('mainService', function ($http) {
     } else {
       game[prop] = val;
     }
+    //set PlayerScore
     this.setPlayerScore = function () {};
     console.log(game);
   };
 }); //closing
 "use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.game = mainService.getGame();
-  $scope.random = function () {};
-  $scope.selectService = function (val) {};
+  $scope.random = function () {
+    // let ranNum = Math.floor(Math.random()*2+1);
+    if (Math.floor(Math.random() * 2 + 1) === 1) {
+      mainService.setGame('startSer', 'player1');
+      mainService.setGame('curSer', 'player1');
+      //date
+    } else {
+      mainService.setGame('startSer', 'player2');
+      mainService.setGame('curSer', 'player2');
+      //date
+    }
+  };
+  $scope.selectService = function (val) {
+    console.log(val);
+    mainService.setGame('startSer', val);
+    mainService.setGame('curSer', val);
+    //date
+  };
 }); //closing
-"use strict";
 'use strict';
 
 angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {

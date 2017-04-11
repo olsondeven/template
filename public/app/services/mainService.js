@@ -60,6 +60,7 @@ angular.module('app').service('mainService',function($http){
  this.getGame = function(){
    return game;
  }
+ //set game settings
  this.setGame = function(prop,val){
    if(prop === 'player1.name'){
      game.player1.name = val;
@@ -72,6 +73,7 @@ angular.module('app').service('mainService',function($http){
    }else{
      game[prop] = val;
    }
+   //set PlayerScore
    this.setPlayerScore = function(){
 
    }
