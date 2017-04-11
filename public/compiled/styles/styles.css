@@ -209,4 +209,55 @@ main {
   height: 25vh;
   width: 60vw; }
 
+body {
+  margin: 0px;
+  box-sizing: border-box; }
+
+main {
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  box-sizing: border-box;
+  background-color: #CCCCCC;
+  font-family: "Ubuntu", sans-serif; }
+
+.logo {
+  background-image: url("../../styles/images/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 25vh;
+  width: 60vw; }
+
+.type-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #CCCC9A; }
+  .type-wrapper h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    padding-bottom: 10px;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
+
+.select-container {
+  height: 35vh;
+  width: 80vw;
+  background-color: #666666;
+  border: 2px solid #CCCC9A;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center; }
+  .select-container h2 {
+    font-family: "Oswald", sans-serif;
+    font-size: 150%; }
+  .select-container h2:hover {
+    color: #7F0B0B;
+    cursor: pointer; }
+
 /*# sourceMappingURL=maps/styles.css.map */

@@ -58,7 +58,8 @@ angular.module('app').service('mainService',function($http){
  this.getGame = function(){
    return game;
  }
- this.setGame = function(target){
-   
+ this.setGame = function(prop,val){
+  game[prop] = val;
+  console.log(game);
  }
 });//closing
