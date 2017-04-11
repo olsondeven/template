@@ -104,7 +104,13 @@ angular.module('app').service('mainService', function ($http) {
     return game;
   };
   this.setGame = function (prop, val) {
-    game[prop] = val;
+    if (prop === 'player1.name') {
+      game.player1.name = val;
+    } else if (prop === 'player1.color') {
+      game.player1.color = val;
+    } else {
+      game[prop] = val;
+    }
     console.log(game);
   };
 }); //closing
@@ -112,12 +118,12 @@ angular.module('app').service('mainService', function ($http) {
 "use strict";
 'use strict';
 
-angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
 }); //closing
 'use strict';
 
-angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
 }); //closing
 'use strict';

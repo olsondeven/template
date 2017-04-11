@@ -61,7 +61,13 @@ angular.module('app').service('mainService',function($http){
    return game;
  }
  this.setGame = function(prop,val){
-  game[prop] = val;
+   if(prop === 'player1.name'){
+     game.player1.name = val;
+   }else if(prop === 'player1.color'){
+     game.player1.color = val;
+   }else{
+     game[prop] = val;
+   }
   console.log(game);
  }
 });//closing
