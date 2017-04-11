@@ -29,8 +29,9 @@
     font-family: $textOswald;
     font-size: 150%;
   }
-  h2:hover{
-    color: $mainRedColor;
-    cursor: pointer;
-  }
+}
+.select-container:hover{
+  color: $mainRedColor;
+  cursor: pointer;
+  border: 2px solid $mainRedColor;
 }

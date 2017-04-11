@@ -102,24 +102,26 @@ angular.module('app').service('mainService', function ($http) {
 "use strict";
 'use strict';
 
+angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+}); //closing
+'use strict';
+
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
 }); //closing
 'use strict';
 
-angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
+angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.selectMatch = function (val) {
+    mainService.setGame('selectMatch', val);
+  };
 }); //closing
 'use strict';
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
   $scope.login = function (user, pass) {};
-}); //closing
-'use strict';
-
-angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
 }); //closing
 'use strict';
 

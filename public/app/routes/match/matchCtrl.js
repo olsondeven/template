@@ -1,3 +1,5 @@
 angular.module('app').controller('matchCtrl',function($scope, $stateParams, mainService, $rootScope){
-  $scope.test = "HELLO WORLD";
+  $scope.selectMatch = function(val){
+    mainService.setGame('selectMatch',val);
+  }
 })//closing

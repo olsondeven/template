@@ -36,6 +36,10 @@ main{
   top: 5px;
   left: 5px;
 }
+.left-arrow:hover{
+  border-right:10px solid $mainRedColor;
+  cursor: pointer;
+}
 .right-arrow{
   width: 0;
   height: 0;
@@ -45,4 +49,8 @@ main{
   position: absolute;
   top: 0;
   right: 0;
+}
+.right-arrow:hover{
+  border-color: $mainRedColor;
+  cursor: pointer;
 }
