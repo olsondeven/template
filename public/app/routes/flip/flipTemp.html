@@ -1,4 +1,13 @@
-<main class="filp-wrapper">
+<main class="flip-wrapper">
 <div class="left-arrow" ui-sref="player2"></div>
-<h1>Selected Service</h1>
+<h1>Select Service</h1>
+<div class="flip-cont-one flip-hover" ng-click="selectServcie('player1')">
+    <h1>{{game.player1.name}}</h1>
+</div>
+<div class="flip-cont-one flip-hover" ng-click="selectServcie('player2')">
+  <h1>{{game.player2.name}}</h1>
+</div>
+<div class="flip-cont-two flip-hover">
+  <h1>Random</h1>
+</div>
 </main>

@@ -144,13 +144,38 @@ main {
   flex-direction: column;
   border: 2px solid #CCCC9A; }
   .flip-wrapper h1 {
-    color: red;
+    color: #7F0B0B;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
     font-weight: bolder;
     margin-top: 10px;
     margin-bottom: 10px; }
+
+.flip-cont-one {
+  height: 20vh;
+  width: 80vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #666666;
+  border-radius: 5px;
+  border: 2px solid #CCCC9A; }
+
+.flip-cont-two {
+  height: 40vh;
+  width: 80vw;
+  background-color: #666666;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid #CCCC9A; }
+
+.flip-hover:hover {
+  color: #7F0B0B;
+  cursor: pointer;
+  border: 2px solid #7F0B0B; }
 
 body {
   margin: 0px;
