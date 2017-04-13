@@ -126,6 +126,7 @@ angular.module('app').service('mainService', function ($http, $state) {
     };
     //set service
     this.setStartServe = function (prop) {
+        game.startDate = new Date();
         if (prop === "player1") {
             game.startSer = "player1";
             game.player1.curSer = true;
@@ -216,6 +217,7 @@ angular.module('app').service('mainService', function ($http, $state) {
     //finish match
     function matchFinished() {
         swal(game.matchWinner + " Won the match");
+        game.endDate = new Date();
         $state.go('matchStats');
     }
 }); //closing
