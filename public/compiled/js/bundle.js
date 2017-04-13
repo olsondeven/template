@@ -23,6 +23,10 @@ angular.module('app', ['ui.router']).config(function ($stateProvider, $urlRouter
     url: '/game',
     templateUrl: './app/routes/game/gameTemp.html',
     controller: 'gameCtrl'
+  }).state('matchStats', {
+    url: '/matchStats',
+    templateUrl: './app/routes/matchStats/matchStatsTemp.html',
+    controller: 'matchStatsCtrl'
   }).state('type', {
     url: '/type',
     templateUrl: './app/routes/type/typeTemp.html',
@@ -41,10 +45,11 @@ angular.module('app', ['ui.router']).config(function ($stateProvider, $urlRouter
 }); //closing
 'use strict';
 
-angular.module('app').service('mainService', function ($http) {
+angular.module('app').service('mainService', function ($http, $state) {
     //info for singles games
     var game = {
-        date: null, //date stamp
+        startDate: null, //date stamp
+        endDate: null,
         selectPoint: 11, //
         selectMatch: 3,
         selectType: null,
@@ -155,8 +160,21 @@ angular.module('app').service('mainService', function ($http) {
     function addMatch(player) {
         if (player === 'player1') {
             game.player1.matchScore++;
+            swal(game.player1.name + " won the game");
         } else if (player === "player2") {
             game.player2.matchScore++;
+            swal(game.player2.name + " won the game");
+        }
+
+        //decide on match winner
+        if (game.player1.matchScore > game.selectMatch - game.selectMatch % 2 - 1) {
+            game.matchWinner = "player1";
+            return matchFinished();
+        }
+
+        if (game.player2.matchScore > game.selectMatch - game.selectMatch % 2 - 1) {
+            game.matchWinner = "player2";
+            return matchFinished();
         }
         resetGame();
     }
@@ -184,18 +202,21 @@ angular.module('app').service('mainService', function ($http) {
         game.player1.gameScore = 0;
         game.player2.gameScore = 0;
         if (game.startSer === 'player1') {
-            swal(game.player1.name + " won the game");
-            swal(game.player2.name + " starts the service");
+            swal(game.player2.name + " serves first");
             game.startSer = 'player2';
             game.player1.curSer = false;
             game.player2.curSer = true;
         } else {
-            swal(game.player2.name + " won the game");
-            swal(game.player1.name + " starts the service");
+            swal(game.player1.name + " serves first");
             game.startSer = 'player1';
             game.player1.curSer = true;
             game.player2.curSer = false;
         }
+    }
+    //finish match
+    function matchFinished() {
+        swal(game.matchWinner + " Won the match");
+        $state.go('matchStats');
     }
 }); //closing
 "use strict";
@@ -249,6 +270,11 @@ angular.module('app').controller('matchCtrl', function ($scope, $stateParams, ma
   $scope.selectMatch = function (val) {
     mainService.setGame('selectMatch', val);
   };
+}); //closing
+"use strict";
+
+angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "help";
 }); //closing
 'use strict';
 
