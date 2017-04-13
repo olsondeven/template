@@ -3,6 +3,7 @@
     <div class="player-match-score" style="background-color: {{game.player1.color}}">
       <img ng-if="game.player1.curSer" src="./styles/images/ball.png" alt="">
       {{game.player1.name}}
+      <span>{{game.player1.matchScore}}/{{game.selectMatch}}</span>
     </div>
     <div class="player-btn" ng-click='setPlayerScore("player1")'>
       {{game.player1.gameScore}}
@@ -12,6 +13,7 @@
     <div class="player-match-score" style="background-color: {{game.player2.color}}">
       <img ng-if="game.player2.curSer" src="./styles/images/ball.png" alt="">
       {{game.player2.name}}
+      <span>{{game.player2.matchScore}}/{{game.selectMatch}}</span>
     </div>
     <div class="player-btn" ng-click='setPlayerScore("player2")'>
       {{game.player2.gameScore}}

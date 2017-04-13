@@ -1,28 +1,28 @@
 angular.module('app').service('mainService', function($http) {
-    //info for singles games
+//info for singles games
     let game = {
             date: null, //date stamp
-            selectPoint: null, //
-            selectMatch: null,
+            selectPoint: 11, //
+            selectMatch: 3,
             selectType: null,
             player1: {
                 name: "Player1",
                 curSer: false,
                 matchScore: 0,
+                gameScore: 0,
                 foul: null,
                 let: null,
                 hasAcct: false,
-                gameScore: 0,
                 color: null
             },
             player2: {
                 name: "Player2",
                 curSer: false,
                 matchScore: 0,
+                gameScore: 0,
                 foul: null,
                 let: null,
                 hasAcct: false,
-                gameScore: 0,
                 color: null
             },
             matchWinner: null,
@@ -58,11 +58,11 @@ angular.module('app').service('mainService', function($http) {
                 mate2: null
             }
         }
-        //get/set/update/delete from controllers and views
+//get/set/update/delete from controllers and views
     this.getGame = function() {
             return game;
         }
-        //set game settings
+//set game settings
     this.setGame = function(prop, val) {
             if (prop === 'player1.name') {
                 game.player1.name = val;
@@ -76,7 +76,7 @@ angular.module('app').service('mainService', function($http) {
                 game[prop] = val;
             }
         }
-        //set service
+//set service
     this.setStartServe = function(prop) {
             if (prop === "player1") {
                 game.startSer = "player1";
@@ -86,64 +86,72 @@ angular.module('app').service('mainService', function($http) {
                 game.player2.curSer = true;
             }
         }
-        //add to personal score
+//add to personal score
     this.addPlayerScore = function(player) {
+//adding up points
+
             if (player === 'player1') {
                 game.player1.gameScore++;
-            } else {
+                game.totalPoint = game.player1.gameScore + game.player2.gameScore;
+                serviceSwitch();
+            }
+            if (player === 'player2') {
                 game.player2.gameScore++;
+                game.totalPoint = game.player1.gameScore + game.player2.gameScore;
+                serviceSwitch();
             }
-            //adding up points
-            game.totalPoint = game.player1.gameScore + game.player2.gameScore;
 
-            if(game.player1.gameScore > game.player2.gameScore+1 && game.player1.gameScore > game.selectPoint-1){
-              addMatch("player1");
+            if (game.player1.gameScore > (game.player2.gameScore + 1) && game.player1.gameScore >= game.selectPoint) {
+                return addMatch("player1");
             }
-            if(game.player2.gameScore > game.player1.gameScore+1 && game.player2.gameScore > game.selectPoint-1){
-              addMatch("player2");
+            if (game.player2.gameScore > (game.player1.gameScore + 1) && game.player2.gameScore >= game.selectPoint) {
+                return addMatch("player2");
             }
-            serviceSwitch();
         }
-        //add match if won game
+//add match if won game
     function addMatch(player) {
         if (player === 'player1') {
             game.player1.matchScore++;
-        } else {
+        } else if (player === "player2") {
             game.player2.matchScore++;
         }
         resetGame();
     }
 
-    //switch service
+//switch service
     function serviceSwitch() {
         if (game.selectPoint === 11 && game.totalPoint >= 20) {
-          game.player1.curSer = !game.player1.curSer;
-          game.player2.curSer = !game.player2.curSer;
-        }else if (game.selectPoint === 11 && game.totalPoint % 2 === 0) {
-          game.player1.curSer = !game.player1.curSer;
-          game.player2.curSer = !game.player2.curSer;
+            game.player1.curSer = !game.player1.curSer;
+            game.player2.curSer = !game.player2.curSer;
+        } else if (game.selectPoint === 11 && game.totalPoint % 2 === 0) {
+            game.player1.curSer = !game.player1.curSer;
+            game.player2.curSer = !game.player2.curSer;
         }
 //if game point is set to 21
         if (game.selectPoint === 11 && game.totalPoint >= 40) {
-          game.player1.curSer = !game.player1.curSer;
-          game.player2.curSer = !game.player2.curSer;
-        }else if (game.selectPoint === 21 && game.totalPoint % 5 === 0) {
-          game.player1.curSer = !game.player1.curSer;
-          game.player2.curSer = !game.player2.curSer;
+            game.player1.curSer = !game.player1.curSer;
+            game.player2.curSer = !game.player2.curSer;
+        } else if (game.selectPoint === 21 && game.totalPoint % 5 === 0) {
+            game.player1.curSer = !game.player1.curSer;
+            game.player2.curSer = !game.player2.curSer;
         }
     }
-    //reset for new game
-    function resetGame(){
-      game.player1.gameScore = 0;
-      game.player2.gameScore = 0;
-      if(game.startSer === 'player1'){
-        game.startSer = 'player2';
-        game.player1.curSer = false;
-        game.player2.curSer = true;
-      }else{
-        game.startSer = 'player1';
-        game.player1.curSer = true;
-        game.player2.curSer = false;
-      }
+//reset for new game
+    function resetGame() {
+        game.player1.gameScore = 0;
+        game.player2.gameScore = 0;
+        if (game.startSer === 'player1') {
+            swal(game.player1.name + " won the game");
+            swal(game.player2.name + " starts the service");
+            game.startSer = 'player2';
+            game.player1.curSer = false;
+            game.player2.curSer = true;
+        } else {
+            swal(game.player2.name + " won the game");
+            swal(game.player1.name + " starts the service");
+            game.startSer = 'player1';
+            game.player1.curSer = true;
+            game.player2.curSer = false;
+        }
     }
 }); //closing
