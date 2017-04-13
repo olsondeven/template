@@ -136,33 +136,64 @@ angular.module('app').service('mainService', function ($http) {
     this.addPlayerScore = function (player) {
         if (player === 'player1') {
             game.player1.gameScore++;
+            if (game.player1.gameScore >= 11 && game.player1.gameScore === game.player2.gameScore + 2) {
+                addMatch("player1");
+            }
         } else {
             game.player2.gameScore++;
+            if (game.player2.gameScore >= 11 && game.player2.gameScore === game.player1.gameScore + 2) {
+                addMatch("player2");
+            }
         }
         game.totalPoint = game.player1.gameScore + game.player2.gameScore;
+
         serviceSwitch();
         console.log(game.totalPoint);
     };
     //add match if won game
     function addMatch(player) {
         if (player === 'player1') {
-            game.player1.gameScore++;
+            game.player1.matchScore++;
         } else {
-            game.player2.gameScore++;
+            game.player2.matchScore++;
         }
+        resetGame();
     }
+
     //switch service
     function serviceSwitch() {
-        if (game.selectPoint === 11 && game.totalPoint % 2 === 0) {
+        if (game.selectPoint === 11 && game.totalPoint >= 20) {
+            game.player1.curSer = !game.player1.curSer;
+            game.player2.curSer = !game.player2.curSer;
+            console.log('server change', game);
+        } else if (game.selectPoint === 11 && game.totalPoint % 2 === 0) {
             game.player1.curSer = !game.player1.curSer;
             game.player2.curSer = !game.player2.curSer;
             console.log('server change', game);
         }
-
-        if (game.selectPoint === 21 && game.totalPoint % 5 === 0) {
+        //if game point is set to 21
+        if (game.selectPoint === 11 && game.totalPoint >= 40) {
             game.player1.curSer = !game.player1.curSer;
             game.player2.curSer = !game.player2.curSer;
             console.log('server change', game);
+        } else if (game.selectPoint === 21 && game.totalPoint % 5 === 0) {
+            game.player1.curSer = !game.player1.curSer;
+            game.player2.curSer = !game.player2.curSer;
+            console.log('server change', game);
+        }
+    }
+    //reset for new game
+    function resetGame() {
+        game.player1.gameScore = 0;
+        game.player2.gameScore = 0;
+        if (game.startSer === 'player1') {
+            game.startSer = 'player2';
+            game.player1.curSer = false;
+            game.player2.curSer = true;
+        } else {
+            game.startSer = 'player1';
+            game.player1.curSer = true;
+            game.player2.curSer = false;
         }
     }
 }); //closing
@@ -260,14 +291,6 @@ angular.module('app').controller("player2settingsCtrl", function ($scope, $state
 }); //closing
 'use strict';
 
-angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.setType = function (val) {
-    // console.log(val, "fired");
-    mainService.setGame("selectType", val);
-  };
-}); //closing
-'use strict';
-
 angular.module('app').controller('pointCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.selectPoint = function (val) {
     mainService.setGame('selectPoint', val);
@@ -276,6 +299,14 @@ angular.module('app').controller('pointCtrl', function ($scope, $stateParams, ma
     } else {
       mainService.setGame('switchSer', 5);
     }
+  };
+}); //closing
+'use strict';
+
+angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.setType = function (val) {
+    // console.log(val, "fired");
+    mainService.setGame("selectType", val);
   };
 }); //closing
 //# sourceMappingURL=bundle.js.map
