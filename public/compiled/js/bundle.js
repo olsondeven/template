@@ -118,8 +118,6 @@ angular.module('app').service('mainService', function ($http) {
         } else {
             game[prop] = val;
         }
-        //set PlayerScore
-        console.log(game);
     };
     //set service
     this.setStartServe = function (prop) {
@@ -130,25 +128,24 @@ angular.module('app').service('mainService', function ($http) {
             game.startSer = "player2";
             game.player2.curSer = true;
         }
-        console.log(game);
     };
     //add to personal score
     this.addPlayerScore = function (player) {
         if (player === 'player1') {
             game.player1.gameScore++;
-            if (game.player1.gameScore >= 11 && game.player1.gameScore === game.player2.gameScore + 2) {
-                addMatch("player1");
-            }
         } else {
             game.player2.gameScore++;
-            if (game.player2.gameScore >= 11 && game.player2.gameScore === game.player1.gameScore + 2) {
-                addMatch("player2");
-            }
         }
+        //adding up points
         game.totalPoint = game.player1.gameScore + game.player2.gameScore;
 
+        if (game.player1.gameScore > game.player2.gameScore + 1 && game.player1.gameScore > game.selectPoint - 1) {
+            addMatch("player1");
+        }
+        if (game.player2.gameScore > game.player1.gameScore + 1 && game.player2.gameScore > game.selectPoint - 1) {
+            addMatch("player2");
+        }
         serviceSwitch();
-        console.log(game.totalPoint);
     };
     //add match if won game
     function addMatch(player) {
@@ -165,21 +162,17 @@ angular.module('app').service('mainService', function ($http) {
         if (game.selectPoint === 11 && game.totalPoint >= 20) {
             game.player1.curSer = !game.player1.curSer;
             game.player2.curSer = !game.player2.curSer;
-            console.log('server change', game);
         } else if (game.selectPoint === 11 && game.totalPoint % 2 === 0) {
             game.player1.curSer = !game.player1.curSer;
             game.player2.curSer = !game.player2.curSer;
-            console.log('server change', game);
         }
         //if game point is set to 21
         if (game.selectPoint === 11 && game.totalPoint >= 40) {
             game.player1.curSer = !game.player1.curSer;
             game.player2.curSer = !game.player2.curSer;
-            console.log('server change', game);
         } else if (game.selectPoint === 21 && game.totalPoint % 5 === 0) {
             game.player1.curSer = !game.player1.curSer;
             game.player2.curSer = !game.player2.curSer;
-            console.log('server change', game);
         }
     }
     //reset for new game
@@ -251,26 +244,6 @@ angular.module('app').controller('matchCtrl', function ($scope, $stateParams, ma
 }); //closing
 'use strict';
 
-angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
-  var color = null;
-  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
-  $scope.selectColor = function (val) {
-    color = val;
-    console.log(color);
-  };
-  $scope.selectName = function (val) {
-    console.log('fired', color, val);
-    if (!color || !val) {
-      return swal('Please select color and choose name');
-    } else {
-      mainService.setGame('player1.name', val);
-      mainService.setGame('player1.color', color);
-      $state.go('player2');
-    }
-  };
-}); //closing
-'use strict';
-
 angular.module('app').controller("player2settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
   var color = null;
   $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
@@ -286,6 +259,26 @@ angular.module('app').controller("player2settingsCtrl", function ($scope, $state
       mainService.setGame('player2.name', val);
       mainService.setGame('player2.color', color);
       $state.go('flip');
+    }
+  };
+}); //closing
+'use strict';
+
+angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('player1.name', val);
+      mainService.setGame('player1.color', color);
+      $state.go('player2');
     }
   };
 }); //closing
