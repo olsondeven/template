@@ -1,0 +1,23 @@
+@import '../styles';
+.match-stats{
+  display: flex;
+}
+.matchstats-cont{
+  position: relative;
+  height: 100vh;
+  width: 50vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  border: 1px solid red;
+  span{
+
+  }
+}
+@media(min-width: 768px){
+  .matchstats-cont{
+    height: 50vh;
+    width: 100vw;
+  }
+}

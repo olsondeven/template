@@ -81,8 +81,6 @@ angular.module('app').service('mainService', function ($http, $state) {
         login: {
             currentUser: null
         },
-        switchSer: null,
-        tiebreaker: null,
         team1: {
             teamName: null,
             foul: null,
@@ -90,7 +88,6 @@ angular.module('app').service('mainService', function ($http, $state) {
             gameScore: null,
             matchScore: null,
             hasAcct: false,
-            selectedSErvice: null,
             mate1: null,
             mate2: null
         },
@@ -101,7 +98,6 @@ angular.module('app').service('mainService', function ($http, $state) {
             gameScore: null,
             matchScore: null,
             hasAcct: false,
-            selectedService: null,
             mate1: null,
             mate2: null
         }
@@ -162,10 +158,8 @@ angular.module('app').service('mainService', function ($http, $state) {
     function addMatch(player) {
         if (player === 'player1') {
             game.player1.matchScore++;
-            swal(game.player1.name + " won the game");
         } else if (player === "player2") {
             game.player2.matchScore++;
-            swal(game.player2.name + " won the game");
         }
 
         //decide on match winner
@@ -228,6 +222,15 @@ angular.module('app').service('mainService', function ($http, $state) {
 "use strict";
 'use strict';
 
+angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.setPlayerScore = function (prop) {
+    mainService.addPlayerScore(prop);
+    $scope.game = mainService.getGame();
+  };
+  $scope.game = mainService.getGame();
+}); //closing
+'use strict';
+
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.game = mainService.getGame();
   $scope.random = function () {
@@ -255,15 +258,6 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
-angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.setPlayerScore = function (prop) {
-    mainService.addPlayerScore(prop);
-    $scope.game = mainService.getGame();
-  };
-  $scope.game = mainService.getGame();
-}); //closing
-'use strict';
-
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
   $scope.login = function (user, pass) {};
@@ -278,6 +272,7 @@ angular.module('app').controller('matchCtrl', function ($scope, $stateParams, ma
 "use strict";
 
 angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.game = mainService.getGame();
   $scope.test = "help";
 }); //closing
 'use strict';

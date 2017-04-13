@@ -224,12 +224,14 @@ main {
   cursor: pointer; }
 
 .game-wrapper {
-  display: flex; }
+  display: flex;
+  width: 100%;
+  height: 100%; }
 
 .game-player-card {
-  width: 49vw;
+  width: 50vw;
   height: 100vh;
-  border: 1px solid #666666; }
+  border-left: 2px solid #666666; }
 
 .player-match-score {
   width: 100%;
@@ -240,10 +242,11 @@ main {
   text-align: center;
   font-weight: bold;
   position: relative;
-  background-color: #666666; }
+  background-color: #666666;
+  border-left: 1px solid #CCCCCC; }
   .player-match-score img {
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
     position: absolute;
     top: 0;
     left: 0; }
@@ -262,9 +265,17 @@ main {
   align-items: center; }
 
 @media (max-width: 768px) {
+  .game-wrapper {
+    flex-wrap: wrap; }
   .game-player-card {
     width: 100vw;
-    height: 50vh; } }
+    height: 50vh; }
+  .player-match-score img {
+    width: 45px;
+    height: 45px;
+    position: absolute;
+    top: 0;
+    left: 0; } }
 
 body {
   margin: 0px;
@@ -443,6 +454,71 @@ main {
   color: #7F0B0B;
   cursor: pointer;
   border: 2px solid #7F0B0B; }
+
+body {
+  margin: 0px;
+  box-sizing: border-box; }
+
+main {
+  height: 100vh;
+  width: 100vw;
+  margin: 0px;
+  box-sizing: border-box;
+  background-color: #CCCCCC;
+  font-family: "Ubuntu", sans-serif; }
+
+.logo {
+  background-image: url("../../styles/images/logo.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 25vh;
+  width: 60vw; }
+
+.left-arrow {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 10px solid #666666;
+  position: absolute;
+  top: 5px;
+  left: 5px; }
+
+.left-arrow:hover {
+  border-right: 10px solid #7F0B0B;
+  cursor: pointer; }
+
+.right-arrow {
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 10px solid #666666;
+  position: absolute;
+  top: 0;
+  right: 0; }
+
+.right-arrow:hover {
+  border-color: #7F0B0B;
+  cursor: pointer; }
+
+.match-stats {
+  display: flex; }
+
+.matchstats-cont {
+  position: relative;
+  height: 100vh;
+  width: 50vw;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100vw;
+  border: 1px solid red; }
+
+@media (min-width: 768px) {
+  .matchstats-cont {
+    height: 50vh;
+    width: 100vw; } }
 
 body {
   margin: 0px;

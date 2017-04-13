@@ -34,8 +34,6 @@ angular.module('app').service('mainService', function($http,$state) {
             login: {
                 currentUser: null
             },
-            switchSer: null,
-            tiebreaker: null,
             team1: {
                 teamName: null,
                 foul: null,
@@ -43,7 +41,6 @@ angular.module('app').service('mainService', function($http,$state) {
                 gameScore: null,
                 matchScore: null,
                 hasAcct: false,
-                selectedSErvice: null,
                 mate1: null,
                 mate2: null
             },
@@ -54,7 +51,6 @@ angular.module('app').service('mainService', function($http,$state) {
                 gameScore: null,
                 matchScore: null,
                 hasAcct: false,
-                selectedService: null,
                 mate1: null,
                 mate2: null
             }
@@ -115,10 +111,8 @@ angular.module('app').service('mainService', function($http,$state) {
     function addMatch(player) {
         if (player === 'player1') {
             game.player1.matchScore++;
-            swal(game.player1.name + " won the game");
         } else if (player === "player2") {
             game.player2.matchScore++;
-            swal(game.player2.name + " won the game");
         }
 
 //decide on match winner
