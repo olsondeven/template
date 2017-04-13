@@ -1,1 +1,20 @@
 @import '../styles';
+.game-wrapper{
+  display: flex;
+}
+.game-player-card{
+  width: 49vw;
+  height: 100vh;
+  border: 1px solid $mainTextColor;
+}
+.player-score{
+  width: 100%;
+  height: 15%;
+  border-bottom: 1px solid $mainTextColor;
+}
+@media(max-width: 768px) {
+  .game-player-card{
+    width: 100vw;
+    height: 50vh;
+  }
+}

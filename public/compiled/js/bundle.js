@@ -123,6 +123,7 @@ angular.module('app').service('mainService', function ($http) {
 }); //closing
 "use strict";
 "use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -149,7 +150,7 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
 'use strict';
 
 angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
+  $scope.game = mainService.getGame();
 }); //closing
 'use strict';
 

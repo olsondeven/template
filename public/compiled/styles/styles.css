@@ -137,7 +137,7 @@ main {
 
 .flip-wrapper {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   align-content: center;
   text-align: center;
@@ -147,7 +147,6 @@ main {
     color: #7F0B0B;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
-    padding-bottom: 10px;
     font-weight: bolder;
     margin-top: 10px;
     margin-bottom: 10px; }
@@ -223,6 +222,24 @@ main {
 .right-arrow:hover {
   border-color: #7F0B0B;
   cursor: pointer; }
+
+.game-wrapper {
+  display: flex; }
+
+.game-player-card {
+  width: 49vw;
+  height: 100vh;
+  border: 1px solid #666666; }
+
+.player-score {
+  width: 100%;
+  height: 15%;
+  border-bottom: 1px solid #666666; }
+
+@media (max-width: 768px) {
+  .game-player-card {
+    width: 100vw;
+    height: 50vh; } }
 
 body {
   margin: 0px;
