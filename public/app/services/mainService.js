@@ -11,6 +11,8 @@ angular.module('app').service('mainService', function($http,$state) {
             totalPoint: 0,
             startSer: null,
             save: false,
+            //game name of winner/loser, points, time
+            //{winnner:null, loser:null, winnerScore:0, loserScore: 0, tracker:[{pointWinner:null,pointDate:null}]}
             gameScoreCollection: [],
             matchScoreCollection: [],
             login: {

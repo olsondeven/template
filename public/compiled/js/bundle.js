@@ -58,6 +58,8 @@ angular.module('app').service('mainService', function ($http, $state) {
         totalPoint: 0,
         startSer: null,
         save: false,
+        //game name of winner/loser, points, time
+        //{winnner:null, loser:null, winnerScore:0, loserScore: 0, tracker:[{pointWinner:null,pointDate:null}]}
         gameScoreCollection: [],
         matchScoreCollection: [],
         login: {
@@ -262,16 +264,16 @@ angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
-}); //closing
-'use strict';
-
 angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.selectMatch = function (val) {
     mainService.setGame('selectMatch', val);
   };
+}); //closing
+'use strict';
+
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
 }); //closing
 "use strict";
 
