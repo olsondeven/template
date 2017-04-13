@@ -41,6 +41,9 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+button {
+  cursor: pointer; }
+
 body {
   margin: 0px;
   box-sizing: border-box; }
@@ -52,6 +55,13 @@ main {
   box-sizing: border-box;
   background-color: #CCCCCC;
   font-family: "Ubuntu", sans-serif; }
+  main h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -88,6 +98,9 @@ main {
   border-color: #7F0B0B;
   cursor: pointer; }
 
+button {
+  cursor: pointer; }
+
 body {
   margin: 0px;
   box-sizing: border-box; }
@@ -99,6 +112,13 @@ main {
   box-sizing: border-box;
   background-color: #CCCCCC;
   font-family: "Ubuntu", sans-serif; }
+  main h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -176,6 +196,9 @@ main {
   cursor: pointer;
   border: 2px solid #7F0B0B; }
 
+button {
+  cursor: pointer; }
+
 body {
   margin: 0px;
   box-sizing: border-box; }
@@ -187,6 +210,13 @@ main {
   box-sizing: border-box;
   background-color: #CCCCCC;
   font-family: "Ubuntu", sans-serif; }
+  main h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -277,6 +307,9 @@ main {
     top: 0;
     left: 0; } }
 
+button {
+  cursor: pointer; }
+
 body {
   margin: 0px;
   box-sizing: border-box; }
@@ -288,6 +321,13 @@ main {
   box-sizing: border-box;
   background-color: #CCCCCC;
   font-family: "Ubuntu", sans-serif; }
+  main h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -378,6 +418,9 @@ main {
     font-weight: bold;
     margin-top: 5px; }
 
+button {
+  cursor: pointer; }
+
 body {
   margin: 0px;
   box-sizing: border-box; }
@@ -389,6 +432,13 @@ main {
   box-sizing: border-box;
   background-color: #CCCCCC;
   font-family: "Ubuntu", sans-serif; }
+  main h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -455,6 +505,9 @@ main {
   cursor: pointer;
   border: 2px solid #7F0B0B; }
 
+button {
+  cursor: pointer; }
+
 body {
   margin: 0px;
   box-sizing: border-box; }
@@ -466,6 +519,13 @@ main {
   box-sizing: border-box;
   background-color: #CCCCCC;
   font-family: "Ubuntu", sans-serif; }
+  main h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -502,23 +562,57 @@ main {
   border-color: #7F0B0B;
   cursor: pointer; }
 
-.match-stats {
-  display: flex; }
-
-.matchstats-cont {
+.match-stats-wrapper {
   position: relative;
-  height: 100vh;
-  width: 50vw;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 100vw;
-  border: 1px solid red; }
+  text-align: center;
+  flex-direction: column; }
+  .match-stats-wrapper button {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    font-family: "Ubuntu", sans-serif;
+    color: #666666;
+    border-radius: 2px;
+    font-weight: bold;
+    margin-top: 5px; }
 
-@media (min-width: 768px) {
-  .matchstats-cont {
-    height: 50vh;
-    width: 100vw; } }
+.match-cont {
+  position: relative;
+  height: 40%;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #666666;
+  border: 1px solid #999967;
+  border-radius: 5px; }
+
+.match-splitone-cont {
+  width: 20%;
+  height: 100%;
+  border: 1px solid #999967;
+  border-radius: 5px; }
+
+.match-graph-cont {
+  width: 80%;
+  height: 100%;
+  border: 1px solid #999967;
+  border-radius: 5px; }
+
+@media (max-width: 768px) {
+  .match-cont {
+    height: 40%;
+    width: 100%; } }
+
+@media (max-width: 500px) {
+  .match-stats-wrapper button {
+    display: none; } }
+
+button {
+  cursor: pointer; }
 
 body {
   margin: 0px;
@@ -531,6 +625,13 @@ main {
   box-sizing: border-box;
   background-color: #CCCCCC;
   font-family: "Ubuntu", sans-serif; }
+  main h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -615,6 +716,9 @@ main {
 .submit:hover {
   cursor: pointer; }
 
+button {
+  cursor: pointer; }
+
 body {
   margin: 0px;
   box-sizing: border-box; }
@@ -626,6 +730,13 @@ main {
   box-sizing: border-box;
   background-color: #CCCCCC;
   font-family: "Ubuntu", sans-serif; }
+  main h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -677,6 +788,9 @@ main {
     margin-top: 10px;
     margin-bottom: 10px; }
 
+button {
+  cursor: pointer; }
+
 body {
   margin: 0px;
   box-sizing: border-box; }
@@ -688,6 +802,13 @@ main {
   box-sizing: border-box;
   background-color: #CCCCCC;
   font-family: "Ubuntu", sans-serif; }
+  main h1 {
+    color: #7F0B0B;
+    font-family: "Oswald", sans-serif;
+    font-size: 150%;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");

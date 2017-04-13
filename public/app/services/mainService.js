@@ -100,10 +100,10 @@ angular.module('app').service('mainService', function($http,$state) {
                 serviceSwitch();
             }
 
-            if (game.player1.gameScore > (game.player2.gameScore + 1) && game.player1.gameScore >= game.selectPoint) {
+            if (game.player1.gameScore > (game.player2.gameScore + 1) && game.player1.gameScore > game.selectPoint-1) {
                 return addMatch("player1");
             }
-            if (game.player2.gameScore > (game.player1.gameScore + 1) && game.player2.gameScore >= game.selectPoint) {
+            if (game.player2.gameScore > (game.player1.gameScore + 1) && game.player2.gameScore > game.selectPoint-1) {
                 return addMatch("player2");
             }
         }
@@ -118,11 +118,13 @@ angular.module('app').service('mainService', function($http,$state) {
 //decide on match winner
         if(game.player1.matchScore > (game.selectMatch-(game.selectMatch%2)-1)){
           game.matchWinner = "player1";
+          game.matchLoser = "player2";
           return matchFinished();
         }
 
         if(game.player2.matchScore > (game.selectMatch-(game.selectMatch%2)-1)){
           game.matchWinner = "player2";
+          game.matchLoser = "player1";
           return matchFinished();
         }
         resetGame();
