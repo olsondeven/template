@@ -6,6 +6,16 @@ angular.module('app').service('mainService', function($http,$state) {
             selectPoint: 11, //
             selectMatch: 3,
             selectType: null,
+            matchWinner: null,
+            matchLoser: null,
+            totalPoint: 0,
+            startSer: null,
+            save: false,
+            gameScoreCollection: [],
+            matchScoreCollection: [],
+            login: {
+              currentUser: null
+            },
             player1: {
                 name: "Player1",
                 curSer: false,
@@ -25,14 +35,6 @@ angular.module('app').service('mainService', function($http,$state) {
                 let: null,
                 hasAcct: false,
                 color: null
-            },
-            matchWinner: null,
-            matchLoser: null,
-            totalPoint: 0,
-            startSer: null,
-            save: false,
-            login: {
-                currentUser: null
             },
             team1: {
                 teamName: null,
