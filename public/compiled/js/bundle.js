@@ -47,6 +47,9 @@ angular.module('app', ['ui.router']).config(function ($stateProvider, $urlRouter
 
 angular.module('app').service('mainService', function ($http, $state) {
     //info for singles games
+    var pointScoreIndex = 0;
+    var gameScoreIndex = 0;
+    var matchScoreIndex = 0;
     var game = {
         startDate: null, //date stamp
         endDate: null,
@@ -59,10 +62,11 @@ angular.module('app').service('mainService', function ($http, $state) {
         startSer: null,
         save: false,
         //game name of winner/loser, points, time
-        //{winnner:null, loser:null, winnerScore:0, loserScore: 0, tracker:[{pointWinner:null, pointDate:null, winSer:false, losSer:false}]}
-        gameScoreCollection: [],
+        //let setupPlayerGameStats = {winner:null, winScore:0, loser:null, lossScore:0, tracker:[]};
+        //{winnner:null, loser:null, winnerScore:0, loserScore: 0, tracker:[{pointWinner:null, pointDate:null, winSer:false}]}
+        gameScoreCollection: [{ winner: null, winScore: 0, loser: null, lossScore: 0, tracker: [] }],
         //{winnerName:null, winnerScore:0, loserName:null, loserScore:0, tracker:[{gameWinner:null,gameDate:null}]}
-        matchScoreCollection: [],
+        // matchScoreCollection: [{winnerName:null, winnerScore:0, loserName:null, loserScore:0, tracker:[]}],
         login: {
             currentUser: null
         },
@@ -74,7 +78,9 @@ angular.module('app').service('mainService', function ($http, $state) {
             foul: null,
             let: null,
             hasAcct: false,
-            color: null
+            color: null //,
+            // gamesWon: [[]],
+            // gamesLose: [[]]
         },
         player2: {
             name: "Player2",
@@ -84,7 +90,9 @@ angular.module('app').service('mainService', function ($http, $state) {
             foul: null,
             let: null,
             hasAcct: false,
-            color: null
+            color: null //,
+            // gamesWon: [[]],
+            // gamesLose: [[]]
         },
         team1: {
             teamName: null,
@@ -139,26 +147,40 @@ angular.module('app').service('mainService', function ($http, $state) {
     };
     //add to personal score
     //counter for index placement
-    var gameScoreIndex = 0;
-    var setupPlayerGameStats = { winner: null, winScore: 0, loser: null, lossScore: 0, tracker: [{ playerWin: null, pointDate: null, winScore: false, losSer: false }] };
     this.addPlayerScore = function (player) {
         //adding up points
-        //{winnner:null, loser:null, winnerScore:0, loserScore: 0, tracker:[{pointWinner:null, pointDate:null, winSer:false, losSer:false}]}
+        var pushArr = { pointWin: null, pointDate: null, winSer: false };
+
         if (player === 'player1') {
-            setupPlayerGameStats.tracker[gameScoreIndex].pointWin = game.player1.name;
-            setupPlayerGameStats.tracker[gameScoreIndex].pointDate = new Date();
+            pushArr.pointWin = game.player1.name;
+            pushArr.pointDate = new Date();
+            game.gameScoreCollection[gameScoreIndex].tracker.push(pushArr);
+            if (game.player1.curSer) {
+                // console.log('point Index', pointScoreIndex);
+                // console.log('game Index', gameScoreIndex);
+                // console.log(game.gameScoreCollection);
+                game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
+            }
             game.player1.gameScore++;
             game.totalPoint = game.player1.gameScore + game.player2.gameScore;
-            game.gameScoreCollection.push(setupPlayerGameStats);
-            serviceSwitch(gameScoreIndex);
-            gameScoreCollectionIndex++;
+            // console.log("Point made by player1",game.gameScoreCollection[gameScoreIndex]);
+            serviceSwitch();
         }
         if (player === 'player2') {
+            pushArr.pointWin = game.player2.name;
+            pushArr.pointDate = new Date();
+            //{winner:null, winScore:0, loser:null, lossScore:0, tracker:[]}
+            game.gameScoreCollection[gameScoreIndex].tracker.push(pushArr);
+            if (game.player2.curSer) {
+                // console.log('point Index', pointScoreIndex);
+                // console.log('game Index',gameScoreIndex);
+                // console.log(game.gameScoreCollection);
+                game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
+            }
             game.player2.gameScore++;
             game.totalPoint = game.player1.gameScore + game.player2.gameScore;
-            game.gameScoreCollection.push(setupPlayer2);
-            serviceSwitch(gameScoreCollectionIndex);
-            gameScoreCollectionIndex++;
+            // console.log("Point made by player2",game.gameScoreCollection[gameScoreIndex]);
+            serviceSwitch();
         }
 
         if (game.player1.gameScore > game.player2.gameScore + 1 && game.player1.gameScore > game.selectPoint - 1) {
@@ -167,13 +189,26 @@ angular.module('app').service('mainService', function ($http, $state) {
         if (game.player2.gameScore > game.player1.gameScore + 1 && game.player2.gameScore > game.selectPoint - 1) {
             return addMatch("player2");
         }
+        pointScoreIndex++;
     };
     //add match if won game
     function addMatch(player) {
         if (player === 'player1') {
             game.player1.matchScore++;
+            game.gameScoreCollection[gameScoreIndex].winner = game.player1.name;
+            game.gameScoreCollection[gameScoreIndex].winScore = game.player1.gameScore;
+            game.gameScoreCollection[gameScoreIndex].loser = game.player2.name;
+            game.gameScoreCollection[gameScoreIndex].lossScore = game.player2.gameScore;
+            // game.gameScoreCollection.push(pushArr);
+            console.log("match made by player1", game.gameScoreCollection[gameScoreIndex]);
         } else if (player === "player2") {
             game.player2.matchScore++;
+            game.gameScoreCollection[gameScoreIndex].winner = game.player2.name;
+            game.gameScoreCollection[gameScoreIndex].winScore = game.player2.gameScore;
+            game.gameScoreCollection[gameScoreIndex].loser = game.player1.name;
+            game.gameScoreCollection[gameScoreIndex].lossScore = game.player1.gameScore;
+            // game.gameScoreCollection.push(pushArr);
+            console.log("match made by player2", game.gameScoreCollection[gameScoreIndex]);
         }
 
         //decide on match winner
@@ -189,10 +224,12 @@ angular.module('app').service('mainService', function ($http, $state) {
             return matchFinished();
         }
         resetGame();
+        var pushArr = { winner: null, winScore: 0, loser: null, lossScore: 0, tracker: [] };
+        game.gameScoreCollection.push(pushArr);
     }
 
     //switch service
-    function serviceSwitch() {
+    function serviceSwitch(index) {
         if (game.selectPoint === 11 && game.totalPoint >= 20) {
             game.player1.curSer = !game.player1.curSer;
             game.player2.curSer = !game.player2.curSer;
@@ -213,6 +250,10 @@ angular.module('app').service('mainService', function ($http, $state) {
     function resetGame() {
         game.player1.gameScore = 0;
         game.player2.gameScore = 0;
+        gameScoreIndex++;
+        pointScoreIndex = 0; //for after looking at matchStats
+        // gameScoreIndex = 0;
+        // game.gameScoreCollection.push(pushArr);
         if (game.startSer === 'player1') {
             swal(game.player2.name + " serves first");
             game.startSer = 'player2';
@@ -229,7 +270,8 @@ angular.module('app').service('mainService', function ($http, $state) {
     function matchFinished() {
         swal(game.matchWinner + " Won the match");
         game.endDate = new Date();
-        console.log(game.endDate);
+        // console.log(game.endDate);
+        console.log(game);
         $state.go('matchStats');
     }
 }); //closing
@@ -265,18 +307,18 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
+}); //closing
+'use strict';
+
 angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.setPlayerScore = function (prop) {
     mainService.addPlayerScore(prop);
     $scope.game = mainService.getGame();
   };
   $scope.game = mainService.getGame();
-}); //closing
-'use strict';
-
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
 }); //closing
 'use strict';
 
@@ -319,26 +361,6 @@ angular.module('app').controller("player1settingsCtrl", function ($scope, $state
 }); //closing
 'use strict';
 
-angular.module('app').controller('pointCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.selectPoint = function (val) {
-    mainService.setGame('selectPoint', val);
-    if (val === 11) {
-      mainService.setGame('switchSer', 2);
-    } else {
-      mainService.setGame('switchSer', 5);
-    }
-  };
-}); //closing
-'use strict';
-
-angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.setType = function (val) {
-    // console.log(val, "fired");
-    mainService.setGame("selectType", val);
-  };
-}); //closing
-'use strict';
-
 angular.module('app').controller("player2settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
   var color = null;
   $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
@@ -355,6 +377,26 @@ angular.module('app').controller("player2settingsCtrl", function ($scope, $state
       mainService.setGame('player2.color', color);
       $state.go('flip');
     }
+  };
+}); //closing
+'use strict';
+
+angular.module('app').controller('pointCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.selectPoint = function (val) {
+    mainService.setGame('selectPoint', val);
+    if (val === 11) {
+      mainService.setGame('switchSer', 2);
+    } else {
+      mainService.setGame('switchSer', 5);
+    }
+  };
+}); //closing
+'use strict';
+
+angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.setType = function (val) {
+    // console.log(val, "fired");
+    mainService.setGame("selectType", val);
   };
 }); //closing
 //# sourceMappingURL=bundle.js.map
