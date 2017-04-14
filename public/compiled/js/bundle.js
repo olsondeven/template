@@ -277,6 +277,15 @@ angular.module('app').service('mainService', function ($http, $state) {
 }); //closing
 "use strict";
 "use strict";
+'use strict';
+
+angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.setPlayerScore = function (prop) {
+    mainService.addPlayerScore(prop);
+    $scope.game = mainService.getGame();
+  };
+  $scope.game = mainService.getGame();
+}); //closing
 "use strict";
 'use strict';
 
@@ -313,15 +322,6 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
-angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.setPlayerScore = function (prop) {
-    mainService.addPlayerScore(prop);
-    $scope.game = mainService.getGame();
-  };
-  $scope.game = mainService.getGame();
-}); //closing
-'use strict';
-
 angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.selectMatch = function (val) {
     mainService.setGame('selectMatch', val);
@@ -338,6 +338,12 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     $scope.winner = $scope.game.player2.name;
     $scope.loser = $scope.game.player1.name;
   }
+  //Charts D3.js
+  //d3.select(#) select by ref. to class, element/tag, or id ex("p"),(".hello-world"),("#red-box")
+  d3.select("p").text("helloWorld");
+  //d3 append adds to element
+  //text will write text into that element
+  d3.select(".match-graph-cont").append("p").text("is this working");
 }); //closing
 'use strict';
 
