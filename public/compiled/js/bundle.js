@@ -280,12 +280,6 @@ angular.module('app').service('mainService', function ($http, $state) {
 "use strict";
 'use strict';
 
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
-}); //closing
-'use strict';
-
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.game = mainService.getGame();
   $scope.random = function () {
@@ -322,6 +316,12 @@ angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
+}); //closing
+'use strict';
+
 angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.selectMatch = function (val) {
     mainService.setGame('selectMatch', val);
@@ -330,40 +330,42 @@ angular.module('app').controller('matchCtrl', function ($scope, $stateParams, ma
 "use strict";
 
 angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.game = mainService.getGame();
-  if ($scope.game.matchWinner === "player1") {
-    $scope.winner = $scope.game.player1.name;
-    $scope.loser = $scope.game.player2.name;
-  } else {
-    $scope.winner = $scope.game.player2.name;
-    $scope.loser = $scope.game.player1.name;
-  }
-  //Charts D3.js
-  //d3.select(#) select by ref. to class, element/tag, or id ex("p"),(".hello-world"),("#red-box")
+    $scope.game = mainService.getGame();
+    if ($scope.game.matchWinner === "player1") {
+        $scope.winner = $scope.game.player1.name;
+        $scope.loser = $scope.game.player2.name;
+    } else {
+        $scope.winner = $scope.game.player2.name;
+        $scope.loser = $scope.game.player1.name;
+    }
+    //Charts D3.js
+    //d3.select(#) select by ref. to class, element/tag, or id ex("p"),(".hello-world"),("#red-box")
 
-  // d3.select("p").text("helloWorld");
+    // d3.select("p").text("helloWorld");
 
-  //d3 append adds to element
-  //text will write text into that element
+    //d3 append adds to element
+    //text will write text into that element
 
-  // d3.select(".match-graph-cont")
-  //   .append("p")
-  //   // .style("background-color","red")
-  //   .attr("style","color: blue; background-color: red;")
-  //   .text("is this working");
+    // d3.select(".match-graph-cont")
+    //   .append("p")
+    //   // .style("background-color","red")
+    //   .attr("style","color: blue; background-color: red;")
+    //   .text("is this working");
 
 
-  //to create svg you have to append to the document
-  var canvas = d3.select(".match-graph-cont").append("svg")
-  // .style("background-color","red")
-  // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
-  .attr("style", "width: 100%; height: 100%;background-color:blue;");
-  //cx,cy is center x-axis and y-axis
-  //r is for radius
-  //fill is background color for svg
-  var circle = canvas.append("circle").attr("cx", 250).attr("cy", 250).attr("r", 50).attr("fill", "red");
+    //to create svg you have to append to the document
+    var canvas = d3.select(".match-graph-cont").append("svg")
+    // .style("background-color","red")
+    // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
+    .attr("style", "width: 100%; height: 100%;background-color:blue;");
+    //cx,cy is center x-axis and y-axis
+    //r is for radius
+    //fill is background color for svg
+    var circle = canvas.append("circle").attr("cx", 250).attr("cy", 250).attr("r", 50).attr("fill", "red");
 
-  console.log(d3);
+    var line = canvas.append("line").attr("x1", 0).attr("y1", 100).attr("x2", 400).attr("y2", 400).attr("stroke", "green").attr("stroke-width", 10);
+
+    console.log(d3);
 }); //closing
 'use strict';
 
@@ -383,14 +385,6 @@ angular.module('app').controller("player1settingsCtrl", function ($scope, $state
       mainService.setGame('player1.color', color);
       $state.go('player2');
     }
-  };
-}); //closing
-'use strict';
-
-angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.setType = function (val) {
-    // console.log(val, "fired");
-    mainService.setGame("selectType", val);
   };
 }); //closing
 'use strict';
@@ -423,6 +417,14 @@ angular.module('app').controller('pointCtrl', function ($scope, $stateParams, ma
     } else {
       mainService.setGame('switchSer', 5);
     }
+  };
+}); //closing
+'use strict';
+
+angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.setType = function (val) {
+    // console.log(val, "fired");
+    mainService.setGame("selectType", val);
   };
 }); //closing
 //# sourceMappingURL=bundle.js.map
