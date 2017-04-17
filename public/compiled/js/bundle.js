@@ -361,9 +361,24 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     //cx,cy is center x-axis and y-axis
     //r is for radius
     //fill is background color for svg
-    var circle = canvas.append("circle").attr("cx", 250).attr("cy", 250).attr("r", 50).attr("fill", "red");
-
-    var line = canvas.append("line").attr("x1", 0).attr("y1", 100).attr("x2", 400).attr("y2", 400).attr("stroke", "green").attr("stroke-width", 10);
+    // var circle = canvas.append("circle")
+    //     .attr("cx", 250)
+    //     .attr("cy", 250)
+    //     .attr("r", 50)
+    //     .attr("fill", "red");
+    //
+    // var line = canvas.append("line")
+    //     .attr("x1", 0)
+    //     .attr("y1", 100)
+    //     .attr("x2", 400)
+    //     .attr("y2", 400)
+    //     .attr("stroke", "green")
+    //     .attr("stroke-width", 10);
+    var dataArray = [20, 40, 50];
+    var bars = canvas.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements
+    .append("rect").attr("width", function (element) {
+        return element;
+    });
 
     console.log(d3);
 }); //closing
