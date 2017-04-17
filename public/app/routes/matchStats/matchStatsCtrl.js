@@ -47,9 +47,11 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     var dataArray = [20,40,50];
     var bars = canvas.selectAll("rect")
         .data(dataArray)
-        .enter()//this method returns placeholders for each data elements
+        .enter()//this method returns placeholders for each data elements uses cb fn in attr
           .append("rect")
-          .attr("width", function(element){return element;})
+          .attr("width", function(element){return element * 10;})
+          .attr("height", 50)
+          .attr("y", function(d,i){return i*100});
 
     console.log(d3);
 }); //closing

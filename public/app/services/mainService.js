@@ -221,7 +221,7 @@ angular.module('app').service('mainService', function($http,$state) {
     }
 //finish match
 function matchFinished(){
-  swal(game.matchWinner+" Won the match");
+  swal(game[game.matchWinner].name+" Won the match");
   game.endDate = new Date();
   // console.log(game.endDate);
   console.log(game);

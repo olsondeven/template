@@ -268,7 +268,7 @@ angular.module('app').service('mainService', function ($http, $state) {
     }
     //finish match
     function matchFinished() {
-        swal(game.matchWinner + " Won the match");
+        swal(game[game.matchWinner].name + " Won the match");
         game.endDate = new Date();
         // console.log(game.endDate);
         console.log(game);
@@ -278,6 +278,15 @@ angular.module('app').service('mainService', function ($http, $state) {
 "use strict";
 "use strict";
 "use strict";
+'use strict';
+
+angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.setPlayerScore = function (prop) {
+    mainService.addPlayerScore(prop);
+    $scope.game = mainService.getGame();
+  };
+  $scope.game = mainService.getGame();
+}); //closing
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -307,25 +316,16 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
-angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.setPlayerScore = function (prop) {
-    mainService.addPlayerScore(prop);
-    $scope.game = mainService.getGame();
+angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.selectMatch = function (val) {
+    mainService.setGame('selectMatch', val);
   };
-  $scope.game = mainService.getGame();
 }); //closing
 'use strict';
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
   $scope.login = function (user, pass) {};
-}); //closing
-'use strict';
-
-angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.selectMatch = function (val) {
-    mainService.setGame('selectMatch', val);
-  };
 }); //closing
 "use strict";
 
@@ -375,9 +375,11 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     //     .attr("stroke", "green")
     //     .attr("stroke-width", 10);
     var dataArray = [20, 40, 50];
-    var bars = canvas.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements
+    var bars = canvas.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements uses cb fn in attr
     .append("rect").attr("width", function (element) {
-        return element;
+        return element * 10;
+    }).attr("height", 50).attr("y", function (d, i) {
+        return i * 100;
     });
 
     console.log(d3);
