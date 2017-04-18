@@ -74,16 +74,25 @@ angular.module('app').service('mainService', function($http,$state) {
         }
 //set game settings
     this.setGame = function(prop, val) {
-            if (prop === 'player1.name') {
-                game.player1.name = val;
-            } else if (prop === 'player1.color') {
-                game.player1.color = val;
-            } else if (prop === 'player2.name') {
-                game.player2.name = val;
-            } else if (prop === 'player2.color') {
-                game.player2.color = val;
-            } else {
-                game[prop] = val;
+            // if (prop === 'player1.name') {
+            //     game[prop].name = val;
+            // } else if (prop === 'player1.color') {
+            //     game.player1.color = val;
+            // } else if (prop === 'player2.name') {
+            //     game.player2.name = val;
+            // } else if (prop === 'player2.color') {
+            //     game.player2.color = val;
+            // } else {
+            //     game[prop] = val;
+            // }
+            var phraseOne = new RegExp(/.name/gi);
+            var phraseTwo = new RegExp(/.color/gi);
+            if (prop.search(phraseOne) != -1) {
+              game[prop].name = val;
+            }else if(prop.search(phraseTwo) != -1){
+              game[prop].color = val;
+            }else{
+              game[prop] = val;
             }
         }
 //set service
