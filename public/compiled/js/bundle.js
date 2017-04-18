@@ -411,7 +411,7 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
         return i * 100;
     });
 
-    console.log(d3);
+    // console.log(d3);
 }); //closing
 'use strict';
 

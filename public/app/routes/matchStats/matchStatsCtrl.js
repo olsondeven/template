@@ -53,5 +53,5 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
           .attr("height", 50)
           .attr("y", function(d,i){return i*100});
 
-    console.log(d3);
+    // console.log(d3);
 }); //closing
