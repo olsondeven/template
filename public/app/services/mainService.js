@@ -114,13 +114,14 @@ angular.module('app').service('mainService', function($http,$state) {
                   game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
                 }
                 //test
+                pushTest.time = new Date();
                 if(game.player1.curSer === true){
                   pushTest.service = true;
                 }
-                pushTest.time = new Date();
                 game.player1.pointsWon[gameScoreIndex].push(pushTest);
-                if(pushText.service = true){
-                  pushText.service = false;
+
+                if(pushTest.service != true){
+                  pushTest.service = false;
                 }
                 game.player2.pointsLoss[gameScoreIndex].push(pushTest);
                 //test
@@ -143,17 +144,16 @@ angular.module('app').service('mainService', function($http,$state) {
                   game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
                 }
                 //test
+                pushTest.time = new Date();
                 if(game.player2.curSer === true){
                   pushTest.service = true;
                 }
-                pushTest.time = new Date();
                 game.player2.pointsWon[gameScoreIndex].push(pushTest);
-                if(pushText.service = true){
-                  pushText.service = false;
+                if(pushTest.service != true){
+                  pushTest.service = false;
                 }
                 game.player1.pointsLoss[gameScoreIndex].push(pushTest);
                 //test
-
 
                 game.player2.gameScore++;
                 game.totalPoint = game.player1.gameScore + game.player2.gameScore;
@@ -203,6 +203,10 @@ angular.module('app').service('mainService', function($http,$state) {
         }
         resetGame();
         let pushArr = {winner:null, winScore:0, loser:null, lossScore:0, tracker:[]};
+        game.player1.pointsWon.push([]);
+        game.player1.pointsLoss.push([]);
+        game.player2.pointsWon.push([]);
+        game.player2.pointsLoss.push([]);
         game.gameScoreCollection.push(pushArr);
     }
 
