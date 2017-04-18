@@ -136,10 +136,13 @@ angular.module('app').service('mainService', function ($http, $state) {
         var phraseTwo = new RegExp(/.color/gi);
         if (prop.search(phraseOne) != -1) {
             game[prop].name = val;
+            console.log(prop, ": ", game[prop].name);
         } else if (prop.search(phraseTwo) != -1) {
             game[prop].color = val;
+            console.log(prop, ": ", game[prop].color);
         } else {
             game[prop] = val;
+            console.log(prop, ": ", game[prop]);
         }
     };
     //set service
@@ -285,7 +288,6 @@ angular.module('app').service('mainService', function ($http, $state) {
     }
 }); //closing
 "use strict";
-"use strict";
 'use strict';
 
 angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -295,7 +297,6 @@ angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mai
   };
   $scope.game = mainService.getGame();
 }); //closing
-"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -325,16 +326,16 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
-}); //closing
-'use strict';
-
 angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.selectMatch = function (val) {
     mainService.setGame('selectMatch', val);
   };
+}); //closing
+'use strict';
+
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
 }); //closing
 "use strict";
 
@@ -415,18 +416,6 @@ angular.module('app').controller("player1settingsCtrl", function ($scope, $state
 }); //closing
 'use strict';
 
-angular.module('app').controller('pointCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.selectPoint = function (val) {
-    mainService.setGame('selectPoint', val);
-    if (val === 11) {
-      mainService.setGame('switchSer', 2);
-    } else {
-      mainService.setGame('switchSer', 5);
-    }
-  };
-}); //closing
-'use strict';
-
 angular.module('app').controller("player2settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
   var color = null;
   $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
@@ -453,4 +442,18 @@ angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mai
     mainService.setGame("selectType", val);
   };
 }); //closing
+'use strict';
+
+angular.module('app').controller('pointCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.selectPoint = function (val) {
+    mainService.setGame('selectPoint', val);
+    if (val === 11) {
+      mainService.setGame('switchSer', 2);
+    } else {
+      mainService.setGame('switchSer', 5);
+    }
+  };
+}); //closing
+"use strict";
+"use strict";
 //# sourceMappingURL=bundle.js.map

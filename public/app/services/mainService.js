@@ -89,10 +89,13 @@ angular.module('app').service('mainService', function($http,$state) {
             var phraseTwo = new RegExp(/.color/gi);
             if (prop.search(phraseOne) != -1) {
               game[prop].name = val;
+              console.log(prop,": ",game[prop].name);
             }else if(prop.search(phraseTwo) != -1){
               game[prop].color = val;
+              console.log(prop,": ",game[prop].color);
             }else{
               game[prop] = val;
+              console.log(prop,": ",game[prop]);
             }
         }
 //set service
