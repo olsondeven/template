@@ -31,9 +31,9 @@ angular.module('app').service('mainService', function($http,$state) {
                 foul: null,
                 let: null,
                 hasAcct: false,
-                color: null//,
-                // gamesWon: [[]],
-                // gamesLose: [[]]
+                color: null,
+                pointsWon: [[]],
+                pointsLoss: [[]]
             },
             player2: {
                 name: "Player2",
@@ -43,9 +43,9 @@ angular.module('app').service('mainService', function($http,$state) {
                 foul: null,
                 let: null,
                 hasAcct: false,
-                color: null//,
-                // gamesWon: [[]],
-                // gamesLose: [[]]
+                color: null,
+                pointsWon: [[]],
+                pointsLoss: [[]]
             },
             team1: {
                 teamName: null,
@@ -74,30 +74,14 @@ angular.module('app').service('mainService', function($http,$state) {
         }
 //set game settings
     this.setGame = function(prop, val, player) {
-            // if (prop === 'player1.name') {
-            //     game[prop].name = val;
-            // } else if (prop === 'player1.color') {
-            //     game.player1.color = val;
-            // } else if (prop === 'player2.name') {
-            //     game.player2.name = val;
-            // } else if (prop === 'player2.color') {
-            //     game.player2.color = val;
-            // } else {
-            //     game[prop] = val;
-            // }
             var phraseOne = new RegExp(/name/gi);
             var phraseTwo = new RegExp(/color/gi);
             if (prop.search(phraseOne) != -1) {
-              console.log(prop);
               game[player].name = val;
-              console.log(prop,": ",game[player].name);
-              console.log(game);
             }else if(prop.search(phraseTwo) != -1){
               game[player].color = val;
-              console.log(prop,": ",game[player].color);
             }else{
               game[prop] = val;
-              console.log(prop,": ",game[prop]);
             }
         }
 //set service
@@ -117,6 +101,7 @@ angular.module('app').service('mainService', function($http,$state) {
     this.addPlayerScore = function(player) {
 //adding up points
             let pushArr = {pointWin:null, pointDate:null, winSer:false};
+            let pushTest = {time:null, service:false};
 
             if (player === 'player1') {
                 pushArr.pointWin = game.player1.name;
@@ -128,6 +113,19 @@ angular.module('app').service('mainService', function($http,$state) {
                   // console.log(game.gameScoreCollection);
                   game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
                 }
+                //test
+                if(game.player1.curSer === true){
+                  pushTest.service = true;
+                }
+                pushTest.time = new Date();
+                game.player1.pointsWon[gameScoreIndex].push(pushTest);
+                if(pushText.service = true){
+                  pushText.service = false;
+                }
+                game.player2.pointsLoss[gameScoreIndex].push(pushTest);
+                //test
+
+
                 game.player1.gameScore++;
                 game.totalPoint = game.player1.gameScore + game.player2.gameScore;
                 // console.log("Point made by player1",game.gameScoreCollection[gameScoreIndex]);
@@ -144,6 +142,19 @@ angular.module('app').service('mainService', function($http,$state) {
                   // console.log(game.gameScoreCollection);
                   game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
                 }
+                //test
+                if(game.player2.curSer === true){
+                  pushTest.service = true;
+                }
+                pushTest.time = new Date();
+                game.player2.pointsWon[gameScoreIndex].push(pushTest);
+                if(pushText.service = true){
+                  pushText.service = false;
+                }
+                game.player1.pointsLoss[gameScoreIndex].push(pushTest);
+                //test
+
+
                 game.player2.gameScore++;
                 game.totalPoint = game.player1.gameScore + game.player2.gameScore;
                 // console.log("Point made by player2",game.gameScoreCollection[gameScoreIndex]);
