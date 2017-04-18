@@ -88,10 +88,12 @@ angular.module('app').service('mainService', function($http,$state) {
             var phraseOne = new RegExp(/.name/gi);
             var phraseTwo = new RegExp(/.color/gi);
             if (prop.search(phraseOne) != -1) {
-              game[prop].name = val;
+              console.log(prop);
+              game[prop] = val;
               console.log(prop,": ",game[prop].name);
+              console.log(game);
             }else if(prop.search(phraseTwo) != -1){
-              game[prop].color = val;
+              game[prop][color] = val;
               console.log(prop,": ",game[prop].color);
             }else{
               game[prop] = val;
