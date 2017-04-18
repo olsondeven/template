@@ -10,8 +10,8 @@ angular.module('app').controller("player2settingsCtrl",function($scope, $state, 
     if(!color || !val){
       return swal('Please select color and choose name');
     }else{
-      mainService.setGame('player2.name',val);
-      mainService.setGame('player2.color',color);
+      mainService.setGame('name',val,"player2");
+      mainService.setGame('color',color,"player2");
       $state.go('flip')
     }
   }

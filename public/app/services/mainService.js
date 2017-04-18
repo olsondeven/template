@@ -73,7 +73,7 @@ angular.module('app').service('mainService', function($http,$state) {
             return game;
         }
 //set game settings
-    this.setGame = function(prop, val) {
+    this.setGame = function(prop, val, player) {
             // if (prop === 'player1.name') {
             //     game[prop].name = val;
             // } else if (prop === 'player1.color') {
@@ -85,16 +85,16 @@ angular.module('app').service('mainService', function($http,$state) {
             // } else {
             //     game[prop] = val;
             // }
-            var phraseOne = new RegExp(/.name/gi);
-            var phraseTwo = new RegExp(/.color/gi);
+            var phraseOne = new RegExp(/name/gi);
+            var phraseTwo = new RegExp(/color/gi);
             if (prop.search(phraseOne) != -1) {
               console.log(prop);
-              game[prop] = val;
-              console.log(prop,": ",game[prop].name);
+              game[player].name = val;
+              console.log(prop,": ",game[player].name);
               console.log(game);
             }else if(prop.search(phraseTwo) != -1){
-              game[prop][color] = val;
-              console.log(prop,": ",game[prop].color);
+              game[player].color = val;
+              console.log(prop,": ",game[player].color);
             }else{
               game[prop] = val;
               console.log(prop,": ",game[prop]);
