@@ -61,12 +61,7 @@ angular.module('app').service('mainService', function ($http, $state) {
         totalPoint: 0,
         startSer: null,
         save: false,
-        //game name of winner/loser, points, time
-        //let setupPlayerGameStats = {winner:null, winScore:0, loser:null, lossScore:0, tracker:[]};
-        //{winnner:null, loser:null, winnerScore:0, loserScore: 0, tracker:[{pointWinner:null, pointDate:null, winSer:false}]}
         gameScoreCollection: [{ winner: null, winScore: 0, loser: null, lossScore: 0, tracker: [] }],
-        //{winnerName:null, winnerScore:0, loserName:null, loserScore:0, tracker:[{gameWinner:null,gameDate:null}]}
-        // matchScoreCollection: [{winnerName:null, winnerScore:0, loserName:null, loserScore:0, tracker:[]}],
         login: {
             currentUser: null
         },
@@ -220,17 +215,17 @@ angular.module('app').service('mainService', function ($http, $state) {
     function addMatch(player) {
         if (player === 'player1') {
             game.player1.matchScore++;
-            game.gameScoreCollection[gameScoreIndex].winner = game.player1.name;
+            game.gameScoreCollection[gameScoreIndex].winner = "player1";
             game.gameScoreCollection[gameScoreIndex].winScore = game.player1.gameScore;
-            game.gameScoreCollection[gameScoreIndex].loser = game.player2.name;
+            game.gameScoreCollection[gameScoreIndex].loser = "player2";
             game.gameScoreCollection[gameScoreIndex].lossScore = game.player2.gameScore;
             // game.gameScoreCollection.push(pushArr);
             console.log("match made by player1", game.gameScoreCollection[gameScoreIndex]);
         } else if (player === "player2") {
             game.player2.matchScore++;
-            game.gameScoreCollection[gameScoreIndex].winner = game.player2.name;
+            game.gameScoreCollection[gameScoreIndex].winner = "player2";
             game.gameScoreCollection[gameScoreIndex].winScore = game.player2.gameScore;
-            game.gameScoreCollection[gameScoreIndex].loser = game.player1.name;
+            game.gameScoreCollection[gameScoreIndex].loser = "player1";
             game.gameScoreCollection[gameScoreIndex].lossScore = game.player1.gameScore;
             // game.gameScoreCollection.push(pushArr);
             console.log("match made by player2", game.gameScoreCollection[gameScoreIndex]);
@@ -305,6 +300,23 @@ angular.module('app').service('mainService', function ($http, $state) {
     }
 }); //closing
 "use strict";
+"use strict";
+"use strict";
+'use strict';
+
+angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.setPlayerScore = function (prop) {
+    mainService.addPlayerScore(prop);
+    $scope.game = mainService.getGame();
+  };
+  $scope.game = mainService.getGame();
+}); //closing
+'use strict';
+
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
+}); //closing
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -334,147 +346,10 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
-}); //closing
-'use strict';
-
-angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.setPlayerScore = function (prop) {
-    mainService.addPlayerScore(prop);
-    $scope.game = mainService.getGame();
-  };
-  $scope.game = mainService.getGame();
-}); //closing
-'use strict';
-
 angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.selectMatch = function (val) {
     mainService.setGame('selectMatch', val);
   };
-}); //closing
-"use strict";
-
-angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParams, mainService, $rootScope) {
-    $scope.game = mainService.getGame();
-    if ($scope.game.matchWinner === "player1") {
-        $scope.winner = $scope.game.player1;
-        $scope.loser = $scope.game.player2;
-    } else {
-        $scope.winner = $scope.game.player2;
-        $scope.loser = $scope.game.player1;
-    }
-    //var for d3.js
-    var width = "100%";
-    var height = "100%";
-    var winningArrayStats = [14, 21];
-    var losingArrayStats = [12, 10];
-    var winningArrayNames = [];
-    var losingArrayNames = [];
-    // function to split the data up for correct format for d3.js to display it
-    function splitStatsWinner() {
-        for (var i = $scope.game.gameScoreCollection.length - 1; i >= 0; i--) {
-            winningArrayNames.push($scope.game.gameScoreCollection[i].winner);
-            winningArrayStats.push($scope.game.gameScoreCollection[i].winScore);
-            losingArrayNames.push($scope.game.gameScoreCollection[i].loser);
-            losingArrayStats.push($scope.game.gameScoreCollection[i].lossScore);
-            // console.log(i);
-        }
-        console.log(winningArrayStats);
-        console.log(winningArrayNames);
-        console.log(losingArrayStats);
-        console.log(losingArrayNames);
-        console.log($scope.game.gameScoreCollection);
-        console.log($scope.winner.pointsWon);
-    }
-    splitStatsWinner();
-
-    //create scale
-    //declare width and height, let data declare this
-    var widthScale = d3.scaleLinear().domain([0, 50]) //smallest value and largest value
-    .range([0, 100]); //0 to the width or height of graph
-    //gradient for bars
-    var color = d3.scaleLinear().domain([0, 50]).range(["blue", "red"]);
-
-    var canvas = d3.select(".match-graph-cont-complete").append("svg").attr("width", width).attr("height", height);
-    var bars = canvas.selectAll("rect").data(winningArrayStats).enter() //this method returns placeholders for each data elements uses cb fn in attr
-    .append("rect")
-    // .attr("width", function(element){return element * 10;})
-    .attr("width", function (element) {
-        return widthScale(element);
-    }).attr("height", 50).attr("y", function (d, i) {
-        return i * 100;
-    }) //this offsets bars by 100px
-    .attr("fill", function (d) {
-        return color(d);
-    });
-
-    //create canvas for loser graph
-    var canvas = d3.select(".match-graph-cont-loser").append("svg").attr("width", width).attr("height", height);
-    //data for loser stats
-    var dataArray = [0, 20, 40, 50, 70];
-    //display data on graph
-    var bars = canvas.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements uses cb fn in attr
-    .append("rect")
-    // .attr("width", function(element){return element * 10;})
-    .attr("width", function (element) {
-        return widthScale(element);
-    }).attr("height", 50).attr("y", function (d, i) {
-        return i * 100;
-    }) //this offsets bars by 100px
-    .attr("fill", $scope.loser.color);
-    //Charts D3.js
-    //d3.select(#) select by ref. to class, element/tag, or id ex("p"),(".hello-world"),("#red-box")
-
-    // d3.select("p").text("helloWorld");
-
-    //d3 append adds to element
-    //text will write text into that element
-
-    // d3.select(".match-graph-cont")
-    //   .append("p")
-    //   // .style("background-color","red")
-    //   .attr("style","color: blue; background-color: red;")
-    //   .text("is this working");
-
-
-    //to create svg you have to append to the document
-    var canvas = d3.select(".match-graph-cont-winner").append("svg")
-    // .style("background-color","red")
-    // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
-    // .attr("style", "width: 100%; height: 100%;");
-    // .attr("style", "background-color:purple;")
-    .attr("width", width).attr("height", height);
-    //cx,cy is center x-axis and y-axis
-    //r is for radius
-    //fill is background color for svg
-    // var circle = canvas.append("circle")
-    //     .attr("cx", 250)
-    //     .attr("cy", 250)
-    //     .attr("r", 50)
-    //     .attr("fill", "red");
-    //
-    // var line = canvas.append("line")
-    //     .attr("x1", 0)
-    //     .attr("y1", 100)
-    //     .attr("x2", 400)
-    //     .attr("y2", 400)
-    //     .attr("stroke", "green")
-    //     .attr("stroke-width", 10);
-    var dataArray = [20, 40, 50, 70, 600];
-    var bars = canvas.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements uses cb fn in attr
-    .append("rect").attr("width", function (element) {
-        return widthScale(element);
-    }).attr("height", 50).attr("y", function (d, i) {
-        return i * 100;
-    }) //this offsets bars by 100px
-    .attr("fill", $scope.winner.color);
-
-    //d3.js scale
-
-
-    // console.log(d3);
 }); //closing
 'use strict';
 
@@ -495,6 +370,144 @@ angular.module('app').controller("player1settingsCtrl", function ($scope, $state
       $state.go('player2');
     }
   };
+}); //closing
+"use strict";
+
+angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.game = mainService.getGame();
+  if ($scope.game.matchWinner === "player1") {
+    $scope.winner = $scope.game.player1;
+    $scope.loser = $scope.game.player2;
+  } else {
+    $scope.winner = $scope.game.player2;
+    $scope.loser = $scope.game.player1;
+  }
+  //var for d3.js
+  var width = "100%";
+  var height = "100%";
+  var maxNum = null;
+  var winningArrayStats = [14, 21];
+  var losingArrayStats = [12, 10];
+  var winningArrayNames = ["player2", "player1"];
+  var losingArrayNames = ["player1", "player2"];
+  var winningArrayColor = ["red", "blue"];
+  var losingArrayColor = ["blue", "red"];
+  // function to split the data up for correct format for d3.js to display it
+  function splitStatsWinner() {
+    for (var i = $scope.game.gameScoreCollection.length - 1; i >= 0; i--) {
+      winningArrayNames.push($scope.game.gameScoreCollection[i].winner);
+      winningArrayStats.push($scope.game.gameScoreCollection[i].winScore);
+      losingArrayNames.push($scope.game.gameScoreCollection[i].loser);
+      losingArrayStats.push($scope.game.gameScoreCollection[i].lossScore);
+      //push correct color to array
+      if ($scope.game.gameScoreCollection[i].winner === "player1") {
+        winningArrayColor.push($scope.game.player1.color);
+      } else {
+        winningArrayColor.push($scope.game.player2.color);
+      }
+      if ($scope.game.gameScoreCollection[i].loser === "player1") {
+        losingArrayColor.push($scope.game.player1.color);
+      } else {
+        losingArrayColor.push($scope.game.player2.color);
+      }
+      // console.log(i);
+    }
+    maxNum = Math.max.apply(null, winningArrayStats);
+    console.log(winningArrayStats);
+    console.log(winningArrayNames);
+    console.log(losingArrayStats);
+    console.log(losingArrayNames);
+    console.log($scope.game.gameScoreCollection);
+    console.log($scope.winner.pointsWon);
+    console.log(maxNum);
+  }
+  splitStatsWinner();
+
+  //create scale
+  //declare width and height, let data declare this
+  var widthScale = d3.scaleLinear().domain([0, maxNum]) //smallest value and largest value
+  .range([0, 500]); //0 to the width or height of graph
+  //gradient for bars
+  var color = d3.scaleLinear().domain([0, 45]).range(["blue", "red"]);
+
+  var canvas = d3.select(".match-graph-cont-complete").append("svg").attr("width", width).attr("height", height);
+  var bars = canvas.selectAll("rect").data(winningArrayStats).enter() //this method returns placeholders for each data elements uses cb fn in attr
+  .append("rect")
+  // .attr("width", function(element){return element * 10;})
+  .attr("width", function (element) {
+    return widthScale(element);
+  }).attr("height", 50).attr("y", function (d, i) {
+    return i * 100;
+  }) //this offsets bars by 100px
+  .data(winningArrayColor).attr("fill", function (d) {
+    console.log(d);return d;
+  });
+  // .attr("fill", "red");
+  //create canvas for loser graph
+  var canvas = d3.select(".match-graph-cont-loser").append("svg").attr("width", width).attr("height", height);
+  //data for loser stats
+  var dataArray = [0, 20, 40, 50, 70];
+  //display data on graph
+  var bars = canvas.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements uses cb fn in attr
+  .append("rect")
+  // .attr("width", function(element){return element * 10;})
+  .attr("width", function (element) {
+    return widthScale(element);
+  }).attr("height", 50).attr("y", function (d, i) {
+    return i * 100;
+  }) //this offsets bars by 100px
+  .attr("fill", $scope.loser.color);
+  //Charts D3.js
+  //d3.select(#) select by ref. to class, element/tag, or id ex("p"),(".hello-world"),("#red-box")
+
+  // d3.select("p").text("helloWorld");
+
+  //d3 append adds to element
+  //text will write text into that element
+
+  // d3.select(".match-graph-cont")
+  //   .append("p")
+  //   // .style("background-color","red")
+  //   .attr("style","color: blue; background-color: red;")
+  //   .text("is this working");
+
+
+  //to create svg you have to append to the document
+  var canvas = d3.select(".match-graph-cont-winner").append("svg")
+  // .style("background-color","red")
+  // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
+  // .attr("style", "width: 100%; height: 100%;");
+  // .attr("style", "background-color:purple;")
+  .attr("width", width).attr("height", height);
+  //cx,cy is center x-axis and y-axis
+  //r is for radius
+  //fill is background color for svg
+  // var circle = canvas.append("circle")
+  //     .attr("cx", 250)
+  //     .attr("cy", 250)
+  //     .attr("r", 50)
+  //     .attr("fill", "red");
+  //
+  // var line = canvas.append("line")
+  //     .attr("x1", 0)
+  //     .attr("y1", 100)
+  //     .attr("x2", 400)
+  //     .attr("y2", 400)
+  //     .attr("stroke", "green")
+  //     .attr("stroke-width", 10);
+  var dataArray = [20, 40, 50, 70, 600];
+  var bars = canvas.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements uses cb fn in attr
+  .append("rect").attr("width", function (element) {
+    return widthScale(element);
+  }).attr("height", 50).attr("y", function (d, i) {
+    return i * 100;
+  }) //this offsets bars by 100px
+  .attr("fill", $scope.winner.color);
+
+  //d3.js scale
+
+
+  // console.log(d3);
 }); //closing
 'use strict';
 
@@ -536,6 +549,4 @@ angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mai
     mainService.setGame("selectType", val);
   };
 }); //closing
-"use strict";
-"use strict";
 //# sourceMappingURL=bundle.js.map

@@ -14,12 +14,7 @@ angular.module('app').service('mainService', function($http,$state) {
             totalPoint: 0,
             startSer: null,
             save: false,
-            //game name of winner/loser, points, time
-            //let setupPlayerGameStats = {winner:null, winScore:0, loser:null, lossScore:0, tracker:[]};
-            //{winnner:null, loser:null, winnerScore:0, loserScore: 0, tracker:[{pointWinner:null, pointDate:null, winSer:false}]}
             gameScoreCollection: [{winner:null, winScore:0, loser:null, lossScore:0, tracker:[]}],
-            //{winnerName:null, winnerScore:0, loserName:null, loserScore:0, tracker:[{gameWinner:null,gameDate:null}]}
-            // matchScoreCollection: [{winnerName:null, winnerScore:0, loserName:null, loserScore:0, tracker:[]}],
             login: {
               currentUser: null
             },
@@ -173,17 +168,17 @@ angular.module('app').service('mainService', function($http,$state) {
     function addMatch(player) {
         if (player === 'player1') {
             game.player1.matchScore++;
-            game.gameScoreCollection[gameScoreIndex].winner = game.player1.name;
+            game.gameScoreCollection[gameScoreIndex].winner = "player1";
             game.gameScoreCollection[gameScoreIndex].winScore = game.player1.gameScore;
-            game.gameScoreCollection[gameScoreIndex].loser = game.player2.name;
+            game.gameScoreCollection[gameScoreIndex].loser = "player2";
             game.gameScoreCollection[gameScoreIndex].lossScore = game.player2.gameScore;
             // game.gameScoreCollection.push(pushArr);
             console.log("match made by player1",game.gameScoreCollection[gameScoreIndex]);
         } else if (player === "player2") {
             game.player2.matchScore++;
-            game.gameScoreCollection[gameScoreIndex].winner = game.player2.name;
+            game.gameScoreCollection[gameScoreIndex].winner = "player2";
             game.gameScoreCollection[gameScoreIndex].winScore = game.player2.gameScore;
-            game.gameScoreCollection[gameScoreIndex].loser = game.player1.name;
+            game.gameScoreCollection[gameScoreIndex].loser = "player1";
             game.gameScoreCollection[gameScoreIndex].lossScore = game.player1.gameScore;
             // game.gameScoreCollection.push(pushArr);
             console.log("match made by player2",game.gameScoreCollection[gameScoreIndex]);

@@ -10,10 +10,13 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     //var for d3.js
     var width = "100%";
     var height = "100%";
+    var maxNum = null;
     var winningArrayStats = [14,21];
     var losingArrayStats = [12,10];
-    var winningArrayNames = [];
-    var losingArrayNames = [];
+    var winningArrayNames = ["player2","player1"];
+    var losingArrayNames = ["player1","player2"];
+    var winningArrayColor = ["red","blue"];
+    var losingArrayColor = ["blue","red"];
     // function to split the data up for correct format for d3.js to display it
     function splitStatsWinner(){
       for(var i = $scope.game.gameScoreCollection.length-1; i>=0; i--){
@@ -21,25 +24,38 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         winningArrayStats.push($scope.game.gameScoreCollection[i].winScore);
         losingArrayNames.push($scope.game.gameScoreCollection[i].loser);
         losingArrayStats.push($scope.game.gameScoreCollection[i].lossScore);
+        //push correct color to array
+        if($scope.game.gameScoreCollection[i].winner === "player1"){
+          winningArrayColor.push($scope.game.player1.color);
+        }else{
+          winningArrayColor.push($scope.game.player2.color);
+        }
+        if($scope.game.gameScoreCollection[i].loser === "player1"){
+          losingArrayColor.push($scope.game.player1.color);
+        }else{
+          losingArrayColor.push($scope.game.player2.color);
+        }
         // console.log(i);
       }
+      maxNum = Math.max.apply(null, winningArrayStats);
       console.log(winningArrayStats);
       console.log(winningArrayNames);
       console.log(losingArrayStats);
       console.log(losingArrayNames);
       console.log($scope.game.gameScoreCollection);
       console.log($scope.winner.pointsWon);
+      console.log(maxNum);
     }
     splitStatsWinner();
 
     //create scale
     //declare width and height, let data declare this
     var widthScale = d3.scaleLinear()
-      .domain([0,50])//smallest value and largest value
-      .range([0,100]);//0 to the width or height of graph
+      .domain([0,maxNum])//smallest value and largest value
+      .range([0,500]);//0 to the width or height of graph
     //gradient for bars
     var color = d3.scaleLinear()
-      .domain([0,50])
+      .domain([0,45])
       .range(["blue","red"]);
 
 
@@ -55,8 +71,9 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         .attr("width", function(element){return widthScale(element);})
         .attr("height", 50)
         .attr("y", function(d,i){return i*100;})//this offsets bars by 100px
-        .attr("fill", function(d){return color(d);});
-
+        .data(winningArrayColor)
+        .attr("fill", function(d){console.log(d);return d;});
+        // .attr("fill", "red");
     //create canvas for loser graph
     var canvas = d3.select(".match-graph-cont-loser")
       .append("svg")
