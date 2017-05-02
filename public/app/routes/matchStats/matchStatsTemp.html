@@ -1,20 +1,21 @@
 <main class="match-stats-wrapper">
-  <button type="button" name="button">SAVE GAME</button>
+  <!-- <button type="button" name="button">SAVE GAME</button> -->
+  <button type="button" name="button" ng-click="">Hide personal stats</button>
   <h1>Match Stats</h1>
   <div class="match-cont">
     <div class="match-splitone-cont">
       <p><h1>Winner</h1></p>
-      <p>{{winner}}</p>
+      <p>{{winner.name}}</p>
     </div>
-    <div class="match-graph-cont">
+    <div class="match-graph-cont-winner">
     </div>
   </div>
   <div class="match-cont">
     <div class="match-splitone-cont">
       <p><h1>Loser</h1></p>
-      <p>{{loser}}</p>
+      <p>{{loser.name}}</p>
     </div>
-    <div class="match-graph-cont">
+    <div class="match-graph-cont-loser">
 
     </div>
   </div>

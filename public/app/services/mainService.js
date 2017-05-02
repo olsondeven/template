@@ -43,7 +43,7 @@ angular.module('app').service('mainService', function($http,$state) {
                 foul: null,
                 let: null,
                 hasAcct: false,
-                color: null,
+                color: "blue",//needs to be null
                 pointsWon: [[]],
                 pointsLoss: [[]]
             },

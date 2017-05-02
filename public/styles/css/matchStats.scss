@@ -35,7 +35,13 @@
   border-radius: 5px;
 }
 
-.match-graph-cont{
+.match-graph-cont-winner{
+  width: 80%;
+  height: 100%;
+  border: 1px solid $mainGreenColor;
+  border-radius: 5px;
+}
+.match-graph-cont-loser{
   width: 80%;
   height: 100%;
   border: 1px solid $mainGreenColor;
