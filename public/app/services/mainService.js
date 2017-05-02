@@ -31,7 +31,7 @@ angular.module('app').service('mainService', function($http,$state) {
                 foul: null,
                 let: null,
                 hasAcct: false,
-                color: null,
+                color: "red",//needs to be null
                 pointsWon: [[]],
                 pointsLoss: [[]]
             },

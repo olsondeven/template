@@ -44,14 +44,15 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     //     .attr("y2", 400)
     //     .attr("stroke", "green")
     //     .attr("stroke-width", 10);
-    var dataArray = [20,40,50];
+    var dataArray = [20,40,50,70];
     var bars = canvas.selectAll("rect")
         .data(dataArray)
         .enter()//this method returns placeholders for each data elements uses cb fn in attr
           .append("rect")
           .attr("width", function(element){return element * 10;})
           .attr("height", 50)
-          .attr("y", function(d,i){return i*100});
+          .attr("y", function(d,i){return i*100})
+          .attr("fill", $scope.game.player1.color);
 
     // console.log(d3);
 }); //closing
