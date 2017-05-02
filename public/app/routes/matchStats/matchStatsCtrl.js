@@ -10,15 +10,23 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     //var for d3.js
     var width = "100%";
     var height = "100%";
-
+    var winningArrayStats = [14,21];
+    var losingArrayStats = [12,10];
+    var winningArrayNames = [];
+    var losingArrayNames = [];
     // function to split the data up for correct format for d3.js to display it
     function splitStatsWinner(){
       for(var i = $scope.game.gameScoreCollection.length-1; i>=0; i--){
-        for(var prop in $scope.game.gameScoreCollection[i]){
-
-        }
+        winningArrayNames.push($scope.game.gameScoreCollection[i].winner);
+        winningArrayStats.push($scope.game.gameScoreCollection[i].winScore);
+        losingArrayNames.push($scope.game.gameScoreCollection[i].loser);
+        losingArrayStats.push($scope.game.gameScoreCollection[i].lossScore);
         // console.log(i);
       }
+      console.log(winningArrayStats);
+      console.log(winningArrayNames);
+      console.log(losingArrayStats);
+      console.log(losingArrayNames);
       console.log($scope.game.gameScoreCollection);
       console.log($scope.winner.pointsWon);
     }
@@ -32,12 +40,22 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     //gradient for bars
     var color = d3.scaleLinear()
       .domain([0,50])
-      .range(["red","blue"]);
+      .range(["blue","red"]);
+
 
     var canvas = d3.select(".match-graph-cont-complete")
       .append("svg")
       .attr("width",width)
       .attr("height",height);
+    var bars = canvas.selectAll("rect")
+      .data(winningArrayStats)
+      .enter()//this method returns placeholders for each data elements uses cb fn in attr
+        .append("rect")
+                // .attr("width", function(element){return element * 10;})
+        .attr("width", function(element){return widthScale(element);})
+        .attr("height", 50)
+        .attr("y", function(d,i){return i*100;})//this offsets bars by 100px
+        .attr("fill", function(d){return color(d);});
 
     //create canvas for loser graph
     var canvas = d3.select(".match-graph-cont-loser")
