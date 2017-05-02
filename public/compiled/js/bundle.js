@@ -372,14 +372,19 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     var width = "100%";
     var height = "100%";
 
+    var widthScale = d3.scaleLinear().domain([0, 800]) //smallest value and largest value
+    .range([0, 500]); //0 to the width or height of graph
+
     //create canvas for loser graph
     var canvas = d3.select(".match-graph-cont-loser").append("svg").attr("width", width).attr("height", height);
     //data for loser stats
     var dataArray = [0, 20, 40, 50, 70];
     //display data on graph
     var bars = canvas.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements uses cb fn in attr
-    .append("rect").attr("width", function (element) {
-        return element * 10;
+    .append("rect")
+    // .attr("width", function(element){return element * 10;})
+    .attr("width", function (element) {
+        return widthScale(element);
     }).attr("height", 50).attr("y", function (d, i) {
         return i * 100;
     }) //this offsets bars by 100px
@@ -403,9 +408,8 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     var canvas = d3.select(".match-graph-cont-winner").append("svg")
     // .style("background-color","red")
     // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
-    // .attr("style", "width: 100%; height: 100%;background-color:blue;");
     // .attr("style", "width: 100%; height: 100%;");
-    .attr("width", width).attr("height", height);
+    .attr("style", "background-color:purple;").attr("width", width).attr("height", height);
     //cx,cy is center x-axis and y-axis
     //r is for radius
     //fill is background color for svg
@@ -425,7 +429,7 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     var dataArray = [20, 40, 50, 70, 600];
     var bars = canvas.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements uses cb fn in attr
     .append("rect").attr("width", function (element) {
-        return element * 10;
+        return widthScale(element);
     }).attr("height", 50).attr("y", function (d, i) {
         return i * 100;
     }) //this offsets bars by 100px
@@ -435,26 +439,6 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
 
 
     // console.log(d3);
-}); //closing
-'use strict';
-
-angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
-  var color = null;
-  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
-  $scope.selectColor = function (val) {
-    color = val;
-    console.log(color);
-  };
-  $scope.selectName = function (val) {
-    console.log('fired', color, val);
-    if (!color || !val) {
-      return swal('Please select color and choose name');
-    } else {
-      mainService.setGame('name', val, 'player1');
-      mainService.setGame('color', color, 'player1');
-      $state.go('player2');
-    }
-  };
 }); //closing
 'use strict';
 
@@ -485,6 +469,26 @@ angular.module('app').controller('pointCtrl', function ($scope, $stateParams, ma
       mainService.setGame('switchSer', 2);
     } else {
       mainService.setGame('switchSer', 5);
+    }
+  };
+}); //closing
+'use strict';
+
+angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('name', val, 'player1');
+      mainService.setGame('color', color, 'player1');
+      $state.go('player2');
     }
   };
 }); //closing

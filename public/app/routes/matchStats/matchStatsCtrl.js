@@ -12,7 +12,9 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     var width = "100%";
     var height = "100%";
 
-
+    var widthScale = d3.scaleLinear()
+                    .domain([0,800])//smallest value and largest value
+                    .range([0,500]);//0 to the width or height of graph
 
     //create canvas for loser graph
     var canvas = d3.select(".match-graph-cont-loser")
@@ -26,7 +28,8 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
             .data(dataArray)
             .enter()//this method returns placeholders for each data elements uses cb fn in attr
               .append("rect")
-              .attr("width", function(element){return element * 10;})
+              // .attr("width", function(element){return element * 10;})
+              .attr("width", function(element){return widthScale(element);})
               .attr("height", 50)
               .attr("y", function(d,i){return i*100;})//this offsets bars by 100px
               .attr("fill", $scope.loser.color);
@@ -50,8 +53,8 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         .append("svg")
         // .style("background-color","red")
         // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
-        // .attr("style", "width: 100%; height: 100%;background-color:blue;");
         // .attr("style", "width: 100%; height: 100%;");
+        .attr("style", "background-color:purple;")
         .attr("width",width)
         .attr("height",height);
     //cx,cy is center x-axis and y-axis
@@ -75,7 +78,7 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         .data(dataArray)
         .enter()//this method returns placeholders for each data elements uses cb fn in attr
           .append("rect")
-          .attr("width", function(element){return element * 10;})
+          .attr("width", function(element){return widthScale(element);})
           .attr("height", 50)
           .attr("y", function(d,i){return i*100;})//this offsets bars by 100px
           .attr("fill", $scope.winner.color);
