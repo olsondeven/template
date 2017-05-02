@@ -367,18 +367,27 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
         $scope.winner = $scope.game.player2;
         $scope.loser = $scope.game.player1;
     }
-    //create scale
-    //declare width and height, let data declare this
+    //var for d3.js
     var width = "100%";
     var height = "100%";
+
     // function to split the data up for correct format for d3.js to display it
     function splitStatsWinner() {
+        for (var i = $scope.game.gameScoreCollection.length - 1; i >= 0; i--) {
+            for (var prop in $scope.game.gameScoreCollection[i]) {}
+            // console.log(i);
+        }
         console.log($scope.game.gameScoreCollection);
         console.log($scope.winner.pointsWon);
     }
+    splitStatsWinner();
 
+    //create scale
+    //declare width and height, let data declare this
     var widthScale = d3.scaleLinear().domain([0, 50]) //smallest value and largest value
     .range([0, 100]); //0 to the width or height of graph
+    //gradient for bars
+    var color = d3.scaleLinear().domain([0, 50]).range(["red", "blue"]);
 
     var canvas = d3.select(".match-graph-cont-complete").append("svg").attr("width", width).attr("height", height);
 
