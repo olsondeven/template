@@ -306,6 +306,7 @@ angular.module('app').service('mainService', function ($http, $state) {
 }); //closing
 "use strict";
 "use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -333,13 +334,6 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
     //date
   };
 }); //closing
-"use strict";
-'use strict';
-
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
-}); //closing
 'use strict';
 
 angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -351,23 +345,9 @@ angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
-angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
-  var color = null;
-  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
-  $scope.selectColor = function (val) {
-    color = val;
-    console.log(color);
-  };
-  $scope.selectName = function (val) {
-    console.log('fired', color, val);
-    if (!color || !val) {
-      return swal('Please select color and choose name');
-    } else {
-      mainService.setGame('name', val, 'player1');
-      mainService.setGame('color', color, 'player1');
-      $state.go('player2');
-    }
-  };
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
 }); //closing
 'use strict';
 
@@ -387,8 +367,13 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
         $scope.winner = $scope.game.player2;
         $scope.loser = $scope.game.player1;
     }
+    //create scale
+    //declare width and height, let data declare this
+    var width = "100%";
+    var height = "100%";
+
     //create canvas for loser graph
-    var canvas = d3.select(".match-graph-cont-loser").append("svg").attr("style", "width: 100%; height: 100%;");
+    var canvas = d3.select(".match-graph-cont-loser").append("svg").attr("width", width).attr("height", height);
     //data for loser stats
     var dataArray = [0, 20, 40, 50, 70];
     //display data on graph
@@ -419,7 +404,8 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     // .style("background-color","red")
     // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
     // .attr("style", "width: 100%; height: 100%;background-color:blue;");
-    .attr("style", "width: 100%; height: 100%;");
+    // .attr("style", "width: 100%; height: 100%;");
+    .attr("width", width).attr("height", height);
     //cx,cy is center x-axis and y-axis
     //r is for radius
     //fill is background color for svg
@@ -436,7 +422,7 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     //     .attr("y2", 400)
     //     .attr("stroke", "green")
     //     .attr("stroke-width", 10);
-    var dataArray = [0, 20, 40, 50, 70];
+    var dataArray = [20, 40, 50, 70, 600];
     var bars = canvas.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements uses cb fn in attr
     .append("rect").attr("width", function (element) {
         return element * 10;
@@ -445,7 +431,30 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     }) //this offsets bars by 100px
     .attr("fill", $scope.winner.color);
 
+    //d3.js scale
+
+
     // console.log(d3);
+}); //closing
+'use strict';
+
+angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('name', val, 'player1');
+      mainService.setGame('color', color, 'player1');
+      $state.go('player2');
+    }
+  };
 }); //closing
 'use strict';
 

@@ -7,10 +7,18 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         $scope.winner = $scope.game.player2;
         $scope.loser = $scope.game.player1;
     }
+    //create scale
+    //declare width and height, let data declare this
+    var width = "100%";
+    var height = "100%";
+
+
+
     //create canvas for loser graph
     var canvas = d3.select(".match-graph-cont-loser")
         .append("svg")
-        .attr("style", "width: 100%; height: 100%;");
+        .attr("width",width)
+        .attr("height",height);
     //data for loser stats
     var dataArray = [0,20,40,50,70];
     //display data on graph
@@ -43,7 +51,9 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         // .style("background-color","red")
         // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
         // .attr("style", "width: 100%; height: 100%;background-color:blue;");
-        .attr("style", "width: 100%; height: 100%;");
+        // .attr("style", "width: 100%; height: 100%;");
+        .attr("width",width)
+        .attr("height",height);
     //cx,cy is center x-axis and y-axis
     //r is for radius
     //fill is background color for svg
@@ -60,7 +70,7 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     //     .attr("y2", 400)
     //     .attr("stroke", "green")
     //     .attr("stroke-width", 10);
-    var dataArray = [0,20,40,50,70];
+    var dataArray = [20,40,50,70,600];
     var bars = canvas.selectAll("rect")
         .data(dataArray)
         .enter()//this method returns placeholders for each data elements uses cb fn in attr
@@ -69,6 +79,9 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
           .attr("height", 50)
           .attr("y", function(d,i){return i*100;})//this offsets bars by 100px
           .attr("fill", $scope.winner.color);
+
+//d3.js scale
+
 
     // console.log(d3);
 }); //closing
