@@ -11,16 +11,26 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     //declare width and height, let data declare this
     var width = "100%";
     var height = "100%";
+    // function to split the data up for correct format for d3.js to display it
+    function splitStatsWinner(){
+      console.log($scope.game.gameScoreCollection);
+      console.log($scope.winner.pointsWon);
+    }
 
     var widthScale = d3.scaleLinear()
-                    .domain([0,800])//smallest value and largest value
-                    .range([0,500]);//0 to the width or height of graph
+                    .domain([0,50])//smallest value and largest value
+                    .range([0,100]);//0 to the width or height of graph
+
+    var canvas = d3.select(".match-graph-cont-complete")
+      .append("svg")
+      .attr("width",width)
+      .attr("height",height);
 
     //create canvas for loser graph
     var canvas = d3.select(".match-graph-cont-loser")
-        .append("svg")
-        .attr("width",width)
-        .attr("height",height);
+      .append("svg")
+      .attr("width",width)
+      .attr("height",height);
     //data for loser stats
     var dataArray = [0,20,40,50,70];
     //display data on graph
@@ -54,7 +64,7 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         // .style("background-color","red")
         // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
         // .attr("style", "width: 100%; height: 100%;");
-        .attr("style", "background-color:purple;")
+        // .attr("style", "background-color:purple;")
         .attr("width",width)
         .attr("height",height);
     //cx,cy is center x-axis and y-axis

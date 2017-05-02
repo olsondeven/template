@@ -596,6 +596,12 @@ main {
   border: 1px solid #999967;
   border-radius: 5px; }
 
+.match-graph-cont-complete {
+  width: 80%;
+  height: 100%;
+  border: 1px solid #999967;
+  border-radius: 5px; }
+
 .match-graph-cont-winner {
   width: 80%;
   height: 100%;

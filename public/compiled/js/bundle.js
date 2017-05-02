@@ -371,9 +371,16 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     //declare width and height, let data declare this
     var width = "100%";
     var height = "100%";
+    // function to split the data up for correct format for d3.js to display it
+    function splitStatsWinner() {
+        console.log($scope.game.gameScoreCollection);
+        console.log($scope.winner.pointsWon);
+    }
 
-    var widthScale = d3.scaleLinear().domain([0, 800]) //smallest value and largest value
-    .range([0, 500]); //0 to the width or height of graph
+    var widthScale = d3.scaleLinear().domain([0, 50]) //smallest value and largest value
+    .range([0, 100]); //0 to the width or height of graph
+
+    var canvas = d3.select(".match-graph-cont-complete").append("svg").attr("width", width).attr("height", height);
 
     //create canvas for loser graph
     var canvas = d3.select(".match-graph-cont-loser").append("svg").attr("width", width).attr("height", height);
@@ -409,7 +416,8 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     // .style("background-color","red")
     // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
     // .attr("style", "width: 100%; height: 100%;");
-    .attr("style", "background-color:purple;").attr("width", width).attr("height", height);
+    // .attr("style", "background-color:purple;")
+    .attr("width", width).attr("height", height);
     //cx,cy is center x-axis and y-axis
     //r is for radius
     //fill is background color for svg
@@ -442,6 +450,26 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
 }); //closing
 'use strict';
 
+angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('name', val, 'player1');
+      mainService.setGame('color', color, 'player1');
+      $state.go('player2');
+    }
+  };
+}); //closing
+'use strict';
+
 angular.module('app').controller("player2settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
   var color = null;
   $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
@@ -469,26 +497,6 @@ angular.module('app').controller('pointCtrl', function ($scope, $stateParams, ma
       mainService.setGame('switchSer', 2);
     } else {
       mainService.setGame('switchSer', 5);
-    }
-  };
-}); //closing
-'use strict';
-
-angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
-  var color = null;
-  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
-  $scope.selectColor = function (val) {
-    color = val;
-    console.log(color);
-  };
-  $scope.selectName = function (val) {
-    console.log('fired', color, val);
-    if (!color || !val) {
-      return swal('Please select color and choose name');
-    } else {
-      mainService.setGame('name', val, 'player1');
-      mainService.setGame('color', color, 'player1');
-      $state.go('player2');
     }
   };
 }); //closing
