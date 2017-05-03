@@ -53,10 +53,10 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: #CCCCCC;
+  background-color: black;
   font-family: "Ubuntu", sans-serif; }
   main h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     font-weight: bolder;
@@ -75,13 +75,13 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #666666;
+  border-right: 10px solid #0066ff;
   position: absolute;
   top: 5px;
   left: 5px; }
 
 .left-arrow:hover {
-  border-right: 10px solid #7F0B0B;
+  border-right: 10px solid white;
   cursor: pointer; }
 
 .right-arrow {
@@ -89,14 +89,24 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #666666;
+  border-left: 10px solid #0066ff;
   position: absolute;
   top: 0;
   right: 0; }
 
 .right-arrow:hover {
-  border-color: #7F0B0B;
+  border-color: white;
   cursor: pointer; }
+
+.normal-btn {
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: gray; }
 
 button {
   cursor: pointer; }
@@ -110,10 +120,10 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: #CCCCCC;
+  background-color: black;
   font-family: "Ubuntu", sans-serif; }
   main h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     font-weight: bolder;
@@ -132,13 +142,13 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #666666;
+  border-right: 10px solid #0066ff;
   position: absolute;
   top: 5px;
   left: 5px; }
 
 .left-arrow:hover {
-  border-right: 10px solid #7F0B0B;
+  border-right: 10px solid white;
   cursor: pointer; }
 
 .right-arrow {
@@ -146,14 +156,24 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #666666;
+  border-left: 10px solid #0066ff;
   position: absolute;
   top: 0;
   right: 0; }
 
 .right-arrow:hover {
-  border-color: #7F0B0B;
+  border-color: white;
   cursor: pointer; }
+
+.normal-btn {
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: gray; }
 
 .flip-wrapper {
   display: flex;
@@ -164,7 +184,7 @@ main {
   flex-direction: column;
   border: 2px solid #CCCC9A; }
   .flip-wrapper h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     font-weight: bolder;
@@ -177,14 +197,14 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #666666;
+  background-color: #0066ff;
   border-radius: 5px;
   border: 2px solid #CCCC9A; }
 
 .flip-cont-two {
   height: 40vh;
   width: 80vw;
-  background-color: #666666;
+  background-color: #0066ff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -192,9 +212,9 @@ main {
   border: 2px solid #CCCC9A; }
 
 .flip-hover:hover {
-  color: #7F0B0B;
+  color: white;
   cursor: pointer;
-  border: 2px solid #7F0B0B; }
+  border: 2px solid white; }
 
 button {
   cursor: pointer; }
@@ -208,10 +228,10 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: #CCCCCC;
+  background-color: black;
   font-family: "Ubuntu", sans-serif; }
   main h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     font-weight: bolder;
@@ -230,13 +250,13 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #666666;
+  border-right: 10px solid #0066ff;
   position: absolute;
   top: 5px;
   left: 5px; }
 
 .left-arrow:hover {
-  border-right: 10px solid #7F0B0B;
+  border-right: 10px solid white;
   cursor: pointer; }
 
 .right-arrow {
@@ -244,14 +264,24 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #666666;
+  border-left: 10px solid #0066ff;
   position: absolute;
   top: 0;
   right: 0; }
 
 .right-arrow:hover {
-  border-color: #7F0B0B;
+  border-color: white;
   cursor: pointer; }
+
+.normal-btn {
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: gray; }
 
 .game-wrapper {
   display: flex;
@@ -261,7 +291,7 @@ main {
 .game-player-card {
   width: 50vw;
   height: 100vh;
-  border-left: 2px solid #666666; }
+  border-left: 2px solid #0066ff; }
 
 .player-match-score {
   width: 100%;
@@ -272,8 +302,8 @@ main {
   text-align: center;
   font-weight: bold;
   position: relative;
-  background-color: #666666;
-  border-left: 1px solid #CCCCCC; }
+  background-color: #0066ff;
+  border-left: 1px solid black; }
   .player-match-score img {
     width: 100px;
     height: 100px;
@@ -319,10 +349,10 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: #CCCCCC;
+  background-color: black;
   font-family: "Ubuntu", sans-serif; }
   main h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     font-weight: bolder;
@@ -341,13 +371,13 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #666666;
+  border-right: 10px solid #0066ff;
   position: absolute;
   top: 5px;
   left: 5px; }
 
 .left-arrow:hover {
-  border-right: 10px solid #7F0B0B;
+  border-right: 10px solid white;
   cursor: pointer; }
 
 .right-arrow {
@@ -355,14 +385,24 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #666666;
+  border-left: 10px solid #0066ff;
   position: absolute;
   top: 0;
   right: 0; }
 
 .right-arrow:hover {
-  border-color: #7F0B0B;
+  border-color: white;
   cursor: pointer; }
+
+.normal-btn {
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: gray; }
 
 .home-wrapper {
   display: flex;
@@ -371,7 +411,7 @@ main {
   flex-direction: column;
   border: 2px solid #CCCC9A; }
   .home-wrapper h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
@@ -381,13 +421,14 @@ main {
   position: relative;
   height: 70vh;
   width: 80vw;
-  background-color: #666666;
+  background-color: #0066ff;
   border-radius: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  border: 2px solid #CCCC9A; }
+  border: 2px solid #CCCC9A;
+  color: white; }
   .home-login-wrapper p {
     padding-top: 15px;
     cursor: pointer; }
@@ -411,12 +452,6 @@ main {
     text-align: center; }
   .home-login span:hover {
     color: #999967; }
-  .home-login button {
-    font-family: "Ubuntu", sans-serif;
-    color: #666666;
-    border-radius: 2px;
-    font-weight: bold;
-    margin-top: 5px; }
 
 button {
   cursor: pointer; }
@@ -430,10 +465,10 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: #CCCCCC;
+  background-color: black;
   font-family: "Ubuntu", sans-serif; }
   main h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     font-weight: bolder;
@@ -452,13 +487,13 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #666666;
+  border-right: 10px solid #0066ff;
   position: absolute;
   top: 5px;
   left: 5px; }
 
 .left-arrow:hover {
-  border-right: 10px solid #7F0B0B;
+  border-right: 10px solid white;
   cursor: pointer; }
 
 .right-arrow {
@@ -466,14 +501,24 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #666666;
+  border-left: 10px solid #0066ff;
   position: absolute;
   top: 0;
   right: 0; }
 
 .right-arrow:hover {
-  border-color: #7F0B0B;
+  border-color: white;
   cursor: pointer; }
+
+.normal-btn {
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: gray; }
 
 .match-wrapper {
   display: flex;
@@ -482,7 +527,7 @@ main {
   flex-direction: column;
   border: 2px solid #CCCC9A; }
   .match-wrapper h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
@@ -493,7 +538,7 @@ main {
 .select-match-container {
   height: 20vh;
   width: 80vw;
-  background-color: #666666;
+  background-color: #0066ff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -501,9 +546,9 @@ main {
   border-radius: 5px; }
 
 .select-match-container:hover {
-  color: #7F0B0B;
+  color: white;
   cursor: pointer;
-  border: 2px solid #7F0B0B; }
+  border: 2px solid white; }
 
 button {
   cursor: pointer; }
@@ -517,10 +562,10 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: #CCCCCC;
+  background-color: black;
   font-family: "Ubuntu", sans-serif; }
   main h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     font-weight: bolder;
@@ -539,13 +584,13 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #666666;
+  border-right: 10px solid #0066ff;
   position: absolute;
   top: 5px;
   left: 5px; }
 
 .left-arrow:hover {
-  border-right: 10px solid #7F0B0B;
+  border-right: 10px solid white;
   cursor: pointer; }
 
 .right-arrow {
@@ -553,14 +598,24 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #666666;
+  border-left: 10px solid #0066ff;
   position: absolute;
   top: 0;
   right: 0; }
 
 .right-arrow:hover {
-  border-color: #7F0B0B;
+  border-color: white;
   cursor: pointer; }
+
+.normal-btn {
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: gray; }
 
 .match-stats-wrapper {
   position: relative;
@@ -574,7 +629,7 @@ main {
     top: 5px;
     left: 5px;
     font-family: "Ubuntu", sans-serif;
-    color: #666666;
+    color: #0066ff;
     border-radius: 2px;
     font-weight: bold;
     margin-top: 5px; }
@@ -591,7 +646,7 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #666666;
+  background-color: #0066ff;
   border-radius: 5px; }
 
 .match-splitone-cont {
@@ -648,10 +703,10 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: #CCCCCC;
+  background-color: black;
   font-family: "Ubuntu", sans-serif; }
   main h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     font-weight: bolder;
@@ -670,13 +725,13 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #666666;
+  border-right: 10px solid #0066ff;
   position: absolute;
   top: 5px;
   left: 5px; }
 
 .left-arrow:hover {
-  border-right: 10px solid #7F0B0B;
+  border-right: 10px solid white;
   cursor: pointer; }
 
 .right-arrow {
@@ -684,14 +739,24 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #666666;
+  border-left: 10px solid #0066ff;
   position: absolute;
   top: 0;
   right: 0; }
 
 .right-arrow:hover {
-  border-color: #7F0B0B;
+  border-color: white;
   cursor: pointer; }
+
+.normal-btn {
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: gray; }
 
 .player-setting-wrapper {
   display: flex;
@@ -702,7 +767,7 @@ main {
   flex-direction: column;
   border: 2px solid #CCCC9A; }
   .player-setting-wrapper h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
@@ -717,23 +782,23 @@ main {
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
-  background-color: #666666;
+  background-color: #0066ff;
   border-radius: 5px;
   padding: 5px; }
 
 .select-color {
   height: 10vh;
   width: 75vw;
-  border: 5px solid #666666;
+  border: 5px solid #0066ff;
   border-radius: 5px; }
 
 .select-color:hover {
-  border: 5px solid #CCCCCC; }
+  border: 5px solid black; }
 
 .submit {
   height: 10vh;
   width: 100vw;
-  background-color: #666666;
+  background-color: #0066ff;
   display: flex;
   justify-content: center;
   align-items: center; }
@@ -753,10 +818,10 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: #CCCCCC;
+  background-color: black;
   font-family: "Ubuntu", sans-serif; }
   main h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     font-weight: bolder;
@@ -775,13 +840,13 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #666666;
+  border-right: 10px solid #0066ff;
   position: absolute;
   top: 5px;
   left: 5px; }
 
 .left-arrow:hover {
-  border-right: 10px solid #7F0B0B;
+  border-right: 10px solid white;
   cursor: pointer; }
 
 .right-arrow {
@@ -789,14 +854,24 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #666666;
+  border-left: 10px solid #0066ff;
   position: absolute;
   top: 0;
   right: 0; }
 
 .right-arrow:hover {
-  border-color: #7F0B0B;
+  border-color: white;
   cursor: pointer; }
+
+.normal-btn {
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: gray; }
 
 .point-wrapper {
   display: flex;
@@ -805,7 +880,7 @@ main {
   flex-direction: column;
   border: 2px solid #CCCC9A; }
   .point-wrapper h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
@@ -825,10 +900,10 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: #CCCCCC;
+  background-color: black;
   font-family: "Ubuntu", sans-serif; }
   main h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     font-weight: bolder;
@@ -847,13 +922,13 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-right: 10px solid #666666;
+  border-right: 10px solid #0066ff;
   position: absolute;
   top: 5px;
   left: 5px; }
 
 .left-arrow:hover {
-  border-right: 10px solid #7F0B0B;
+  border-right: 10px solid white;
   cursor: pointer; }
 
 .right-arrow {
@@ -861,14 +936,24 @@ main {
   height: 0;
   border-top: 10px solid transparent;
   border-bottom: 10px solid transparent;
-  border-left: 10px solid #666666;
+  border-left: 10px solid #0066ff;
   position: absolute;
   top: 0;
   right: 0; }
 
 .right-arrow:hover {
-  border-color: #7F0B0B;
+  border-color: white;
   cursor: pointer; }
+
+.normal-btn {
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-family: "Ubuntu", sans-serif;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: gray; }
 
 .type-wrapper {
   display: flex;
@@ -877,7 +962,7 @@ main {
   flex-direction: column;
   border: 2px solid #CCCC9A; }
   .type-wrapper h1 {
-    color: #7F0B0B;
+    color: white;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
@@ -888,7 +973,7 @@ main {
 .select-container {
   height: 35vh;
   width: 80vw;
-  background-color: #666666;
+  background-color: #0066ff;
   border: 2px solid #CCCC9A;
   border-radius: 5px;
   display: flex;
@@ -900,8 +985,8 @@ main {
     font-size: 150%; }
 
 .select-container:hover {
-  color: #7F0B0B;
+  color: white;
   cursor: pointer;
-  border: 2px solid #7F0B0B; }
+  border: 2px solid white; }
 
 /*# sourceMappingURL=maps/styles.css.map */

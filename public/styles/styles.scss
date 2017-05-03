@@ -1,8 +1,8 @@
-$mainBackgroundColor: #CCCCCC;
-$mainTextColor: #666666;
+$mainBackgroundColor: black;
+$mainTextColor: #0066ff;
 $mainGreenColor: #999967;
 $mainSubGreenColor: #CCCC9A;
-$mainRedColor: #7F0B0B;
+$mainRedColor: white;
 $textRoboto: 'Roboto', sans-serif;
 $textOpenSans: 'Open Sans', sans-serif;
 $textOswald: 'Oswald', sans-serif;
@@ -64,4 +64,14 @@ main{
 .right-arrow:hover{
   border-color: $mainRedColor;
   cursor: pointer;
+}
+.normal-btn{
+  background-color: white;
+  border-radius: 2px;
+  border: 1px solid white;
+  font-family: $textUbuntu;
+  border-radius: 2px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: gray;
 }

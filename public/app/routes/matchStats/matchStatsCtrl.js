@@ -19,10 +19,10 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
       serPoints = 5;
     }
     var gameScale = ($scope.game.gameScoreCollection.length - 1) + $scope.game.gameScoreCollection.length;
-    // var gameScale = 5;
+    // var gameScale = 3;
     console.log(gameScale);
-    // var dataArray = [12,10,0,32,30,0,12,4];
-    // var dataArrayColor = ["blue",'red','black','blue','red','black','blue','red'];
+    // var dataArray = [12,10,0,32,30]//,0,12,4];
+    // var dataArrayColor = ["blue",'red','black','blue','red']//,'black','blue','red'];
     var dataArray = [];
     var dataArrayColor = [];
     //split up stats for display
