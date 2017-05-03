@@ -48,7 +48,7 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     var widthScale = d3.scaleLinear()
       .domain([0,maxNum+1])//smallest value and largest value
       .range([0,width]);//0 to the width or height of graph
-      
+
     var correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-30).toString();
 
     var testHeight = (parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-30;
@@ -61,6 +61,7 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     var axisMatch = d3.axisBottom()
       .ticks(maxNum)
       .scale(bottomScale);
+
 
     canvasMatch.append("g").attr("transform","translate(2,"+correctWord+")").call(axisMatch);
 
