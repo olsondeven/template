@@ -301,6 +301,7 @@ angular.module('app').service('mainService', function ($http, $state) {
 }); //closing
 "use strict";
 "use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -328,7 +329,6 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
     //date
   };
 }); //closing
-"use strict";
 'use strict';
 
 angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -343,6 +343,13 @@ angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mai
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
   $scope.login = function (user, pass) {};
+}); //closing
+'use strict';
+
+angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.selectMatch = function (val) {
+    mainService.setGame('selectMatch', val);
+  };
 }); //closing
 "use strict";
 
@@ -364,27 +371,6 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     var testArray = [0];
     var testArrayColor = ["black"];
 
-    // function splitStatsWinner(){
-    //   for(var i = $scope.game.gameScoreCollection.length-1; i>=0; i--){
-    //     testArray.push($scope.game.gameScoreCollection[i].winScore);
-    //     testArray.push($scope.game.gameScoreCollection[i].lossScore);
-    //     testArray.push(0);
-    //     //push correct color to array
-    //     if($scope.game.gameScoreCollection[i].winner === "player1"){
-    //       testArrayColor.push($scope.game.player1.color);
-    //       testArrayColor.push($scope.game.player2.color);
-    //       testArrayColor.push("black");
-    //     }else{
-    //       testArrayColor.push($scope.game.player2.color);
-    //       testArrayColor.push($scope.game.player1.color);
-    //       testArrayColor.push("black");
-    //     }
-    //     // console.log(i);
-    //   }
-    //   maxNum = Math.max.apply(null, testArray);
-    //
-    // }
-    // splitStatsWinner();
     function splitStatsWinner() {
         for (var i = $scope.game.gameScoreCollection.length - 1; i >= 0; i--) {
             if ($scope.game.gameScoreCollection[i].winner === 'player1') {
@@ -506,13 +492,6 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
 }); //closing
 'use strict';
 
-angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.selectMatch = function (val) {
-    mainService.setGame('selectMatch', val);
-  };
-}); //closing
-'use strict';
-
 angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
   var color = null;
   $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
@@ -553,14 +532,6 @@ angular.module('app').controller("player2settingsCtrl", function ($scope, $state
 }); //closing
 'use strict';
 
-angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.setType = function (val) {
-    // console.log(val, "fired");
-    mainService.setGame("selectType", val);
-  };
-}); //closing
-'use strict';
-
 angular.module('app').controller('pointCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.selectPoint = function (val) {
     mainService.setGame('selectPoint', val);
@@ -569,6 +540,14 @@ angular.module('app').controller('pointCtrl', function ($scope, $stateParams, ma
     } else {
       mainService.setGame('switchSer', 5);
     }
+  };
+}); //closing
+'use strict';
+
+angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.setType = function (val) {
+    // console.log(val, "fired");
+    mainService.setGame("selectType", val);
   };
 }); //closing
 //# sourceMappingURL=bundle.js.map

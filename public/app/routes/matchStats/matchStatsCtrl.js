@@ -16,27 +16,6 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     var testArray = [0];
     var testArrayColor = ["black"];
 
-    // function splitStatsWinner(){
-    //   for(var i = $scope.game.gameScoreCollection.length-1; i>=0; i--){
-    //     testArray.push($scope.game.gameScoreCollection[i].winScore);
-    //     testArray.push($scope.game.gameScoreCollection[i].lossScore);
-    //     testArray.push(0);
-    //     //push correct color to array
-    //     if($scope.game.gameScoreCollection[i].winner === "player1"){
-    //       testArrayColor.push($scope.game.player1.color);
-    //       testArrayColor.push($scope.game.player2.color);
-    //       testArrayColor.push("black");
-    //     }else{
-    //       testArrayColor.push($scope.game.player2.color);
-    //       testArrayColor.push($scope.game.player1.color);
-    //       testArrayColor.push("black");
-    //     }
-    //     // console.log(i);
-    //   }
-    //   maxNum = Math.max.apply(null, testArray);
-    //
-    // }
-    // splitStatsWinner();
     function splitStatsWinner(){
       for(var i = $scope.game.gameScoreCollection.length-1; i>=0; i--){
         if($scope.game.gameScoreCollection[i].winner === 'player1'){
