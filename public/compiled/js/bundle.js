@@ -301,7 +301,6 @@ angular.module('app').service('mainService', function ($http, $state) {
 }); //closing
 "use strict";
 "use strict";
-"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -329,6 +328,7 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
     //date
   };
 }); //closing
+"use strict";
 'use strict';
 
 angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -373,12 +373,13 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   } else {
     serPoints = 5;
   }
-  var gameScale = $scope.game.gameScoreCollection.length - 1 + $scope.game.gameScoreCollection.length;
+  // var gameScale = ($scope.game.gameScoreCollection.length - 1) + $scope.game.gameScoreCollection.length;
+  var gameScale = 5;
   console.log(gameScale);
-  // var dataArray = [12,10,0,32,30,0,12,4];
-  // var dataArrayColor = ["blue",'red','black','blue','red','black','blue','red'];
-  var dataArray = [];
-  var dataArrayColor = [];
+  var dataArray = [12, 10, 0, 32, 30, 0, 12, 4];
+  var dataArrayColor = ["blue", 'red', 'black', 'blue', 'red', 'black', 'blue', 'red'];
+  // var dataArray = [];
+  // var dataArrayColor = [];
   //split up stats for display
   function splitStatsWinner() {
     for (var i = $scope.game.gameScoreCollection.length - 1; i >= 0; i--) {
@@ -438,6 +439,8 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   var axisMatch = d3.axisBottom().ticks(maxNum / serPoints).scale(bottomScale);
 
   canvasMatch.append("g").attr("transform", "translate(2," + correctWord + ")").call(axisMatch);
+
+  // canvasMatch.append("g").attr("transform","translate(6,30)").call(axisLeft(y));
 
   var winningBars = canvasMatch.selectAll("rect").data(dataArray).enter() //this method returns placeholders for each data elements uses cb fn in attr
   .append("rect")
