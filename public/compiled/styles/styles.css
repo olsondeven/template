@@ -604,7 +604,7 @@ main {
   display: flex;
   flex-direction: column;
   height: 100%;
-  width: 95%;
+  width: 80%;
   border-radius: 5px; }
   .match-graph-cont-complete div {
     display: flex;
@@ -632,7 +632,7 @@ main {
   border: 1px solid #999967;
   border-radius: 5px; }
 
-@media (max-width: 500px) {
+@media only screen and (max-width: 500px) {
   .match-stats-wrapper button {
     display: none; } }
 

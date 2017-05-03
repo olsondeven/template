@@ -7,36 +7,54 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         $scope.winner = $scope.game.player2;
         $scope.loser = $scope.game.player1;
     }
+    // console.log($scope.game.);
     //var for d3.js
     var width = "100%";
     var height = "100%";
     var maxNum = null;
-    var testArray = [12,10,0,0,32,30,0,0,12,4];
-    var testArrayColor = ["blue",'red','black',"black",'blue','red','black','black','blue','red'];
-    // var testArray = [];
-    // var testArrayColor = [];
+    var serPoints = null;
+    if($scope.game.selectPoint === 11){
+      serPoints = 2;
+    }else{
+      serPoints = 5;
+    }
+    var gameScale = ($scope.game.gameScoreCollection.length - 1) + $scope.game.gameScoreCollection.length;
+    console.log(gameScale);
+    // var dataArray = [12,10,0,32,30,0,12,4];
+    // var dataArrayColor = ["blue",'red','black','blue','red','black','blue','red'];
+    var dataArray = [];
+    var dataArrayColor = [];
     //split up stats for display
     function splitStatsWinner(){
       for(var i = $scope.game.gameScoreCollection.length-1; i>=0; i--){
         if($scope.game.gameScoreCollection[i].winner === 'player1'){
-          testArray.push($scope.game.gameScoreCollection[i].winScore);
-          testArray.push($scope.game.gameScoreCollection[i].lossScore);
-          testArray.push(0);
+          dataArray.push($scope.game.gameScoreCollection[i].winScore);
+          dataArray.push($scope.game.gameScoreCollection[i].lossScore);
+          dataArray.push(0);
+          // dataArray.push(0);
         }else{
-          testArray.push($scope.game.gameScoreCollection[i].lossScore);
-          testArray.push($scope.game.gameScoreCollection[i].winScore);
-          testArray.push(0);
+          dataArray.push($scope.game.gameScoreCollection[i].lossScore);
+          dataArray.push($scope.game.gameScoreCollection[i].winScore);
+          dataArray.push(0);
+          // dataArray.push(0);
         }
         //push correct color to array
-        testArrayColor.push($scope.game.player1.color);
-        testArrayColor.push($scope.game.player2.color);
-        testArrayColor.push("black");
+        dataArrayColor.push($scope.game.player1.color);
+        dataArrayColor.push($scope.game.player2.color);
+        dataArrayColor.push("black");
+        // dataArrayColor.push("black");
         // console.log(i);
       }
-      maxNum = Math.max.apply(null, testArray);
+      maxNum = Math.max.apply(null, dataArray);
 
     }
     splitStatsWinner();
+    // for(var i = dataArray.length-1; i>=0; i--){
+      if(dataArray[dataArray.length-1] === 0){
+        dataArray.splice(dataArray.length-1,1);
+      }
+    // }
+    console.log(dataArray);
     //create scale
     //declare width and height, let data declare this
 
@@ -49,35 +67,46 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
       .domain([0,maxNum+1])//smallest value and largest value
       .range([0,width]);//0 to the width or height of graph
 
-    var correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-30).toString();
 
-    var testHeight = (parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-30;
-      testHeight = ((testHeight/5)/2);
+    var testHeight = (parseFloat(canvasMatch.style("height").replace(/px/gi,'')));
+    var testHeight2 = ((testHeight/gameScale)/2);
+    console.log(testHeight2);
+    var testHeight3 = (testHeight/gameScale);
+    testHeight = (testHeight/5)/2;
+    console.log(testHeight);
+
+    // var correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-testHeight3).toString();
+    var correctWord = null;
+    if(gameScale === 3){
+      correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-testHeight2).toString();
+    }else{
+      correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-testHeight3).toString();
+    }
 
     var bottomScale = d3.scaleLinear()
       .domain([0,maxNum+1])
       .range([0,(parseFloat(canvasMatch.style("width").replace(/px/gi,'')))]);
 
     var axisMatch = d3.axisBottom()
-      .ticks(maxNum)
+      .ticks(maxNum/serPoints)
       .scale(bottomScale);
 
 
     canvasMatch.append("g").attr("transform","translate(2,"+correctWord+")").call(axisMatch);
 
     var winningBars = canvasMatch.selectAll("rect")
-      .data(testArray)
+      .data(dataArray)
       .enter()//this method returns placeholders for each data elements uses cb fn in attr
         .append("rect")
         // .attr("width", function(element){return element * 10;})
         .attr("width", function(element){return widthScale(element);})
         // .attr("height", (100/($scope.game.selectMatch/2)))
         // .attr("y", function(d,i){return i*(100/($scope.game.selectMatch/2));})//this offsets bars by 100px
-        .attr("height", testHeight)
-        .attr("y", function(d,i){return i*(testHeight);})//this offsets bars by 100px
+        .attr("height", (testHeight2))
+        .attr("y", function(d,i){return i*(testHeight2);})//this offsets bars by 100px
         // .data([1,1])
         // .attr("height", function(element){return heightScale(element);})
-        .data(testArrayColor)
+        .data(dataArrayColor)
         .attr("fill", function(d){return d;})
         .append("g").attr("transform","translate(2,0)");
 
