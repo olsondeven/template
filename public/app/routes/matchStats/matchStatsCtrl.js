@@ -11,8 +11,8 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     var width = "100%";
     var height = "100%";
     var maxNum = null;
-    var testArray = [0,12,10,0,32,30,0];
-    var testArrayColor = ["black","blue",'red','black','blue','red','black'];
+    var testArray = [12,10,0,0,32,30,0,0,12,4];
+    var testArrayColor = ["blue",'red','black',"black",'blue','red','black','black','blue','red'];
     // var testArray = [];
     // var testArrayColor = [];
     //split up stats for display
@@ -39,26 +39,30 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     splitStatsWinner();
     //create scale
     //declare width and height, let data declare this
-    var widthScale = d3.scaleLinear()
-      .domain([0,maxNum+1])//smallest value and largest value
-      .range([0,width]);//0 to the width or height of graph
-//Full match graph
 
     var canvasMatch = d3.select(".match-graph-cont-complete")
       .append("svg")
       .attr("width",width)
-      .attr("height",height)
-      .attr("style","border: 1px solid black");
+      .attr("height",height);
 
-      // var num = canvasMatch.style("width");
-      // var num = (parseFloat(canvasMatch.style("width").replace(/px/gi,'')));
-      // console.log(num);
-      var bottomScale = d3.scaleLinear()
+    var widthScale = d3.scaleLinear()
+      .domain([0,maxNum+1])//smallest value and largest value
+      .range([0,width]);//0 to the width or height of graph
+      
+    var correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-30).toString();
+
+    var testHeight = (parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-30;
+      testHeight = ((testHeight/5)/2);
+
+    var bottomScale = d3.scaleLinear()
       .domain([0,maxNum+1])
       .range([0,(parseFloat(canvasMatch.style("width").replace(/px/gi,'')))]);
-      var axisMatch = d3.axisBottom()
+
+    var axisMatch = d3.axisBottom()
+      .ticks(maxNum)
       .scale(bottomScale);
-      canvasMatch.call(axisMatch);
+
+    canvasMatch.append("g").attr("transform","translate(2,"+correctWord+")").call(axisMatch);
 
     var winningBars = canvasMatch.selectAll("rect")
       .data(testArray)
@@ -66,13 +70,17 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         .append("rect")
         // .attr("width", function(element){return element * 10;})
         .attr("width", function(element){return widthScale(element);})
-        .attr("height", (70/($scope.game.selectMatch/2)))
-        .attr("y", function(d,i){return i*(70/($scope.game.selectMatch/2));})//this offsets bars by 100px
+        // .attr("height", (100/($scope.game.selectMatch/2)))
+        // .attr("y", function(d,i){return i*(100/($scope.game.selectMatch/2));})//this offsets bars by 100px
+        .attr("height", testHeight)
+        .attr("y", function(d,i){return i*(testHeight);})//this offsets bars by 100px
+        // .data([1,1])
+        // .attr("height", function(element){return heightScale(element);})
         .data(testArrayColor)
-        // .attr("fill", function(d){console.log(d);return d;});
-        .attr("fill", function(d){return d;});
+        .attr("fill", function(d){return d;})
+        .append("g").attr("transform","translate(2,0)");
 
-
+console.log(testHeight);
 //     //create canvas for loser graph
 //     var canvas = d3.select(".match-graph-cont-loser")
 //       .append("svg")
@@ -149,6 +157,7 @@ window.onresize = function(event) {
   .domain([0,maxNum+1])
   .range([0,(parseFloat(canvasMatch.style("width").replace(/px/gi,'')))]);
   axisMatch = d3.axisBottom()
+  .ticks(maxNum)
   .scale(bottomScale);
   canvasMatch.call(axisMatch);
 };
