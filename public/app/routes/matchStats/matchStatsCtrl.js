@@ -11,11 +11,11 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     var width = "100%";
     var height = "100%";
     var maxNum = null;
-    // var testArray = [0,12,10,0,32,30,0];
-    // var testArrayColor = ["black","blue",'red','black','blue','red','black'];
-    var testArray = [0];
-    var testArrayColor = ["black"];
-
+    var testArray = [0,12,10,0,32,30,0];
+    var testArrayColor = ["black","blue",'red','black','blue','red','black'];
+    // var testArray = [];
+    // var testArrayColor = [];
+    //split up stats for display
     function splitStatsWinner(){
       for(var i = $scope.game.gameScoreCollection.length-1; i>=0; i--){
         if($scope.game.gameScoreCollection[i].winner === 'player1'){
@@ -37,25 +37,28 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
 
     }
     splitStatsWinner();
-
-
-
     //create scale
     //declare width and height, let data declare this
     var widthScale = d3.scaleLinear()
       .domain([0,maxNum+1])//smallest value and largest value
       .range([0,width]);//0 to the width or height of graph
-    //gradient for bars
-    // var color = d3.scaleLinear()
-    //   .domain([0,45])
-    //   .range(["blue","red"]);
-
 //Full match graph
+
     var canvasMatch = d3.select(".match-graph-cont-complete")
       .append("svg")
       .attr("width",width)
       .attr("height",height)
-      .attr("style","border: 1px solid red");
+      .attr("style","border: 1px solid black");
+
+      // var num = canvasMatch.style("width");
+      // var num = (parseFloat(canvasMatch.style("width").replace(/px/gi,'')));
+      // console.log(num);
+      var bottomScale = d3.scaleLinear()
+      .domain([0,maxNum+1])
+      .range([0,(parseFloat(canvasMatch.style("width").replace(/px/gi,'')))]);
+      var axisMatch = d3.axisBottom()
+      .scale(bottomScale);
+      canvasMatch.call(axisMatch);
 
     var winningBars = canvasMatch.selectAll("rect")
       .data(testArray)
@@ -63,8 +66,8 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         .append("rect")
         // .attr("width", function(element){return element * 10;})
         .attr("width", function(element){return widthScale(element);})
-        .attr("height", (50/($scope.game.selectMatch/2)))
-        .attr("y", function(d,i){return i*(50/($scope.game.selectMatch/2));})//this offsets bars by 100px
+        .attr("height", (70/($scope.game.selectMatch/2)))
+        .attr("y", function(d,i){return i*(70/($scope.game.selectMatch/2));})//this offsets bars by 100px
         .data(testArrayColor)
         // .attr("fill", function(d){console.log(d);return d;});
         .attr("fill", function(d){return d;});
@@ -141,4 +144,12 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
 //
 //
 //     // console.log(d3);
+window.onresize = function(event) {
+  bottomScale = d3.scaleLinear()
+  .domain([0,maxNum+1])
+  .range([0,(parseFloat(canvasMatch.style("width").replace(/px/gi,'')))]);
+  axisMatch = d3.axisBottom()
+  .scale(bottomScale);
+  canvasMatch.call(axisMatch);
+};
 }); //closing
