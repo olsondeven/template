@@ -3,10 +3,16 @@
   <button type="button" name="button" ng-click="">Hide personal stats</button>
   <h1>Match Stats</h1>
   <div class="match-cont">
-    <div class="match-splitone-cont">
-
+    <div class="match-graph-cont-complete">
+      <div>
+        <div>
+          <h1>{{game.player1.name}}<span style="background-color: {{game.player1.color}}"></span></h1>
+        </div>
+        <div>
+          <h1>{{game.player2.name}}<span style="background-color: {{game.player2.color}}"></span></h1>
+        </div>
+      </div>
     </div>
-    <div class="match-graph-cont-complete"></div>
 
   </div>
 
