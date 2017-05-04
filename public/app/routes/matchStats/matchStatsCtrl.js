@@ -192,11 +192,13 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
 //     // console.log(d3);
 window.onresize = function(event) {
   bottomScale = d3.scaleLinear()
-  .domain([0,maxNum+1])
-  .range([0,(parseFloat(canvasMatch.style("width").replace(/px/gi,'')))]);
+    .domain([0,maxNum+1])
+    .range([0,(parseFloat(canvasMatch.style("width").replace(/px/gi,'')))]);
+
   axisMatch = d3.axisBottom()
-  .ticks(maxNum)
-  .scale(bottomScale);
+    .ticks(maxNum/serPoints)
+    .scale(bottomScale);
+
   canvasMatch.call(axisMatch);
 };
 }); //closing

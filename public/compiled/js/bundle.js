@@ -542,8 +542,30 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   //     // console.log(d3);
   window.onresize = function (event) {
     bottomScale = d3.scaleLinear().domain([0, maxNum + 1]).range([0, parseFloat(canvasMatch.style("width").replace(/px/gi, ''))]);
-    axisMatch = d3.axisBottom().ticks(maxNum).scale(bottomScale);
+
+    axisMatch = d3.axisBottom().ticks(maxNum / serPoints).scale(bottomScale);
+
     canvasMatch.call(axisMatch);
+  };
+}); //closing
+'use strict';
+
+angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('name', val, 'player1');
+      mainService.setGame('color', color, 'player1');
+      $state.go('player2');
+    }
   };
 }); //closing
 'use strict';
@@ -575,26 +597,6 @@ angular.module('app').controller('pointCtrl', function ($scope, $stateParams, ma
       mainService.setGame('switchSer', 2);
     } else {
       mainService.setGame('switchSer', 5);
-    }
-  };
-}); //closing
-'use strict';
-
-angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
-  var color = null;
-  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
-  $scope.selectColor = function (val) {
-    color = val;
-    console.log(color);
-  };
-  $scope.selectName = function (val) {
-    console.log('fired', color, val);
-    if (!color || !val) {
-      return swal('Please select color and choose name');
-    } else {
-      mainService.setGame('name', val, 'player1');
-      mainService.setGame('color', color, 'player1');
-      $state.go('player2');
     }
   };
 }); //closing
