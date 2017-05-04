@@ -14,20 +14,28 @@ body {
   margin: 0px;
   box-sizing: border-box;
 }
+input{
+}
 main{
   height: 100vh;
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
   background-color: $mainBackgroundColor;
-  font-family: $textUbuntu;
   h1{
-    color: $mainRedColor;
-    font-family: $textOswald;
+    // color: $mainRedColor;
+    // font-family: $textOswald;
+    // font-size: 150%;
+    // font-weight: bolder;
+    // margin-top: 10px;
+    // margin-bottom: 10px;
+    text-align: center;
     font-size: 150%;
-    font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate;
   }
 }
 .logo{
@@ -69,9 +77,17 @@ main{
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: $textUbuntu;
+  font-family: $textOswald;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
   color: gray;
+}
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
 }

@@ -53,15 +53,15 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: black;
-  font-family: "Ubuntu", sans-serif; }
+  background-color: black; }
   main h1 {
-    color: white;
-    font-family: "Oswald", sans-serif;
+    text-align: center;
     font-size: 150%;
-    font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -102,11 +102,17 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Oswald", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
   color: gray; }
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 button {
   cursor: pointer; }
@@ -120,15 +126,15 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: black;
-  font-family: "Ubuntu", sans-serif; }
+  background-color: black; }
   main h1 {
-    color: white;
-    font-family: "Oswald", sans-serif;
+    text-align: center;
     font-size: 150%;
-    font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -169,11 +175,17 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Oswald", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
   color: gray; }
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .flip-wrapper {
   display: flex;
@@ -228,15 +240,15 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: black;
-  font-family: "Ubuntu", sans-serif; }
+  background-color: black; }
   main h1 {
-    color: white;
-    font-family: "Oswald", sans-serif;
+    text-align: center;
     font-size: 150%;
-    font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -277,11 +289,17 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Oswald", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
   color: gray; }
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .game-wrapper {
   display: flex;
@@ -349,15 +367,15 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: black;
-  font-family: "Ubuntu", sans-serif; }
+  background-color: black; }
   main h1 {
-    color: white;
-    font-family: "Oswald", sans-serif;
+    text-align: center;
     font-size: 150%;
-    font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -398,11 +416,17 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Oswald", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
   color: gray; }
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .home-wrapper {
   display: flex;
@@ -411,11 +435,20 @@ main {
   flex-direction: column;
   border: 2px solid #CCCC9A; }
   .home-wrapper h1 {
-    color: white;
+    text-align: center;
     font-family: "Oswald", sans-serif;
     font-size: 150%;
-    padding-bottom: 10px;
-    font-weight: bolder; }
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; }
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .home-login-wrapper {
   position: relative;
@@ -441,7 +474,8 @@ main {
   justify-content: center;
   align-content: center;
   text-align: center;
-  align-items: center; }
+  align-items: center;
+  font-family: "Oswald", sans-serif; }
   .home-login span {
     margin-top: 5px;
     display: flex;
@@ -451,7 +485,8 @@ main {
     align-content: center;
     text-align: center; }
   .home-login span:hover {
-    color: #999967; }
+    color: #999967;
+    font-family: "Oswald", sans-serif; }
 
 button {
   cursor: pointer; }
@@ -465,15 +500,15 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: black;
-  font-family: "Ubuntu", sans-serif; }
+  background-color: black; }
   main h1 {
-    color: white;
-    font-family: "Oswald", sans-serif;
+    text-align: center;
     font-size: 150%;
-    font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -514,11 +549,17 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Oswald", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
   color: gray; }
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .match-wrapper {
   display: flex;
@@ -562,15 +603,15 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: black;
-  font-family: "Ubuntu", sans-serif; }
+  background-color: black; }
   main h1 {
-    color: white;
-    font-family: "Oswald", sans-serif;
+    text-align: center;
     font-size: 150%;
-    font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -611,11 +652,17 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Oswald", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
   color: gray; }
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .match-stats-wrapper {
   position: relative;
@@ -703,15 +750,15 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: black;
-  font-family: "Ubuntu", sans-serif; }
+  background-color: black; }
   main h1 {
-    color: white;
-    font-family: "Oswald", sans-serif;
+    text-align: center;
     font-size: 150%;
-    font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -752,11 +799,17 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Oswald", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
   color: gray; }
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .player-setting-wrapper {
   display: flex;
@@ -818,15 +871,15 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: black;
-  font-family: "Ubuntu", sans-serif; }
+  background-color: black; }
   main h1 {
-    color: white;
-    font-family: "Oswald", sans-serif;
+    text-align: center;
     font-size: 150%;
-    font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -867,11 +920,17 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Oswald", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
   color: gray; }
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .point-wrapper {
   display: flex;
@@ -900,15 +959,15 @@ main {
   width: 100vw;
   margin: 0px;
   box-sizing: border-box;
-  background-color: black;
-  font-family: "Ubuntu", sans-serif; }
+  background-color: black; }
   main h1 {
-    color: white;
-    font-family: "Oswald", sans-serif;
+    text-align: center;
     font-size: 150%;
-    font-weight: bolder;
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin: 20px 0 20px 0;
+    color: #fff;
+    -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+    animation: neon1 1.5s ease-in-out infinite alternate; }
 
 .logo {
   background-image: url("../../styles/images/logo.png");
@@ -949,11 +1008,17 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Oswald", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
   color: gray; }
+
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .type-wrapper {
   display: flex;
