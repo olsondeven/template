@@ -41,12 +41,16 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+@import url("https://fonts.googleapis.com/css?family=Baloo|Bungee+Inline|Press+Start+2P");
 button {
   cursor: pointer; }
 
 body {
   margin: 0px;
   box-sizing: border-box; }
+
+input {
+  font-family: "Press Start 2P", sans-serif; }
 
 main {
   height: 100vh;
@@ -55,6 +59,7 @@ main {
   box-sizing: border-box;
   background-color: black; }
   main h1 {
+    font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
     margin: 20px 0 20px 0;
@@ -102,7 +107,7 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Oswald", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
@@ -114,12 +119,16 @@ main {
   to {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
+@import url("https://fonts.googleapis.com/css?family=Baloo|Bungee+Inline|Press+Start+2P");
 button {
   cursor: pointer; }
 
 body {
   margin: 0px;
   box-sizing: border-box; }
+
+input {
+  font-family: "Press Start 2P", sans-serif; }
 
 main {
   height: 100vh;
@@ -128,6 +137,7 @@ main {
   box-sizing: border-box;
   background-color: black; }
   main h1 {
+    font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
     margin: 20px 0 20px 0;
@@ -175,7 +185,7 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Oswald", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
@@ -197,7 +207,7 @@ main {
   border: 2px solid #CCCC9A; }
   .flip-wrapper h1 {
     color: white;
-    font-family: "Oswald", sans-serif;
+    font-family: "Press Start 2P", sans-serif;
     font-size: 150%;
     font-weight: bolder;
     margin-top: 10px;
@@ -228,12 +238,16 @@ main {
   cursor: pointer;
   border: 2px solid white; }
 
+@import url("https://fonts.googleapis.com/css?family=Baloo|Bungee+Inline|Press+Start+2P");
 button {
   cursor: pointer; }
 
 body {
   margin: 0px;
   box-sizing: border-box; }
+
+input {
+  font-family: "Press Start 2P", sans-serif; }
 
 main {
   height: 100vh;
@@ -242,6 +256,7 @@ main {
   box-sizing: border-box;
   background-color: black; }
   main h1 {
+    font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
     margin: 20px 0 20px 0;
@@ -289,7 +304,7 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Oswald", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
@@ -304,7 +319,8 @@ main {
 .game-wrapper {
   display: flex;
   width: 100%;
-  height: 100%; }
+  height: 100%;
+  font-family: "Baloo", cursive; }
 
 .game-player-card {
   width: 50vw;
@@ -331,7 +347,23 @@ main {
   .player-match-score span {
     position: absolute;
     top: 10px;
-    right: 15px; }
+    right: 15px;
+    font-size: 10px;
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    color: #fff;
+    font-family: "Press Start 2P", cursive;
+    -webkit-animation: neon6 1.5s ease-in-out infinite alternate;
+    -moz-animation: neon6 1.5s ease-in-out infinite alternate;
+    animation: neon6 1.5s ease-in-out infinite alternate; }
+
+@keyframes neon6 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de, 0 0 150px #ff00de; }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff00de, 0 0 35px #ff00de, 0 0 40px #ff00de, 0 0 50px #ff00de, 0 0 75px #ff00de; } }
 
 .player-btn {
   width: 100%;
@@ -340,7 +372,18 @@ main {
   font-weight: bolder;
   display: flex;
   justify-content: center;
-  align-items: center; }
+  align-items: center;
+  text-align: center;
+  margin: 20px 0 20px 0;
+  text-decoration: none;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  color: #fff;
+  font-family: "Press Start 2P", cursive;
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate; }
 
 @media (max-width: 768px) {
   .game-wrapper {
@@ -355,12 +398,16 @@ main {
     top: 0;
     left: 0; } }
 
+@import url("https://fonts.googleapis.com/css?family=Baloo|Bungee+Inline|Press+Start+2P");
 button {
   cursor: pointer; }
 
 body {
   margin: 0px;
   box-sizing: border-box; }
+
+input {
+  font-family: "Press Start 2P", sans-serif; }
 
 main {
   height: 100vh;
@@ -369,6 +416,7 @@ main {
   box-sizing: border-box;
   background-color: black; }
   main h1 {
+    font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
     margin: 20px 0 20px 0;
@@ -416,7 +464,7 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Oswald", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
@@ -436,19 +484,12 @@ main {
   border: 2px solid #CCCC9A; }
   .home-wrapper h1 {
     text-align: center;
-    font-family: "Oswald", sans-serif;
     font-size: 150%;
     margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;
     animation: neon1 1.5s ease-in-out infinite alternate; }
-
-@-webkit-keyframes neon1 {
-  from {
-    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF; }
-  to {
-    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .home-login-wrapper {
   position: relative;
@@ -464,7 +505,8 @@ main {
   color: white; }
   .home-login-wrapper p {
     padding-top: 15px;
-    cursor: pointer; }
+    cursor: pointer;
+    font-family: "Press Start 2P", sans-serif; }
 
 .home-login {
   width: 90%;
@@ -475,7 +517,7 @@ main {
   align-content: center;
   text-align: center;
   align-items: center;
-  font-family: "Oswald", sans-serif; }
+  font-family: "Press Start 2P", sans-serif; }
   .home-login span {
     margin-top: 5px;
     display: flex;
@@ -486,14 +528,22 @@ main {
     text-align: center; }
   .home-login span:hover {
     color: #999967;
-    font-family: "Oswald", sans-serif; }
+    font-family: "Press Start 2P", sans-serif; }
 
+@media only screen and (max-width: 640px) {
+  .home-wrapper h1 {
+    font-size: 30px; } }
+
+@import url("https://fonts.googleapis.com/css?family=Baloo|Bungee+Inline|Press+Start+2P");
 button {
   cursor: pointer; }
 
 body {
   margin: 0px;
   box-sizing: border-box; }
+
+input {
+  font-family: "Press Start 2P", sans-serif; }
 
 main {
   height: 100vh;
@@ -502,6 +552,7 @@ main {
   box-sizing: border-box;
   background-color: black; }
   main h1 {
+    font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
     margin: 20px 0 20px 0;
@@ -549,7 +600,7 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Oswald", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
@@ -569,7 +620,7 @@ main {
   border: 2px solid #CCCC9A; }
   .match-wrapper h1 {
     color: white;
-    font-family: "Oswald", sans-serif;
+    font-family: "Press Start 2P", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
     font-weight: bolder;
@@ -591,12 +642,16 @@ main {
   cursor: pointer;
   border: 2px solid white; }
 
+@import url("https://fonts.googleapis.com/css?family=Baloo|Bungee+Inline|Press+Start+2P");
 button {
   cursor: pointer; }
 
 body {
   margin: 0px;
   box-sizing: border-box; }
+
+input {
+  font-family: "Press Start 2P", sans-serif; }
 
 main {
   height: 100vh;
@@ -605,6 +660,7 @@ main {
   box-sizing: border-box;
   background-color: black; }
   main h1 {
+    font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
     margin: 20px 0 20px 0;
@@ -652,7 +708,7 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Oswald", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
@@ -738,12 +794,16 @@ main {
   .match-stats-wrapper button {
     display: none; } }
 
+@import url("https://fonts.googleapis.com/css?family=Baloo|Bungee+Inline|Press+Start+2P");
 button {
   cursor: pointer; }
 
 body {
   margin: 0px;
   box-sizing: border-box; }
+
+input {
+  font-family: "Press Start 2P", sans-serif; }
 
 main {
   height: 100vh;
@@ -752,6 +812,7 @@ main {
   box-sizing: border-box;
   background-color: black; }
   main h1 {
+    font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
     margin: 20px 0 20px 0;
@@ -799,7 +860,7 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Oswald", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
@@ -821,7 +882,7 @@ main {
   border: 2px solid #CCCC9A; }
   .player-setting-wrapper h1 {
     color: white;
-    font-family: "Oswald", sans-serif;
+    font-family: "Press Start 2P", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
     font-weight: bolder;
@@ -859,12 +920,16 @@ main {
 .submit:hover {
   cursor: pointer; }
 
+@import url("https://fonts.googleapis.com/css?family=Baloo|Bungee+Inline|Press+Start+2P");
 button {
   cursor: pointer; }
 
 body {
   margin: 0px;
   box-sizing: border-box; }
+
+input {
+  font-family: "Press Start 2P", sans-serif; }
 
 main {
   height: 100vh;
@@ -873,6 +938,7 @@ main {
   box-sizing: border-box;
   background-color: black; }
   main h1 {
+    font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
     margin: 20px 0 20px 0;
@@ -920,7 +986,7 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Oswald", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
@@ -940,19 +1006,23 @@ main {
   border: 2px solid #CCCC9A; }
   .point-wrapper h1 {
     color: white;
-    font-family: "Oswald", sans-serif;
+    font-family: "Press Start 2P", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
     font-weight: bolder;
     margin-top: 10px;
     margin-bottom: 10px; }
 
+@import url("https://fonts.googleapis.com/css?family=Baloo|Bungee+Inline|Press+Start+2P");
 button {
   cursor: pointer; }
 
 body {
   margin: 0px;
   box-sizing: border-box; }
+
+input {
+  font-family: "Press Start 2P", sans-serif; }
 
 main {
   height: 100vh;
@@ -961,6 +1031,7 @@ main {
   box-sizing: border-box;
   background-color: black; }
   main h1 {
+    font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
     margin: 20px 0 20px 0;
@@ -1008,7 +1079,7 @@ main {
   background-color: white;
   border-radius: 2px;
   border: 1px solid white;
-  font-family: "Oswald", sans-serif;
+  font-family: "Press Start 2P", sans-serif;
   border-radius: 2px;
   font-weight: bold;
   margin-top: 5px;
@@ -1028,7 +1099,7 @@ main {
   border: 2px solid #CCCC9A; }
   .type-wrapper h1 {
     color: white;
-    font-family: "Oswald", sans-serif;
+    font-family: "Press Start 2P", sans-serif;
     font-size: 150%;
     padding-bottom: 10px;
     font-weight: bolder;
@@ -1046,7 +1117,7 @@ main {
   align-items: center;
   text-align: center; }
   .select-container h2 {
-    font-family: "Oswald", sans-serif;
+    font-family: "Press Start 2P", sans-serif;
     font-size: 150%; }
 
 .select-container:hover {

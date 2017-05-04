@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css?family=Baloo|Bungee+Inline|Press+Start+2P');
 $mainBackgroundColor: black;
 $mainTextColor: #0066ff;
 $mainGreenColor: #999967;
@@ -5,8 +6,10 @@ $mainSubGreenColor: #CCCC9A;
 $mainRedColor: white;
 $textRoboto: 'Roboto', sans-serif;
 $textOpenSans: 'Open Sans', sans-serif;
-$textOswald: 'Oswald', sans-serif;
+$textOswald: 'Press Start 2P', sans-serif;
 $textUbuntu: 'Ubuntu', sans-serif;
+$textBaloo: 'Baloo', cursive;
+$retro: 'Press Start 2P', sans-serif;
 button{
   cursor: pointer;
 }
@@ -15,6 +18,7 @@ body {
   box-sizing: border-box;
 }
 input{
+  font-family: $retro;
 }
 main{
   height: 100vh;
@@ -29,6 +33,7 @@ main{
     // font-weight: bolder;
     // margin-top: 10px;
     // margin-bottom: 10px;
+    font-family: $retro;
     text-align: center;
     font-size: 150%;
     margin: 20px 0 20px 0;
