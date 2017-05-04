@@ -50,12 +50,14 @@ angular.module('app').service('mainService', function($http,$state) {
                 matchScore: null,
                 hasAcct: false,
                 mate1: null,
+                color: null,
                 mate2: null
             },
             team2: {
                 teamName: null,
                 foul: null,
                 let: null,
+                color: null,
                 gameScore: null,
                 matchScore: null,
                 hasAcct: false,
@@ -78,6 +80,7 @@ angular.module('app').service('mainService', function($http,$state) {
             }else{
               game[prop] = val;
             }
+            console.log(game);
         }
 //set service
     this.setStartServe = function(prop) {

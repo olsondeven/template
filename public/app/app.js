@@ -44,6 +44,16 @@ angular.module('app', ['ui.router'])
     templateUrl: './app/routes/match/matchTemp.html',
     controller: 'matchCtrl'
   })
+  .state('team1settings',{
+    url: '/team1settings',
+    templateUrl: './app/routes/team1settings/team1settingsTemp.html',
+    controller: 'team1settings'
+  })
+  .state('team2',{
+    url: '/team2settings',
+    templateUrl: './app/routes/team2settings/team2settingsTemp.html',
+    controller: 'team2settings'
+  })
   .state('point', {
     url: '/point',
     templateUrl: './app/routes/point/pointTemp.html',
