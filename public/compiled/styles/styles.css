@@ -49,9 +49,6 @@ body {
   margin: 0px;
   box-sizing: border-box; }
 
-input {
-  font-family: "Press Start 2P", sans-serif; }
-
 main {
   height: 100vh;
   width: 100vw;
@@ -62,7 +59,6 @@ main {
     font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
-    margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;
@@ -127,9 +123,6 @@ body {
   margin: 0px;
   box-sizing: border-box; }
 
-input {
-  font-family: "Press Start 2P", sans-serif; }
-
 main {
   height: 100vh;
   width: 100vw;
@@ -140,7 +133,6 @@ main {
     font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
-    margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;
@@ -246,9 +238,6 @@ body {
   margin: 0px;
   box-sizing: border-box; }
 
-input {
-  font-family: "Press Start 2P", sans-serif; }
-
 main {
   height: 100vh;
   width: 100vw;
@@ -259,7 +248,6 @@ main {
     font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
-    margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;
@@ -373,8 +361,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  margin: 20px 0 20px 0;
   text-decoration: none;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
@@ -385,12 +371,16 @@ main {
   -moz-animation: neon1 1.5s ease-in-out infinite alternate;
   animation: neon1 1.5s ease-in-out infinite alternate; }
 
-@media (max-width: 768px) {
+@media only screen and (max-width: 768px) {
   .game-wrapper {
     flex-wrap: wrap; }
+    .game-wrapper h1 {
+      font-size: 15px; }
   .game-player-card {
     width: 100vw;
     height: 50vh; }
+  .player-btn {
+    font-size: 120px; }
   .player-match-score img {
     width: 45px;
     height: 45px;
@@ -406,9 +396,6 @@ body {
   margin: 0px;
   box-sizing: border-box; }
 
-input {
-  font-family: "Press Start 2P", sans-serif; }
-
 main {
   height: 100vh;
   width: 100vw;
@@ -419,7 +406,6 @@ main {
     font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
-    margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;
@@ -542,9 +528,6 @@ body {
   margin: 0px;
   box-sizing: border-box; }
 
-input {
-  font-family: "Press Start 2P", sans-serif; }
-
 main {
   height: 100vh;
   width: 100vw;
@@ -555,7 +538,6 @@ main {
     font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
-    margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;
@@ -650,9 +632,6 @@ body {
   margin: 0px;
   box-sizing: border-box; }
 
-input {
-  font-family: "Press Start 2P", sans-serif; }
-
 main {
   height: 100vh;
   width: 100vw;
@@ -663,7 +642,6 @@ main {
     font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
-    margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;
@@ -802,9 +780,6 @@ body {
   margin: 0px;
   box-sizing: border-box; }
 
-input {
-  font-family: "Press Start 2P", sans-serif; }
-
 main {
   height: 100vh;
   width: 100vw;
@@ -815,7 +790,6 @@ main {
     font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
-    margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;
@@ -928,9 +902,6 @@ body {
   margin: 0px;
   box-sizing: border-box; }
 
-input {
-  font-family: "Press Start 2P", sans-serif; }
-
 main {
   height: 100vh;
   width: 100vw;
@@ -941,7 +912,6 @@ main {
     font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
-    margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;
@@ -1021,9 +991,6 @@ body {
   margin: 0px;
   box-sizing: border-box; }
 
-input {
-  font-family: "Press Start 2P", sans-serif; }
-
 main {
   height: 100vh;
   width: 100vw;
@@ -1034,7 +1001,6 @@ main {
     font-family: "Press Start 2P", sans-serif;
     text-align: center;
     font-size: 150%;
-    margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;

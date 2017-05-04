@@ -7,7 +7,7 @@ angular.module('app').service('mainService', function($http,$state) {
             startDate: null, //date stamp
             endDate: null,
             selectPoint: 11, //
-            selectMatch: 3,
+            selectMatch: 5,
             selectType: null,
             matchWinner: null,
             matchLoser: null,
@@ -103,9 +103,9 @@ angular.module('app').service('mainService', function($http,$state) {
                 pushArr.pointDate = new Date();
                 game.gameScoreCollection[gameScoreIndex].tracker.push(pushArr);
                 if(game.player1.curSer){
-                  // console.log('point Index', pointScoreIndex);
-                  // console.log('game Index', gameScoreIndex);
-                  // console.log(game.gameScoreCollection);
+                  console.log('point Index', pointScoreIndex);
+                  console.log('game Index', gameScoreIndex);
+                  console.log(game.gameScoreCollection);
                   game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
                 }
                 //test
@@ -185,13 +185,17 @@ angular.module('app').service('mainService', function($http,$state) {
         }
 
 //decide on match winner
-        if(game.player1.matchScore > (game.selectMatch-(game.selectMatch%2)-1)){
+        // if(game.player1.matchScore > (game.selectMatch-(game.selectMatch%2)-1)){
+          if(game.player1.matchScore > (game.selectMatch/2)){
+          console.log('fired fn for winner of match');
           game.matchWinner = "player1";
           game.matchLoser = "player2";
           return matchFinished();
         }
 
-        if(game.player2.matchScore > (game.selectMatch-(game.selectMatch%2)-1)){
+        // if(game.player2.matchScore > (game.selectMatch-(game.selectMatch%2)-1)){
+            if(game.player2.matchScore > (game.selectMatch/2)){
+          console.log('fired fn for winner of match');
           game.matchWinner = "player2";
           game.matchLoser = "player1";
           return matchFinished();

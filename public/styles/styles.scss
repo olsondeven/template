@@ -18,7 +18,6 @@ body {
   box-sizing: border-box;
 }
 input{
-  font-family: $retro;
 }
 main{
   height: 100vh;
@@ -36,7 +35,6 @@ main{
     font-family: $retro;
     text-align: center;
     font-size: 150%;
-    margin: 20px 0 20px 0;
     color: #fff;
     -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
     -moz-animation: neon1 1.5s ease-in-out infinite alternate;
