@@ -12,7 +12,7 @@ angular.module('app').controller("player1settingsCtrl",function($scope, $state, 
     }else{
       mainService.setGame('name',val, 'player1');
       mainService.setGame('color',color,'player1');
-      $state.go('player2')
+      $state.go('player2');
     }
   }
 });//closing
