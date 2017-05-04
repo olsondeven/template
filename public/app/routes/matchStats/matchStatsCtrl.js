@@ -18,11 +18,11 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     }else{
       serPoints = 5;
     }
-    var gameScale = ($scope.game.gameScoreCollection.length - 1) + $scope.game.gameScoreCollection.length;
-    // var gameScale = 3;
+    var gameScale = $scope.game.gameScoreCollection.length*2;
+    // var gameScale = 6;
     console.log(gameScale);
-    // var dataArray = [12,10,0,32,30]//,0,12,4];
-    // var dataArrayColor = ["blue",'red','black','blue','red']//,'black','blue','red'];
+    // var dataArray = [12,10,0,0,32,30,0,0,12,4]//,0,0,4,13,0,0,11,7,0,0,7,14,0,0,13,4];
+    // var dataArrayColor = ["blue",'red','black','black','blue','red','black','black','blue','red']//,'black','black','blue','red','black','black','blue','red','black','black','blue','red','black','black','blue','red'];
     var dataArray = [];
     var dataArrayColor = [];
     //split up stats for display
@@ -32,18 +32,18 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
           dataArray.push($scope.game.gameScoreCollection[i].winScore);
           dataArray.push($scope.game.gameScoreCollection[i].lossScore);
           dataArray.push(0);
-          // dataArray.push(0);
+          dataArray.push(0);
         }else{
           dataArray.push($scope.game.gameScoreCollection[i].lossScore);
           dataArray.push($scope.game.gameScoreCollection[i].winScore);
           dataArray.push(0);
-          // dataArray.push(0);
+          dataArray.push(0);
         }
         //push correct color to array
         dataArrayColor.push($scope.game.player1.color);
         dataArrayColor.push($scope.game.player2.color);
         dataArrayColor.push("black");
-        // dataArrayColor.push("black");
+        dataArrayColor.push("black");
         // console.log(i);
       }
       maxNum = Math.max.apply(null, dataArray);
@@ -51,13 +51,20 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     }
     splitStatsWinner();
     // for(var i = dataArray.length-1; i>=0; i--){
-      if(dataArray[dataArray.length-1] === 0){
+    console.log(dataArray);
+    console.log(dataArrayColor);
+      if(dataArray[dataArray.length-1] === 0 && dataArray[dataArray.length-2] === 0){
         dataArray.splice(dataArray.length-1,1);
+        dataArray.splice(dataArray.length-1,1);
+        dataArrayColor.splice(dataArrayColor.length-1,1);
+        dataArrayColor.splice(dataArrayColor.length-1,1);
       }
     // }
     console.log(dataArray);
+    console.log(dataArrayColor);
     //create scale
     //declare width and height, let data declare this
+
 
     var canvasMatch = d3.select(".match-graph-cont-complete")
       .append("svg")
@@ -69,20 +76,7 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
       .range([0,width]);//0 to the width or height of graph
 
 
-    var testHeight = (parseFloat(canvasMatch.style("height").replace(/px/gi,'')));
-    var testHeight2 = ((testHeight/gameScale)/2);
-    console.log(testHeight2);
-    var testHeight3 = (testHeight/gameScale);
-    testHeight = (testHeight/5)/2;
-    console.log(testHeight);
 
-    // var correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-testHeight3).toString();
-    var correctWord = null;
-    if(gameScale === 3){
-      correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-testHeight2).toString();
-    }else{
-      correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-testHeight3).toString();
-    }
 
     var bottomScale = d3.scaleLinear()
       .domain([0,maxNum+1])
@@ -92,7 +86,21 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
       .ticks(maxNum/serPoints)
       .scale(bottomScale);
 
+      var testHeight = (parseFloat(canvasMatch.style("height").replace(/px/gi,'')));
+      var testHeight2 = ((testHeight/gameScale)/2);
+      console.log(testHeight2);
+      var testHeight3 = (testHeight/gameScale);
+      // testHeight = (testHeight/5)/2;
+      console.log(testHeight);
 
+      // var correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-testHeight3).toString();
+      var correctWord = null;
+      if(gameScale === 3){
+        correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-testHeight2).toString();
+      }else{
+        correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-testHeight3).toString();
+      }
+      console.log(correctWord);
     canvasMatch.append("g").attr("transform","translate(2,"+correctWord+")").call(axisMatch);
 
     // canvasMatch.append("g").attr("transform","translate(6,30)").call(axisLeft(y));
@@ -107,13 +115,10 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         // .attr("y", function(d,i){return i*(100/($scope.game.selectMatch/2));})//this offsets bars by 100px
         .attr("height", (testHeight2))
         .attr("y", function(d,i){return i*(testHeight2);})//this offsets bars by 100px
-        // .data([1,1])
-        // .attr("height", function(element){return heightScale(element);})
+        // .attr("transform","translate(2,-20)")
         .data(dataArrayColor)
         .attr("fill", function(d){return d;})
-        .append("g").attr("transform","translate(2,0)");
 
-console.log(testHeight);
 //     //create canvas for loser graph
 //     var canvas = d3.select(".match-graph-cont-loser")
 //       .append("svg")

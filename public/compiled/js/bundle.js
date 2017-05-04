@@ -54,7 +54,7 @@ angular.module('app').service('mainService', function ($http, $state) {
         startDate: null, //date stamp
         endDate: null,
         selectPoint: 11, //
-        selectMatch: 5,
+        selectMatch: 3,
         selectType: null,
         matchWinner: null,
         matchLoser: null,
@@ -304,6 +304,8 @@ angular.module('app').service('mainService', function ($http, $state) {
     }
 }); //closing
 "use strict";
+"use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -375,11 +377,11 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   } else {
     serPoints = 5;
   }
-  var gameScale = $scope.game.gameScoreCollection.length - 1 + $scope.game.gameScoreCollection.length;
-  // var gameScale = 3;
+  var gameScale = $scope.game.gameScoreCollection.length * 2;
+  // var gameScale = 6;
   console.log(gameScale);
-  // var dataArray = [12,10,0,32,30]//,0,12,4];
-  // var dataArrayColor = ["blue",'red','black','blue','red']//,'black','blue','red'];
+  // var dataArray = [12,10,0,0,32,30,0,0,12,4]//,0,0,4,13,0,0,11,7,0,0,7,14,0,0,13,4];
+  // var dataArrayColor = ["blue",'red','black','black','blue','red','black','black','blue','red']//,'black','black','blue','red','black','black','blue','red','black','black','blue','red','black','black','blue','red'];
   var dataArray = [];
   var dataArrayColor = [];
   //split up stats for display
@@ -389,31 +391,38 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
         dataArray.push($scope.game.gameScoreCollection[i].winScore);
         dataArray.push($scope.game.gameScoreCollection[i].lossScore);
         dataArray.push(0);
-        // dataArray.push(0);
+        dataArray.push(0);
       } else {
         dataArray.push($scope.game.gameScoreCollection[i].lossScore);
         dataArray.push($scope.game.gameScoreCollection[i].winScore);
         dataArray.push(0);
-        // dataArray.push(0);
+        dataArray.push(0);
       }
       //push correct color to array
       dataArrayColor.push($scope.game.player1.color);
       dataArrayColor.push($scope.game.player2.color);
       dataArrayColor.push("black");
-      // dataArrayColor.push("black");
+      dataArrayColor.push("black");
       // console.log(i);
     }
     maxNum = Math.max.apply(null, dataArray);
   }
   splitStatsWinner();
   // for(var i = dataArray.length-1; i>=0; i--){
-  if (dataArray[dataArray.length - 1] === 0) {
+  console.log(dataArray);
+  console.log(dataArrayColor);
+  if (dataArray[dataArray.length - 1] === 0 && dataArray[dataArray.length - 2] === 0) {
     dataArray.splice(dataArray.length - 1, 1);
+    dataArray.splice(dataArray.length - 1, 1);
+    dataArrayColor.splice(dataArrayColor.length - 1, 1);
+    dataArrayColor.splice(dataArrayColor.length - 1, 1);
   }
   // }
   console.log(dataArray);
+  console.log(dataArrayColor);
   //create scale
   //declare width and height, let data declare this
+
 
   var canvasMatch = d3.select(".match-graph-cont-complete").append("svg").attr("width", width).attr("height", height);
 
@@ -421,11 +430,15 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   .range([0, width]); //0 to the width or height of graph
 
 
+  var bottomScale = d3.scaleLinear().domain([0, maxNum + 1]).range([0, parseFloat(canvasMatch.style("width").replace(/px/gi, ''))]);
+
+  var axisMatch = d3.axisBottom().ticks(maxNum / serPoints).scale(bottomScale);
+
   var testHeight = parseFloat(canvasMatch.style("height").replace(/px/gi, ''));
   var testHeight2 = testHeight / gameScale / 2;
   console.log(testHeight2);
   var testHeight3 = testHeight / gameScale;
-  testHeight = testHeight / 5 / 2;
+  // testHeight = (testHeight/5)/2;
   console.log(testHeight);
 
   // var correctWord = ((parseFloat(canvasMatch.style("height").replace(/px/gi,'')))-testHeight3).toString();
@@ -435,11 +448,7 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   } else {
     correctWord = (parseFloat(canvasMatch.style("height").replace(/px/gi, '')) - testHeight3).toString();
   }
-
-  var bottomScale = d3.scaleLinear().domain([0, maxNum + 1]).range([0, parseFloat(canvasMatch.style("width").replace(/px/gi, ''))]);
-
-  var axisMatch = d3.axisBottom().ticks(maxNum / serPoints).scale(bottomScale);
-
+  console.log(correctWord);
   canvasMatch.append("g").attr("transform", "translate(2," + correctWord + ")").call(axisMatch);
 
   // canvasMatch.append("g").attr("transform","translate(6,30)").call(axisLeft(y));
@@ -455,13 +464,11 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   .attr("height", testHeight2).attr("y", function (d, i) {
     return i * testHeight2;
   }) //this offsets bars by 100px
-  // .data([1,1])
-  // .attr("height", function(element){return heightScale(element);})
+  // .attr("transform","translate(2,-20)")
   .data(dataArrayColor).attr("fill", function (d) {
     return d;
-  }).append("g").attr("transform", "translate(2,0)");
+  });
 
-  console.log(testHeight);
   //     //create canvas for loser graph
   //     var canvas = d3.select(".match-graph-cont-loser")
   //       .append("svg")
@@ -541,26 +548,6 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
 }); //closing
 'use strict';
 
-angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
-  var color = null;
-  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
-  $scope.selectColor = function (val) {
-    color = val;
-    console.log(color);
-  };
-  $scope.selectName = function (val) {
-    console.log('fired', color, val);
-    if (!color || !val) {
-      return swal('Please select color and choose name');
-    } else {
-      mainService.setGame('name', val, 'player1');
-      mainService.setGame('color', color, 'player1');
-      $state.go('player2');
-    }
-  };
-}); //closing
-'use strict';
-
 angular.module('app').controller("player2settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
   var color = null;
   $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
@@ -593,12 +580,30 @@ angular.module('app').controller('pointCtrl', function ($scope, $stateParams, ma
 }); //closing
 'use strict';
 
+angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('name', val, 'player1');
+      mainService.setGame('color', color, 'player1');
+      $state.go('player2');
+    }
+  };
+}); //closing
+'use strict';
+
 angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.setType = function (val) {
     // console.log(val, "fired");
     mainService.setGame("selectType", val);
   };
 }); //closing
-"use strict";
-"use strict";
 //# sourceMappingURL=bundle.js.map

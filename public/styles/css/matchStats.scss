@@ -1,5 +1,17 @@
 @import '../styles';
 .match-stats-wrapper{
+  h1{
+    position: relative;
+    span{
+      // border: 1px solid black;
+      border-radius: 2px;
+      height: 20px;
+      width: 20px;
+      position: absolute;
+      top: 1px;
+      left: -30px;
+    }
+  }
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -46,15 +58,6 @@
     div{
       position: relative;
       padding: 10px;
-    }
-    span{
-      // border: 1px solid black;
-      border-radius: 2px;
-      height: 20px;
-      width: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
     }
   }
   display: flex;
