@@ -96,13 +96,13 @@ angular.module('app').service('mainService', function($http,$state) {
                 game.player2.curSer = true;
             }
             //doubles
-            if (prop === "team1") {
-                game.startSer = "team1";
-                game.team1.curSer = true;
-            } else if(prop === "team2"){
-                game.startSer = "team2";
-                game.team2.curSer = true;
-            }
+            // if (prop === "team1") {
+            //     game.startSer = "team1";
+            //     game.team1.curSer = true;
+            // } else if(prop === "team2"){
+            //     game.startSer = "team2";
+            //     game.team2.curSer = true;
+            // }
             //doubles
         }
 //add to personal score
@@ -254,7 +254,7 @@ angular.module('app').service('mainService', function($http,$state) {
             game.startSer = 'player2';
             game.player1.curSer = false;
             game.player2.curSer = true;
-        } else {
+        }else if (game.startSer === 'player2'){
             swal(game.player1.name + " serves first");
             game.startSer = 'player1';
             game.player1.curSer = true;

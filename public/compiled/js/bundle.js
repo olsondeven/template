@@ -154,13 +154,13 @@ angular.module('app').service('mainService', function ($http, $state) {
             game.player2.curSer = true;
         }
         //doubles
-        if (prop === "team1") {
-            game.startSer = "team1";
-            game.team1.curSer = true;
-        } else if (prop === "team2") {
-            game.startSer = "team2";
-            game.team2.curSer = true;
-        }
+        // if (prop === "team1") {
+        //     game.startSer = "team1";
+        //     game.team1.curSer = true;
+        // } else if(prop === "team2"){
+        //     game.startSer = "team2";
+        //     game.team2.curSer = true;
+        // }
         //doubles
     };
     //add to personal score
@@ -312,7 +312,7 @@ angular.module('app').service('mainService', function ($http, $state) {
             game.startSer = 'player2';
             game.player1.curSer = false;
             game.player2.curSer = true;
-        } else {
+        } else if (game.startSer === 'player2') {
             swal(game.player1.name + " serves first");
             game.startSer = 'player1';
             game.player1.curSer = true;
@@ -328,11 +328,12 @@ angular.module('app').service('mainService', function ($http, $state) {
         $state.go('matchStats');
     }
 }); //closing
+"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.game = mainService.getGame();
-  if (game.selectType === 'single') {
+  if ($scope.game.selectType === 'single') {
     $scope.singleDouble = true;
   } else {
     $scope.singleDouble = false;
@@ -360,7 +361,6 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
     //date
   };
 }); //closing
-"use strict";
 'use strict';
 
 angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -578,6 +578,26 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
 }); //closing
 'use strict';
 
+angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('name', val, 'player1');
+      mainService.setGame('color', color, 'player1');
+      $state.go('player2');
+    }
+  };
+}); //closing
+'use strict';
+
 angular.module('app').controller("player2settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
   var color = null;
   $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
@@ -614,9 +634,10 @@ angular.module('app').controller('pointCtrl', function ($scope, $stateParams, ma
     }
   };
 }); //closing
-'use strict';
+"use strict";
 
-angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
+angular.module("app").controller("team2settings", function ($scope, $state, $stateParams, mainService, $rootScope) {
+  console.log('is this working');
   var color = null;
   $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
   $scope.selectColor = function (val) {
@@ -628,9 +649,9 @@ angular.module('app').controller("player1settingsCtrl", function ($scope, $state
     if (!color || !val) {
       return swal('Please select color and choose name');
     } else {
-      mainService.setGame('name', val, 'player1');
-      mainService.setGame('color', color, 'player1');
-      $state.go('player2');
+      mainService.setGame('name', val, 'team2');
+      mainService.setGame('color', color, 'team2');
+      $state.go('flip');
     }
   };
 }); //closing
@@ -651,27 +672,6 @@ angular.module("app").controller("team1settings", function ($scope, $stateParams
       mainService.setGame('name', val, 'team1');
       mainService.setGame('color', color, 'team1');
       $state.go('team2');
-    }
-  };
-}); //closing
-"use strict";
-
-angular.module("app").controller("team2settings", function ($scope, $state, $stateParams, mainService, $rootScope) {
-  console.log('is this working');
-  var color = null;
-  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
-  $scope.selectColor = function (val) {
-    color = val;
-    console.log(color);
-  };
-  $scope.selectName = function (val) {
-    console.log('fired', color, val);
-    if (!color || !val) {
-      return swal('Please select color and choose name');
-    } else {
-      mainService.setGame('name', val, 'team2');
-      mainService.setGame('color', color, 'team2');
-      $state.go('flip');
     }
   };
 }); //closing

@@ -1,6 +1,6 @@
 angular.module('app').controller('flipCtrl',function($scope, $stateParams, mainService, $rootScope){
   $scope.game = mainService.getGame();
-  if(game.selectType === 'single'){
+  if($scope.game.selectType === 'single'){
     $scope.singleDouble = true;
   }else{
     $scope.singleDouble = false;
