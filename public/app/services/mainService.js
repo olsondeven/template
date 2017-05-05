@@ -51,7 +51,8 @@ angular.module('app').service('mainService', function($http,$state) {
                 hasAcct: false,
                 mate1: null,
                 color: null,
-                mate2: null
+                mate2: null,
+                curSer: false
             },
             team2: {
                 teamName: null,
@@ -62,7 +63,8 @@ angular.module('app').service('mainService', function($http,$state) {
                 matchScore: null,
                 hasAcct: false,
                 mate1: null,
-                mate2: null
+                mate2: null,
+                curSer: false
             }
         }
 //get/set/update/delete from controllers and views
@@ -89,10 +91,19 @@ angular.module('app').service('mainService', function($http,$state) {
             if (prop === "player1") {
                 game.startSer = "player1";
                 game.player1.curSer = true;
-            } else {
+            } else if(prop === "player2") {
                 game.startSer = "player2";
                 game.player2.curSer = true;
             }
+            //doubles
+            if (prop === "team1") {
+                game.startSer = "team1";
+                game.team1.curSer = true;
+            } else if(prop === "team2"){
+                game.startSer = "team2";
+                game.team2.curSer = true;
+            }
+            //doubles
         }
 //add to personal score
 //counter for index placement

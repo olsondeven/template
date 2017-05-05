@@ -1,5 +1,10 @@
 angular.module('app').controller('flipCtrl',function($scope, $stateParams, mainService, $rootScope){
   $scope.game = mainService.getGame();
+  if(game.selectType === 'single'){
+    $scope.singleDouble = true;
+  }else{
+    $scope.singleDouble = false;
+  }
   $scope.random = function(){
     // let ranNum = Math.floor(Math.random()*2+1);
     if(Math.floor(Math.random()*2+1)===1){
