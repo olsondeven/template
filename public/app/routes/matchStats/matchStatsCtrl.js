@@ -117,7 +117,18 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         .attr("y", function(d,i){return i*(testHeight2);})//this offsets bars by 100px
         // .attr("transform","translate(2,-20)")
         .data(dataArrayColor)
-        .attr("fill", function(d){return d;})
+        .attr("fill", function(d){return d;});
+
+
+        var canvasWon = d3.select(".match-splitone-cont")
+          .append("svg")
+          .attr("width","100%")
+          .attr("height","100%")
+          .style("background-color","gray");
+
+        // var line = d3.svg.line()
+        //   .x(function(d){return d.player1.pointsWon.time})
+        //   .y(function(d){return d.player1.pointsWon.length})
 
 //     //create canvas for loser graph
 //     var canvas = d3.select(".match-graph-cont-loser")

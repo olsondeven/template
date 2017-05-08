@@ -699,6 +699,7 @@ main {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .match-stats-wrapper {
+  height: auto;
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -740,8 +741,8 @@ main {
   border-radius: 5px; }
 
 .match-splitone-cont {
-  width: 20%;
   height: 100%;
+  width: 80%;
   border: 1px solid #999967;
   border-radius: 5px; }
 

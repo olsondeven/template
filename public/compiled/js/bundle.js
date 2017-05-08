@@ -329,6 +329,8 @@ angular.module('app').service('mainService', function ($http, $state) {
     }
 }); //closing
 "use strict";
+"use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -372,16 +374,16 @@ angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
-}); //closing
-'use strict';
-
 angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.selectMatch = function (val) {
     mainService.setGame('selectMatch', val);
   };
+}); //closing
+'use strict';
+
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
 }); //closing
 "use strict";
 
@@ -496,6 +498,12 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   .data(dataArrayColor).attr("fill", function (d) {
     return d;
   });
+
+  var canvasWon = d3.select(".match-splitone-cont").append("svg").attr("width", "100%").attr("height", "100%").style("background-color", "gray");
+
+  // var line = d3.svg.line()
+  //   .x(function(d){return d.player1.pointsWon.time})
+  //   .y(function(d){return d.player1.pointsWon.length})
 
   //     //create canvas for loser graph
   //     var canvas = d3.select(".match-graph-cont-loser")
@@ -636,27 +644,6 @@ angular.module('app').controller('pointCtrl', function ($scope, $stateParams, ma
 }); //closing
 "use strict";
 
-angular.module("app").controller("team2settings", function ($scope, $state, $stateParams, mainService, $rootScope) {
-  console.log('is this working');
-  var color = null;
-  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
-  $scope.selectColor = function (val) {
-    color = val;
-    console.log(color);
-  };
-  $scope.selectName = function (val) {
-    console.log('fired', color, val);
-    if (!color || !val) {
-      return swal('Please select color and choose name');
-    } else {
-      mainService.setGame('name', val, 'team2');
-      mainService.setGame('color', color, 'team2');
-      $state.go('flip');
-    }
-  };
-}); //closing
-"use strict";
-
 angular.module("app").controller("team1settings", function ($scope, $stateParams, mainService, $state, $rootScope) {
   var color = null;
   $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
@@ -684,5 +671,24 @@ angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mai
   };
 }); //closing
 "use strict";
-"use strict";
+
+angular.module("app").controller("team2settings", function ($scope, $state, $stateParams, mainService, $rootScope) {
+  console.log('is this working');
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('name', val, 'team2');
+      mainService.setGame('color', color, 'team2');
+      $state.go('flip');
+    }
+  };
+}); //closing
 //# sourceMappingURL=bundle.js.map

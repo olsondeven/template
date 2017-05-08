@@ -12,6 +12,7 @@
       left: -30px;
     }
   }
+  height: auto;
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -46,8 +47,8 @@
   border-radius: 5px;
 }
 .match-splitone-cont{
-  width: 20%;
   height: 100%;
+  width: 80%;
   border: 1px solid $mainGreenColor;
   border-radius: 5px;
 }
