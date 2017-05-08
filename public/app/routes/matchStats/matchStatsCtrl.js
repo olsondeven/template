@@ -128,7 +128,7 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
 
         // var line = d3.svg.line()
         //   .x(function(d){return d.player1.pointsWon.time})
-        //   .y(function(d){return d.player1.pointsWon.length})
+        //   .y(function(d){return d.player1.pointsWon})
 
 //     //create canvas for loser graph
 //     var canvas = d3.select(".match-graph-cont-loser")

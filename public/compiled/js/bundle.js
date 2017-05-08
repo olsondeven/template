@@ -374,16 +374,16 @@ angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
+}); //closing
+'use strict';
+
 angular.module('app').controller('matchCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.selectMatch = function (val) {
     mainService.setGame('selectMatch', val);
   };
-}); //closing
-'use strict';
-
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
 }); //closing
 "use strict";
 
@@ -503,7 +503,7 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
 
   // var line = d3.svg.line()
   //   .x(function(d){return d.player1.pointsWon.time})
-  //   .y(function(d){return d.player1.pointsWon.length})
+  //   .y(function(d){return d.player1.pointsWon})
 
   //     //create canvas for loser graph
   //     var canvas = d3.select(".match-graph-cont-loser")
@@ -662,14 +662,6 @@ angular.module("app").controller("team1settings", function ($scope, $stateParams
     }
   };
 }); //closing
-'use strict';
-
-angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.setType = function (val) {
-    // console.log(val, "fired");
-    mainService.setGame("selectType", val);
-  };
-}); //closing
 "use strict";
 
 angular.module("app").controller("team2settings", function ($scope, $state, $stateParams, mainService, $rootScope) {
@@ -689,6 +681,14 @@ angular.module("app").controller("team2settings", function ($scope, $state, $sta
       mainService.setGame('color', color, 'team2');
       $state.go('flip');
     }
+  };
+}); //closing
+'use strict';
+
+angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.setType = function (val) {
+    // console.log(val, "fired");
+    mainService.setGame("selectType", val);
   };
 }); //closing
 //# sourceMappingURL=bundle.js.map
