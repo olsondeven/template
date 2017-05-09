@@ -140,12 +140,10 @@ angular.module('app').service('mainService', function ($http, $state) {
         } else {
             game[prop] = val;
         }
-        console.log(game);
     };
     //set service
     this.setStartServe = function (prop) {
         game.startDate = new Date();
-        console.log(game.startDate);
         if (prop === "player1") {
             game.startSer = "player1";
             game.player1.curSer = true;
@@ -175,9 +173,6 @@ angular.module('app').service('mainService', function ($http, $state) {
             pushArr.pointDate = new Date();
             game.gameScoreCollection[gameScoreIndex].tracker.push(pushArr);
             if (game.player1.curSer) {
-                console.log('point Index', pointScoreIndex);
-                console.log('game Index', gameScoreIndex);
-                console.log(game.gameScoreCollection);
                 game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
             }
 
@@ -196,7 +191,6 @@ angular.module('app').service('mainService', function ($http, $state) {
             game.player2.pointsLoss[gameScoreIndex].push(pushTest);
             //test
             game.totalPoint = game.player1.gameScore + game.player2.gameScore;
-            // console.log("Point made by player1",game.gameScoreCollection[gameScoreIndex]);
             serviceSwitch();
         }
         if (player === 'player2') {
@@ -205,9 +199,6 @@ angular.module('app').service('mainService', function ($http, $state) {
             //{winner:null, winScore:0, loser:null, lossScore:0, tracker:[]}
             game.gameScoreCollection[gameScoreIndex].tracker.push(pushArr);
             if (game.player2.curSer) {
-                // console.log('point Index', pointScoreIndex);
-                // console.log('game Index',gameScoreIndex);
-                // console.log(game.gameScoreCollection);
                 game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
             }
 
@@ -225,7 +216,6 @@ angular.module('app').service('mainService', function ($http, $state) {
             game.player1.pointsLoss[gameScoreIndex].push(pushTest);
             //test
             game.totalPoint = game.player1.gameScore + game.player2.gameScore;
-            // console.log("Point made by player2",game.gameScoreCollection[gameScoreIndex]);
             serviceSwitch();
         }
 
@@ -246,7 +236,6 @@ angular.module('app').service('mainService', function ($http, $state) {
             game.gameScoreCollection[gameScoreIndex].loser = "player2";
             game.gameScoreCollection[gameScoreIndex].lossScore = game.player2.gameScore;
             // game.gameScoreCollection.push(pushArr);
-            console.log("match made by player1", game.gameScoreCollection[gameScoreIndex]);
         } else if (player === "player2") {
             game.player2.matchScore++;
             game.gameScoreCollection[gameScoreIndex].winner = "player2";
@@ -254,13 +243,11 @@ angular.module('app').service('mainService', function ($http, $state) {
             game.gameScoreCollection[gameScoreIndex].loser = "player1";
             game.gameScoreCollection[gameScoreIndex].lossScore = game.player1.gameScore;
             // game.gameScoreCollection.push(pushArr);
-            console.log("match made by player2", game.gameScoreCollection[gameScoreIndex]);
         }
 
         //decide on match winner
         // if(game.player1.matchScore > (game.selectMatch-(game.selectMatch%2)-1)){
         if (game.player1.matchScore > game.selectMatch / 2) {
-            console.log('fired fn for winner of match');
             game.matchWinner = "player1";
             game.matchLoser = "player2";
             return matchFinished();
@@ -268,7 +255,6 @@ angular.module('app').service('mainService', function ($http, $state) {
 
         // if(game.player2.matchScore > (game.selectMatch-(game.selectMatch%2)-1)){
         if (game.player2.matchScore > game.selectMatch / 2) {
-            console.log('fired fn for winner of match');
             game.matchWinner = "player2";
             game.matchLoser = "player1";
             return matchFinished();
@@ -324,13 +310,10 @@ angular.module('app').service('mainService', function ($http, $state) {
     function matchFinished() {
         swal(game[game.matchWinner].name + " Won the match");
         game.endDate = new Date();
-        // console.log(game.endDate);
         console.log(game);
         $state.go('matchStats');
     }
 }); //closing
-"use strict";
-"use strict";
 "use strict";
 'use strict';
 
@@ -508,39 +491,18 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   //     .data(dataArrayColor)
   //     .attr("fill", function(d){return d;});
 
-  // var testDataWonArray = [
-  //   {count: 1, time: 10},
-  //   {count: 2, time: 22},
-  //   {count: 3, time: 15},
-  //   {count: 4, time: 65},
-  //   {count: 5, time: 70},
-  //   {count: 6, time: 18},
-  //   {count: 7, time: 12},
-  //   {count: 8, time: 40}
-  // ]
-  // console.log(testDataWonArray);
-  // testDataWonArray.sort(function(a,b){
-  //   return a.time-b.time;
-  // });
-  // console.log(testDataWonArray);
+
   //line graphs
   var firstArrayWin = $scope.game.player1.pointsWon[0];
-  // firstArrayWin.sort(function(a,b){
-  //   return a.time-b.time;
-  // })
-  // firstArrayWin = d3.timeParse("%L/%M/%I").apply(null,firstArrayWin.time);
-  var parseDate = d3.timeParse("%L/%M/%I");
   firstArrayWin.forEach(function (element, index) {
+    element.time = Date.parse(element.time);
     delete element.service;
   });
   console.log(firstArrayWin);
   var h = 400;
   var w = 600;
+  var stringH = "400";
 
-  // var maxDate = $scope.game.endDate;
-  // var minDate = $scope.game.startDate;
-  // var maxDate = d3.min(testDataWonArray,function(d){return d.time});
-  // var minDate = d3.max(testDataWonArray,function(d){return d.time});
   var maxDate = d3.min(firstArrayWin, function (d) {
     return d.time;
   });
@@ -553,8 +515,7 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   var minPoint = d3.min(firstArrayWin, function (d) {
     return d.count;
   });
-  // var minPoint = d3.min(testDataWonArray,function(d){return d.count});
-  // var maxPoint = d3.max(testDataWonArray,function(d){return d.count});
+
   console.log(maxDate, minDate);
   console.log(maxPoint, minPoint);
 
@@ -563,7 +524,7 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   var yAxis = d3.axisLeft(y);
   var xAxis = d3.axisBottom(x);
 
-  var svg = d3.select('main').append('svg').attr('height', '100%').attr('width', '100%').attr('style', 'background-color: gray');
+  var svg = d3.select('main').append('svg').attr('height', h).attr('width', w).attr('style', 'background-color: gray');
 
   var chartGroup = svg.append('g').attr('transform', 'translate(50,50)'); //50 from left, 50 from the top
 
@@ -573,7 +534,9 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     return y(d.count);
   });
 
-  chartGroup.append('path').attr('d', line(firstArrayWin));
+  chartGroup.append('path').data([firstArrayWin]).enter().append('path').attr('d', line(firstArrayWin)).attr('fill', 'none').attr('stroke', 'blue').attr('stroke-width', 10);
+  chartGroup.append('g').attr('class', 'x axis').attr('transform', 'translate(0,' + stringH + ')').call(xAxis);
+  chartGroup.append('g').attr('class', 'y axis').call(yAxis);
   //     //create canvas for loser graph
   //     var canvas = d3.select(".match-graph-cont-loser")
   //       .append("svg")
@@ -760,4 +723,6 @@ angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mai
     mainService.setGame("selectType", val);
   };
 }); //closing
+"use strict";
+"use strict";
 //# sourceMappingURL=bundle.js.map

@@ -119,48 +119,25 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     //     .data(dataArrayColor)
     //     .attr("fill", function(d){return d;});
 
-// var testDataWonArray = [
-//   {count: 1, time: 10},
-//   {count: 2, time: 22},
-//   {count: 3, time: 15},
-//   {count: 4, time: 65},
-//   {count: 5, time: 70},
-//   {count: 6, time: 18},
-//   {count: 7, time: 12},
-//   {count: 8, time: 40}
-// ]
-// console.log(testDataWonArray);
-// testDataWonArray.sort(function(a,b){
-//   return a.time-b.time;
-// });
-// console.log(testDataWonArray);
+
 //line graphs
 var firstArrayWin = $scope.game.player1.pointsWon[0];
-// firstArrayWin.sort(function(a,b){
-//   return a.time-b.time;
-// })
-// firstArrayWin = d3.timeParse("%L/%M/%I").apply(null,firstArrayWin.time);
-var parseDate = d3.timeParse("%L/%M/%I");
 firstArrayWin.forEach(function(element,index){
+   element.time = Date.parse(element.time);
    delete element.service;
 });
 console.log(firstArrayWin);
 var h = 400;
 var w = 600;
+var stringH = "400";
 
-// var maxDate = $scope.game.endDate;
-// var minDate = $scope.game.startDate;
-// var maxDate = d3.min(testDataWonArray,function(d){return d.time});
-// var minDate = d3.max(testDataWonArray,function(d){return d.time});
 var maxDate = d3.min(firstArrayWin,function(d){return d.time});
 var minDate = d3.max(firstArrayWin,function(d){return d.time});
 var maxPoint = d3.max(firstArrayWin,function(d){return d.count});
 var minPoint = d3.min(firstArrayWin,function(d){return d.count});
-// var minPoint = d3.min(testDataWonArray,function(d){return d.count});
-// var maxPoint = d3.max(testDataWonArray,function(d){return d.count});
+
 console.log(maxDate,minDate);
 console.log(maxPoint,minPoint);
-
 
 var y = d3.scaleLinear()
   .domain([0,maxPoint])
@@ -172,8 +149,8 @@ var yAxis = d3.axisLeft(y);
 var xAxis = d3.axisBottom(x);
 
 var svg = d3.select('main').append('svg')
-  .attr('height','100%')
-  .attr('width','100%')
+  .attr('height',h)
+  .attr('width',w)
   .attr('style','background-color: gray');
 
 var chartGroup = svg.append('g')
@@ -183,7 +160,16 @@ var line = d3.line()
   .x(function(d){return x(d.time);})
   .y(function(d){return y(d.count);});
 
-chartGroup.append('path').attr('d',line(firstArrayWin));
+chartGroup.append('path')
+  .data([firstArrayWin])
+  .enter()
+  .append('path')
+  .attr('d', line(firstArrayWin))
+  .attr('fill','none')
+  .attr('stroke','blue')
+  .attr('stroke-width',10);
+chartGroup.append('g').attr('class','x axis').attr('transform','translate(0,'+stringH+')').call(xAxis);
+chartGroup.append('g').attr('class','y axis').call(yAxis);
 //     //create canvas for loser graph
 //     var canvas = d3.select(".match-graph-cont-loser")
 //       .append("svg")
