@@ -119,16 +119,52 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
         .data(dataArrayColor)
         .attr("fill", function(d){return d;});
 
+var testDataWonArray = [
+  {count: 1, time: 10},
+  {count: 2, time: 22},
+  {count: 3, time: 15},
+  {count: 4, time: 65},
+  {count: 5, time: 70},
+  {count: 6, time: 18},
+  {count: 7, time: 12},
+  {count: 8, time: 40}
+]
+//line graphs
+//         var line = d3.line()
+//         .x(function(d){return d.time*2})
+//         .y(function(d){return 300-(10*d.count)});
+// var h = 500;
+// var w = 500;
+//         var canvasWon = d3.select(".match-splitone-cont")
+//           .append("svg")
+//           .attr("width",w)
+//           .attr("height",w)
+//           .attr("style", "background-color: gray");
+//
+//         var x = d3.time.scale().range([0, w]);
+//         var y = d3.scale.linear().range([h, 0]);
+//
+//         var path = canvasWon.append("path")
+//           .attr({
+//             // d:line($scope.game.player1.pointsWon[0]),
+//             d:line(testDataWonArray),
+//             "fill": "none",
+//             "stroke": "white"
+//           });
+//
+//         var label = canvasWon.selectAll("text")
+//           // .data($scope.game.player1.pointsWon[0])
+//           .data(testDataWonArray)
+//           .enter()
+//           .append("text")
+//           .text(function(d){return d.count})
+//           .attr({
+//             x:(function(d){return d.time*2}),
+//             y:(function(d){return 300-(10*d.count)})
+//           })
 
-        var canvasWon = d3.select(".match-splitone-cont")
-          .append("svg")
-          .attr("width","100%")
-          .attr("height","100%")
-          .style("background-color","gray");
 
-        // var line = d3.svg.line()
-        //   .x(function(d){return d.player1.pointsWon.time})
-        //   .y(function(d){return d.player1.pointsWon})
+
 
 //     //create canvas for loser graph
 //     var canvas = d3.select(".match-graph-cont-loser")

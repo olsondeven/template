@@ -180,11 +180,14 @@ angular.module('app').service('mainService', function ($http, $state) {
                 console.log(game.gameScoreCollection);
                 game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
             }
+
+            game.player1.gameScore++;
             //test
             pushTest.time = new Date();
             if (game.player1.curSer === true) {
                 pushTest.service = true;
             }
+            pushTest.count = game.player1.gameScore;
             game.player1.pointsWon[gameScoreIndex].push(pushTest);
 
             if (pushTest.service != true) {
@@ -192,9 +195,6 @@ angular.module('app').service('mainService', function ($http, $state) {
             }
             game.player2.pointsLoss[gameScoreIndex].push(pushTest);
             //test
-
-
-            game.player1.gameScore++;
             game.totalPoint = game.player1.gameScore + game.player2.gameScore;
             // console.log("Point made by player1",game.gameScoreCollection[gameScoreIndex]);
             serviceSwitch();
@@ -210,19 +210,20 @@ angular.module('app').service('mainService', function ($http, $state) {
                 // console.log(game.gameScoreCollection);
                 game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
             }
+
+            game.player2.gameScore++;
             //test
             pushTest.time = new Date();
             if (game.player2.curSer === true) {
                 pushTest.service = true;
             }
+            pushTest.count = game.player2.gameScore;
             game.player2.pointsWon[gameScoreIndex].push(pushTest);
             if (pushTest.service != true) {
                 pushTest.service = false;
             }
             game.player1.pointsLoss[gameScoreIndex].push(pushTest);
             //test
-
-            game.player2.gameScore++;
             game.totalPoint = game.player1.gameScore + game.player2.gameScore;
             // console.log("Point made by player2",game.gameScoreCollection[gameScoreIndex]);
             serviceSwitch();
@@ -329,8 +330,6 @@ angular.module('app').service('mainService', function ($http, $state) {
     }
 }); //closing
 "use strict";
-"use strict";
-"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -365,18 +364,18 @@ angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mai
 }); //closing
 'use strict';
 
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.test = "HELLO WORLD";
+  $scope.login = function (user, pass) {};
+}); //closing
+'use strict';
+
 angular.module('app').controller('gameCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.setPlayerScore = function (prop) {
     mainService.addPlayerScore(prop);
     $scope.game = mainService.getGame();
   };
   $scope.game = mainService.getGame();
-}); //closing
-'use strict';
-
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
 }); //closing
 'use strict';
 
@@ -499,11 +498,41 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     return d;
   });
 
-  var canvasWon = d3.select(".match-splitone-cont").append("svg").attr("width", "100%").attr("height", "100%").style("background-color", "gray");
+  var testDataWonArray = [{ count: 1, time: 10 }, { count: 2, time: 22 }, { count: 3, time: 15 }, { count: 4, time: 65 }, { count: 5, time: 70 }, { count: 6, time: 18 }, { count: 7, time: 12 }, { count: 8, time: 40 }];
+  //line graphs
+  //         var line = d3.line()
+  //         .x(function(d){return d.time*2})
+  //         .y(function(d){return 300-(10*d.count)});
+  // var h = 500;
+  // var w = 500;
+  //         var canvasWon = d3.select(".match-splitone-cont")
+  //           .append("svg")
+  //           .attr("width",w)
+  //           .attr("height",w)
+  //           .attr("style", "background-color: gray");
+  //
+  //         var x = d3.time.scale().range([0, w]);
+  //         var y = d3.scale.linear().range([h, 0]);
+  //
+  //         var path = canvasWon.append("path")
+  //           .attr({
+  //             // d:line($scope.game.player1.pointsWon[0]),
+  //             d:line(testDataWonArray),
+  //             "fill": "none",
+  //             "stroke": "white"
+  //           });
+  //
+  //         var label = canvasWon.selectAll("text")
+  //           // .data($scope.game.player1.pointsWon[0])
+  //           .data(testDataWonArray)
+  //           .enter()
+  //           .append("text")
+  //           .text(function(d){return d.count})
+  //           .attr({
+  //             x:(function(d){return d.time*2}),
+  //             y:(function(d){return 300-(10*d.count)})
+  //           })
 
-  // var line = d3.svg.line()
-  //   .x(function(d){return d.player1.pointsWon.time})
-  //   .y(function(d){return d.player1.pointsWon})
 
   //     //create canvas for loser graph
   //     var canvas = d3.select(".match-graph-cont-loser")
@@ -586,26 +615,6 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
 }); //closing
 'use strict';
 
-angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
-  var color = null;
-  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
-  $scope.selectColor = function (val) {
-    color = val;
-    console.log(color);
-  };
-  $scope.selectName = function (val) {
-    console.log('fired', color, val);
-    if (!color || !val) {
-      return swal('Please select color and choose name');
-    } else {
-      mainService.setGame('name', val, 'player1');
-      mainService.setGame('color', color, 'player1');
-      $state.go('player2');
-    }
-  };
-}); //closing
-'use strict';
-
 angular.module('app').controller("player2settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
   var color = null;
   $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
@@ -621,6 +630,26 @@ angular.module('app').controller("player2settingsCtrl", function ($scope, $state
       mainService.setGame('name', val, "player2");
       mainService.setGame('color', color, "player2");
       $state.go('flip');
+    }
+  };
+}); //closing
+'use strict';
+
+angular.module('app').controller("player1settingsCtrl", function ($scope, $state, $stateParams, mainService, $rootScope) {
+  var color = null;
+  $scope.colorArray = ['red', 'blue', 'green', 'purple', 'yellow'];
+  $scope.selectColor = function (val) {
+    color = val;
+    console.log(color);
+  };
+  $scope.selectName = function (val) {
+    console.log('fired', color, val);
+    if (!color || !val) {
+      return swal('Please select color and choose name');
+    } else {
+      mainService.setGame('name', val, 'player1');
+      mainService.setGame('color', color, 'player1');
+      $state.go('player2');
     }
   };
 }); //closing
@@ -691,4 +720,6 @@ angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mai
     mainService.setGame("selectType", val);
   };
 }); //closing
+"use strict";
+"use strict";
 //# sourceMappingURL=bundle.js.map

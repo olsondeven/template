@@ -122,11 +122,15 @@ angular.module('app').service('mainService', function($http,$state) {
                   console.log(game.gameScoreCollection);
                   game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
                 }
+
+
+                game.player1.gameScore++;
                 //test
                 pushTest.time = new Date();
                 if(game.player1.curSer === true){
                   pushTest.service = true;
                 }
+                pushTest.count = game.player1.gameScore;
                 game.player1.pointsWon[gameScoreIndex].push(pushTest);
 
                 if(pushTest.service != true){
@@ -134,9 +138,6 @@ angular.module('app').service('mainService', function($http,$state) {
                 }
                 game.player2.pointsLoss[gameScoreIndex].push(pushTest);
                 //test
-
-
-                game.player1.gameScore++;
                 game.totalPoint = game.player1.gameScore + game.player2.gameScore;
                 // console.log("Point made by player1",game.gameScoreCollection[gameScoreIndex]);
                 serviceSwitch();
@@ -152,19 +153,20 @@ angular.module('app').service('mainService', function($http,$state) {
                   // console.log(game.gameScoreCollection);
                   game.gameScoreCollection[gameScoreIndex].tracker[pointScoreIndex].winSer = true;
                 }
+
+                game.player2.gameScore++;
                 //test
                 pushTest.time = new Date();
                 if(game.player2.curSer === true){
                   pushTest.service = true;
                 }
+                pushTest.count = game.player2.gameScore;
                 game.player2.pointsWon[gameScoreIndex].push(pushTest);
                 if(pushTest.service != true){
                   pushTest.service = false;
                 }
                 game.player1.pointsLoss[gameScoreIndex].push(pushTest);
                 //test
-
-                game.player2.gameScore++;
                 game.totalPoint = game.player1.gameScore + game.player2.gameScore;
                 // console.log("Point made by player2",game.gameScoreCollection[gameScoreIndex]);
                 serviceSwitch();
