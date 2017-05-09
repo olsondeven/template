@@ -139,7 +139,6 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     console.log(firstArrayWin);
     var h = 400;
     var w = 600;
-    var stringH = "400";
 
     // var maxDate = d3.min(firstArrayWin,function(d){return d.time});
     // var minDate = d3.max(firstArrayWin,function(d){return d.time});
