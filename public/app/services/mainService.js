@@ -8,7 +8,7 @@ angular.module('app').service('mainService', function($http,$state) {
             endDate: null,
             selectPoint: 11, //
             selectMatch: 3,
-            selectType: null,
+            selectType: 'single',
             matchWinner: null,
             matchLoser: null,
             totalPoint: 0,
