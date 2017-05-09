@@ -315,6 +315,8 @@ angular.module('app').service('mainService', function ($http, $state) {
     }
 }); //closing
 "use strict";
+"use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('flipCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -447,7 +449,9 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   //   .domain([0,maxNum+1])//smallest value and largest value
   //   .range([0,width]);//0 to the width or height of graph
   //
-  //
+  // // var heightScale = d3.scaleLinear()
+  // //     .domain([0,$scope.game.gameScoreCollection.length])
+  // //     .range([height,0]);
   //
   //
   // var bottomScale = d3.scaleLinear()
@@ -457,6 +461,12 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   // var axisMatch = d3.axisBottom()
   //   .ticks(maxNum/serPoints)
   //   .scale(bottomScale);
+  //
+  // // var weirdNum = $scope.game.gameScoreCollection.length;
+  // // var y = d3.scaleLinear()
+  // //     .domain([0,weirdNum])
+  // //     .range([height,0]);
+  // // var yAxis = d3.axisLeft(y);
   //
   //   var testHeight = (parseFloat(canvasMatch.style("height").replace(/px/gi,'')));
   //   var testHeight2 = ((testHeight/gameScale)/2);
@@ -474,6 +484,7 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   //   }
   //   console.log(correctWord);
   // canvasMatch.append("g").attr("transform","translate(2,"+correctWord+")").call(axisMatch);
+  // // canvasMatch.append('g').attr('class','y axis').call(yAxis);
   //
   // // canvasMatch.append("g").attr("transform","translate(6,30)").call(axisLeft(y));
   //
@@ -495,7 +506,7 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   //line graphs
   var firstArrayWin = $scope.game.player1.pointsWon[0];
   firstArrayWin.forEach(function (element, index) {
-    element.time = Date.parse(element.time);
+    //  element.time = Date.parse(element.time);
     delete element.service;
   });
   console.log(firstArrayWin);
@@ -503,12 +514,10 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   var w = 600;
   var stringH = "400";
 
-  var maxDate = d3.min(firstArrayWin, function (d) {
-    return d.time;
-  });
-  var minDate = d3.max(firstArrayWin, function (d) {
-    return d.time;
-  });
+  // var maxDate = d3.min(firstArrayWin,function(d){return d.time});
+  // var minDate = d3.max(firstArrayWin,function(d){return d.time});
+  var maxDate = $scope.game.endDate;
+  var minDate = $scope.game.startDate;
   var maxPoint = d3.max(firstArrayWin, function (d) {
     return d.count;
   });
@@ -519,12 +528,13 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
   console.log(maxDate, minDate);
   console.log(maxPoint, minPoint);
 
-  var y = d3.scaleLinear().domain([0, maxPoint]).range([height, 0]);
-  var x = d3.scaleTime().domain([minDate, maxDate]).range([0, width]);
+  var y = d3.scaleLinear().domain([0, maxPoint]).range([h, 0]);
+  var x = d3.scaleTime().domain([minDate, maxDate]).range([0, w]);
+
   var yAxis = d3.axisLeft(y);
   var xAxis = d3.axisBottom(x);
 
-  var svg = d3.select('main').append('svg').attr('height', h).attr('width', w).attr('style', 'background-color: gray');
+  var svg = d3.select('.match-stats-wrapper').append('svg').attr('height', "100%").attr('width', "100%").attr('style', 'background-color: gray');
 
   var chartGroup = svg.append('g').attr('transform', 'translate(50,50)'); //50 from left, 50 from the top
 
@@ -534,80 +544,18 @@ angular.module("app").controller("matchStatsCtrl", function ($scope, $stateParam
     return y(d.count);
   });
 
-  chartGroup.append('path').data([firstArrayWin]).enter().append('path').attr('d', line(firstArrayWin)).attr('fill', 'none').attr('stroke', 'blue').attr('stroke-width', 10);
-  chartGroup.append('g').attr('class', 'x axis').attr('transform', 'translate(0,' + stringH + ')').call(xAxis);
+  chartGroup.append('path')
+  // .data([firstArrayWin])
+  // .enter()
+  // .append('path')
+  .attr('d', line(firstArrayWin));
+  // .attr('fill','none')
+  // .attr('stroke','blue')
+  // .attr('stroke-width',10);
+  chartGroup.append('g').attr('class', 'x axis').attr('transform', 'translate(0,' + h + ')').call(xAxis);
   chartGroup.append('g').attr('class', 'y axis').call(yAxis);
-  //     //create canvas for loser graph
-  //     var canvas = d3.select(".match-graph-cont-loser")
-  //       .append("svg")
-  //       .attr("width",width)
-  //       .attr("height",height);
-  //     //data for loser stats
-  //     var dataArray = [0,20,40,50,70];
-  //     //display data on graph
-  //     var bars = canvas.selectAll("rect")
-  //             .data(dataArray)
-  //             .enter()//this method returns placeholders for each data elements uses cb fn in attr
-  //               .append("rect")
-  //               // .attr("width", function(element){return element * 10;})
-  //               .attr("width", function(element){return widthScale(element);})
-  //               .attr("height", 50)
-  //               .attr("y", function(d,i){return i*100;})//this offsets bars by 100px
-  //               .attr("fill", $scope.loser.color);
-  //     //Charts D3.js
-  //     //d3.select(#) select by ref. to class, element/tag, or id ex("p"),(".hello-world"),("#red-box")
-  //
-  //     // d3.select("p").text("helloWorld");
-  //
-  //     //d3 append adds to element
-  //     //text will write text into that element
-  //
-  //     // d3.select(".match-graph-cont")
-  //     //   .append("p")
-  //     //   // .style("background-color","red")
-  //     //   .attr("style","color: blue; background-color: red;")
-  //     //   .text("is this working");
-  //
-  //
-  //     //to create svg you have to append to the document
-  //     var canvas = d3.select(".match-graph-cont-winner")
-  //         .append("svg")
-  //         // .style("background-color","red")
-  //         // .attr("style","width: 100%; height: 100%; color: blue; background-color: red;");
-  //         // .attr("style", "width: 100%; height: 100%;");
-  //         // .attr("style", "background-color:purple;")
-  //         .attr("width",width)
-  //         .attr("height",height);
-  //     //cx,cy is center x-axis and y-axis
-  //     //r is for radius
-  //     //fill is background color for svg
-  //     // var circle = canvas.append("circle")
-  //     //     .attr("cx", 250)
-  //     //     .attr("cy", 250)
-  //     //     .attr("r", 50)
-  //     //     .attr("fill", "red");
-  //     //
-  //     // var line = canvas.append("line")
-  //     //     .attr("x1", 0)
-  //     //     .attr("y1", 100)
-  //     //     .attr("x2", 400)
-  //     //     .attr("y2", 400)
-  //     //     .attr("stroke", "green")
-  //     //     .attr("stroke-width", 10);
-  //     var dataArray = [20,40,50,70,600];
-  //     var bars = canvas.selectAll("rect")
-  //         .data(dataArray)
-  //         .enter()//this method returns placeholders for each data elements uses cb fn in attr
-  //           .append("rect")
-  //           .attr("width", function(element){return widthScale(element);})
-  //           .attr("height", 50)
-  //           .attr("y", function(d,i){return i*100;})//this offsets bars by 100px
-  //           .attr("fill", $scope.winner.color);
-  //
-  // //d3.js scale
-  //
-  //
-  //     // console.log(d3);
+
+  //resize as window resizes
   window.onresize = function (event) {
     bottomScale = d3.scaleLinear().domain([0, maxNum + 1]).range([0, parseFloat(canvasMatch.style("width").replace(/px/gi, ''))]);
 
@@ -723,6 +671,4 @@ angular.module('app').controller('typeCtrl', function ($scope, $stateParams, mai
     mainService.setGame("selectType", val);
   };
 }); //closing
-"use strict";
-"use strict";
 //# sourceMappingURL=bundle.js.map

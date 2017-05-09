@@ -699,7 +699,6 @@ main {
     text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF; } }
 
 .match-stats-wrapper {
-  height: auto;
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -735,19 +734,16 @@ main {
   height: 60vh;
   width: 80vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background-color: #0066ff;
   border-radius: 5px;
   margin-bottom: 20px; }
 
-.match-splitone-cont {
-  width: 60vw;
-  height: 60vh; }
-  .match-splitone-cont path {
-    stroke: white;
-    stroke-width: 2px;
-    fill: none; }
+.match-splitone path {
+  fill: none;
+  stroke: "black";
+  stroke-width: 2px; }
 
 .match-graph-cont-complete {
   display: flex;

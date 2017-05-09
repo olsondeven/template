@@ -12,7 +12,6 @@
       left: -30px;
     }
   }
-  height: auto;
   position: relative;
   display: flex;
   justify-content: space-around;
@@ -40,21 +39,19 @@
   height: 60vh;
   width: 80vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   background-color: $mainTextColor;
   // border: 1px solid $mainGreenColor;
   border-radius: 5px;
   margin-bottom: 20px;
 }
-.match-splitone-cont{
-  width: 60vw;
-  height: 60vh;
-  path{
-    stroke: white;
-    stroke-width: 2px;
-    fill: none;
-  }
+.match-splitone{
+path{
+  fill: none;
+  stroke: "black";
+  stroke-width: 2px;
+}
 }
 .match-graph-cont-complete{
   div{
