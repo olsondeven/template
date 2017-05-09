@@ -140,8 +140,6 @@ angular.module("app").controller("matchStatsCtrl", function($scope, $stateParams
     var h = 400;
     var w = 600;
 
-    // var maxDate = d3.min(firstArrayWin,function(d){return d.time});
-    // var minDate = d3.max(firstArrayWin,function(d){return d.time});
     var maxDate = $scope.game.endDate;
     var minDate = $scope.game.startDate;
     var maxPoint = d3.max(firstArrayWin,function(d){return d.count});
