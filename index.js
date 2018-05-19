@@ -8,6 +8,8 @@ const cookieParser = require('cookie-parser');
 //files
 const config = require('./config');
 const massive = require('massive');
+//controllers for the server
+const mainCtrl = require('./controller/mainCtrl.js');
 //app set up for express
 const corsOptions = {
   origin: 'http://localhost:'+config.port
@@ -44,7 +46,7 @@ app.use(passport.session());
 //export app
 module.export = app;
 
-// app.get('/api/cart',mainCtrl.getCart);
+app.get('/api/iI',mainCtrl.cmdGetIpInfo);
 // app.post('/api/cart',mainCtrl.postCart);
 app.listen(3000, function(){
   console.log('listening to port: ', 3000);
