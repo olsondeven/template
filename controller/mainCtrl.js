@@ -7,10 +7,12 @@ module.exports = {
     console.log("req: ", req);
     console.log("res: ", res);
     console.log("next: ", next);
-    if(!res.params){
+    /*if(!res.params){
       return res.status(200).send(req.params);
     }else{
       return res.status(200).send(req);
     }
+    */
+    res.status(200).send(req.body.data.ip);
   }
 };//closing

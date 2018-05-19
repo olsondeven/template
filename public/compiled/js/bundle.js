@@ -17,8 +17,10 @@ angular.module('app').service('mainService', function ($http, $state) {
     console.log("ipAddress on service before call ", ipAddress);
     return $http({
       method: "GET",
-      url: "/api/iI/${ipAddress}" //example /api/products/${subcategory}
-    }).then(function (res) {
+      url: "/api/iI", //id or params
+      data: {
+        ip: ipAddress //example /api/products/${subcategory}
+      } }).then(function (res) {
       if (res) {
         console.log("getIpInformation: ", res);
         return res.data;
@@ -28,6 +30,8 @@ angular.module('app').service('mainService', function ($http, $state) {
     });
   };
 }); //closing
+"use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -36,9 +40,7 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
   $scope.getIpInfo = function (ip) {
     //logic to only except ip address
     console.log("button fired getIpInfo fn input: ", ip);
-    return mainService.getIpInformation();
+    return mainService.getIpInformation(ip).then(function (res) {});
   };
 }); //closing
-"use strict";
-"use strict";
 //# sourceMappingURL=bundle.js.map

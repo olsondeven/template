@@ -4,6 +4,8 @@ angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainS
   $scope.getIpInfo = function(ip){
     //logic to only except ip address
     console.log("button fired getIpInfo fn input: ", ip);
-    return mainService.getIpInformation();
+    return mainService.getIpInformation(ip).then(function(res){
+
+    });
   };
 });//closing
