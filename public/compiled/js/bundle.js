@@ -17,16 +17,14 @@ angular.module('app').service('mainService', function ($http, $state) {
     console.log("ipAddress on service before call ", ipAddress);
     return $http({
       method: "GET",
-      url: "/api/iI", //id or params
+      url: "/api/iI",
       data: {
-        ip: ipAddress //example /api/products/${subcategory}
-      } }).then(function (res) {
-      if (res) {
-        console.log("getIpInformation: ", res);
-        return res.data;
-      } else {
-        return "Error during API request";
+        test: "test",
+        helloworld: "helloworld",
+        ip: "12.10.21.114"
       }
+    }).then(function (res) {
+      return res;
     });
   };
 }); //closing
@@ -40,7 +38,10 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
   $scope.getIpInfo = function (ip) {
     //logic to only except ip address
     console.log("button fired getIpInfo fn input: ", ip);
-    return mainService.getIpInformation(ip).then(function (res) {});
+    mainService.getIpInformation(ip).then(function (res) {
+      $scope.cmdResponse = res.data;
+      console.log("response from server ", res);
+    });
   };
 }); //closing
 //# sourceMappingURL=bundle.js.map

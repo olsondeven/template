@@ -43,10 +43,12 @@ app.use(passport.session());
 // //declare a db object for requests
 // const db = app.get('db');
 
+app.get('/api/iI',function(req,res,nex){
+  return res.status(200).send('hello world');
+});
 //export app
 module.export = app;
 
-app.get('/api/iI',mainCtrl.cmdGetIpInfo);
 // app.post('/api/cart',mainCtrl.postCart);
 app.listen(3000, function(){
   console.log('listening to port: ', 3000);
