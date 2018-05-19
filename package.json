@@ -40,6 +40,8 @@
     "passport": "^0.3.2",
     "sweetalert": "^1.1.3"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "nodemon": "^1.17.4"
+  },
   "description": ""
 }

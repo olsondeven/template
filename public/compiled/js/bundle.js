@@ -18,11 +18,11 @@ angular.module('app').service('mainService', function ($http, $state) {
   };
 }); //closing
 "use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
   $scope.login = function (user, pass) {};
 }); //closing
-"use strict";
 //# sourceMappingURL=bundle.js.map
