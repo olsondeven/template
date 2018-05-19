@@ -23,6 +23,7 @@ angular.module('app').service('mainService', function ($http, $state) {
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.test = "HELLO WORLD";
-  $scope.login = function (user, pass) {};
+  $scope.getMainService = mainService.getInfo();
+  console.log("angular is setup");
 }); //closing
 //# sourceMappingURL=bundle.js.map
