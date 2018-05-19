@@ -44,6 +44,8 @@ app.use(passport.session());
 //export app
 module.export = app;
 
+// app.get('/api/cart',mainCtrl.getCart);
+// app.post('/api/cart',mainCtrl.postCart);
 app.listen(3000, function(){
   console.log('listening to port: ', 3000);
 });
