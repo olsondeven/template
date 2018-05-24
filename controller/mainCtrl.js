@@ -13,8 +13,4 @@ function getInfo(req,res,nex){
   );
 
 }
-module.exports = {getInfo}
-// module.export getInfo
-// export const buildInfo = function(info){
-//     console.log("mainCtrl buildInfo");
-// }
+module.exports = {getInfo};
