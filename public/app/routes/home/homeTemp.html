@@ -4,5 +4,5 @@
   <p>You have typed: {{inputIpAddress}}</p>
   <button type="button" name="button" ng-click="getIpInfo(inputIpAddress)">Get Info</button>
   <p ng-if="!cmdResponse">Waiting for api call</p>
-  <p ng-if="cmdResponse">Promise from API: {{cmdResponse}}</p>
+  <p ng-if="cmdResponse" style="white-space: pre-wrap;">Promise from API: {{cmdResponse}}</p>
 </main>
