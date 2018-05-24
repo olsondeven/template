@@ -28,12 +28,9 @@ angular.module('app').service('mainService', function ($http, $state) {
     });
   };
 }); //closing
-"use strict";
-"use strict";
 'use strict';
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.test = "HELLO WORLD";
   $scope.cmdResponse = null;
   $scope.getIpInfo = function (ip) {
     //logic to only except ip address
@@ -44,4 +41,6 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
     });
   };
 }); //closing
+"use strict";
+"use strict";
 //# sourceMappingURL=bundle.js.map

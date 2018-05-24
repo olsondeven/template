@@ -6,8 +6,9 @@ const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 //files
-//const config = require('./config');
+const config = require('./config');
 const massive = require('massive');
+const {getInfo} = require("./controller/mainCtrl.js");
 //controllers for the server
 //const mainCtrl = require('./controller/mainCtrl.js');
 //app set up for express
@@ -44,16 +45,11 @@ app.use(passport.session());
 // //declare a db object for requests
 // const db = app.get('db');
 
-// app.get('/api/iI',function(req,res,nex){
-//   console.log("api endpoint fired");
-//   return res.status(200).send('hello world');
-// });
-var {getInfo} = require("./controller/mainCtrl.js");
 app.get('/api/iI/:ip',getInfo)
 //export app
 module.export = app;
 
 // app.post('/api/cart',mainCtrl.postCart);
 app.listen(3000, function(){
-  console.log('listening to port: ', 3000);
+  console.log('listening to port: ', config.getDefaultPort());
 });
