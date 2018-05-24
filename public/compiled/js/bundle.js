@@ -17,7 +17,7 @@ angular.module('app').service('mainService', function ($http, $state) {
     console.log("ipAddress on service before call ", ipAddress);
     return $http({
       method: "GET",
-      url: "/api/iI",
+      url: "/api/iI/" + ipAddress,
       data: {
         test: "test",
         helloworld: "helloworld",

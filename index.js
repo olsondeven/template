@@ -6,13 +6,13 @@ const session = require('express-session');
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 //files
-const config = require('./config');
+//const config = require('./config');
 const massive = require('massive');
 //controllers for the server
-const mainCtrl = require('./controller/mainCtrl.js');
+//const mainCtrl = require('./controller/mainCtrl.js');
 //app set up for express
 const corsOptions = {
-  origin: 'http://localhost:'+config.port
+  origin: 'http://localhost:3000'
 };
 const app = express();
 
@@ -23,7 +23,8 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(cookieParser());
 app.use(session({
-  secret: config.sessionSecret,
+  //secret: config.sessionSecret,
+  secret: "I like to walk the dog with my yoyo",
   resave: false,
   saveUninitialized: true,
   cookie: { secure: false}
@@ -43,9 +44,12 @@ app.use(passport.session());
 // //declare a db object for requests
 // const db = app.get('db');
 
-app.get('/api/iI',function(req,res,nex){
-  return res.status(200).send('hello world');
-});
+// app.get('/api/iI',function(req,res,nex){
+//   console.log("api endpoint fired");
+//   return res.status(200).send('hello world');
+// });
+var {getInfo} = require("./controller/mainCtrl.js");
+app.get('/api/iI/:ip',getInfo)
 //export app
 module.export = app;
 
