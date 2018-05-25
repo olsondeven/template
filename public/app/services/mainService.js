@@ -4,11 +4,7 @@ angular.module('app').service('mainService', function($http, $state) {
     return $http({
       method: "GET",
       url: "/api/iI/"+ipAddress,
-      data: {
-        // test: "test",
-        // helloworld: "helloworld",
-        // ip: "12.10.21.114"
-      }
+      data: {}
     }).then(function(res){
       return res;
     });
