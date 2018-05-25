@@ -5,7 +5,6 @@ angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainS
     //overstack credit for this validation
     if(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAdd)){
     mainService.getIpInformation(ipAdd).then(function(res){
-      console.log(res);
       $scope.cmdResponse = res.data;
     });
   }else{

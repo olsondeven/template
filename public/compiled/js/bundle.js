@@ -10,25 +10,6 @@ angular.module('app', ['ui.router']).config(function ($stateProvider, $urlRouter
   });
   $urlRouterProvider.otherwise('/');
 }); //closing
-"use strict";
-"use strict";
-'use strict';
-
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.cmdResponse = null;
-  $scope.validateIp = function (ipAdd) {
-    //console.log("validateIp fired ip: ",ipAdd);
-    //overstack credit for this validation
-    if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAdd)) {
-      mainService.getIpInformation(ipAdd).then(function (res) {
-        console.log(res);
-        $scope.cmdResponse = res.data;
-      });
-    } else {
-      swal("You have entered an invalid IP address!");
-    }
-  };
-}); //closing
 'use strict';
 
 angular.module('app').service('mainService', function ($http, $state) {
@@ -47,4 +28,22 @@ angular.module('app').service('mainService', function ($http, $state) {
     });
   };
 }); //closing
+'use strict';
+
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+  $scope.cmdResponse = null;
+  $scope.validateIp = function (ipAdd) {
+    //console.log("validateIp fired ip: ",ipAdd);
+    //overstack credit for this validation
+    if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAdd)) {
+      mainService.getIpInformation(ipAdd).then(function (res) {
+        $scope.cmdResponse = res.data;
+      });
+    } else {
+      swal("You have entered an invalid IP address!");
+    }
+  };
+}); //closing
+"use strict";
+"use strict";
 //# sourceMappingURL=bundle.js.map
