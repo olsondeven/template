@@ -1,11 +1,15 @@
 angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainService, $rootScope){
   $scope.cmdResponse = null;
-  $scope.getIpInfo = function(ip){
-    //logic to only except ip address
-    console.log("button fired getIpInfo fn input: ", ip);
-    mainService.getIpInformation(ip).then(function(res){
+  $scope.validateIp = function(ipAdd){
+    //console.log("validateIp fired ip: ",ipAdd);
+    //overstack credit for this validation
+    if(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAdd)){
+    mainService.getIpInformation(ipAdd).then(function(res){
+      console.log(res);
       $scope.cmdResponse = res.data;
-      console.log("response from server ", res);
     });
+  }else{
+    swal("You have entered an invalid IP address!");
+  }
   };
 });//closing

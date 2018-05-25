@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <main>
-  <input type="text" name="" value="" ng-model="inputIpAddress">
-  <p>You have typed: {{inputIpAddress}}</p>
-  <button type="button" name="button" ng-click="getIpInfo(inputIpAddress)">Get Info</button>
+    <label>Ip: <input id="ip" type="text" ng-model="ipAdd"></label>
+    <button type="button" name="button" ng-click="validateIp(ipAdd)">Validate Ip Address</button>
+  <p>You have typed: {{ipAdd}}</p>
   <p ng-if="!cmdResponse">Waiting for api call</p>
   <p ng-if="cmdResponse" style="white-space: pre-wrap;">Promise from API: {{cmdResponse}}</p>
 </main>
