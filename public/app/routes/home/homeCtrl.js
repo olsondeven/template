@@ -6,7 +6,7 @@ angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainS
     //console.log("validateIp fired ip: ",ipAdd);
     //overstack credit for this validation
     if(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAdd)){
-      $scope.loadingText = "LOADING";
+      $scope.loadingText = "Request: ipconfig\nLOADING";
       mainService.getIpInformation(ipAdd).then(function(res){
       $scope.cmdResponse = [];
       $scope.cmdResponse.push(res.data);
