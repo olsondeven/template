@@ -34,18 +34,21 @@ angular.module('app').service('mainService', function ($http, $state) {
     });
   };
 }); //closing
+"use strict";
+"use strict";
 'use strict';
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.cmdResponse = [];
-  $scope.loadingText = null;
+  $scope.cmdResponse = null;
+  $scope.anotherRequest = false;
+  $scope.loadingText = "Push button to make call";
   $scope.validateIp = function (ipAdd) {
     //console.log("validateIp fired ip: ",ipAdd);
     //overstack credit for this validation
-    $scope.loadingText = "LOADING";
     if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAdd)) {
+      $scope.loadingText = "LOADING";
       mainService.getIpInformation(ipAdd).then(function (res) {
-        console.log(res);
+        $scope.cmdResponse = [];
         $scope.cmdResponse.push(res.data);
         getPing(ipAdd);
       });
@@ -55,11 +58,11 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
   };
   var getPing = function getPing(ipAdd) {
     console.log("frontend ctrl getping fired", ipAdd);
-    mainService(ipAdd).then(function (res) {
+    $scope.anotherRequest = true;
+    mainService.getPing(ipAdd).then(function (res) {
       $scope.cmdResponse.push(res.data);
+      $scope.anotherRequest = false;
     });
   };
 }); //closing
-"use strict";
-"use strict";
 //# sourceMappingURL=bundle.js.map

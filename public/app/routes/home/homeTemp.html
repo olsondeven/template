@@ -3,7 +3,9 @@
     <label>Ip: <input id="ip" type="text" ng-model="ipAdd"></label>
     <button type="button" name="button" ng-click="validateIp(ipAdd)">Validate Ip Address</button>
   <p>You have typed: {{ipAdd}}</p>
-  <p ng-if="!cmdResponse">Waiting for api call</p>
-  <p ng-if="loadingText">{{loadingText}}</p>
-  <p ng-if="cmdResponse" style="white-space: pre-wrap;">Promise from API: {{"\n"+cmdResponse}}</p>
+  <p ng-if="!cmdResponse">{{loadingText}}</p>
+  <div ng-repeat="response in cmdResponse">
+    <p ng-if="cmdResponse" style="white-space: pre-wrap;"><br/><span style="color:green;">Promise from API#{{cmdResponse.indexOf(response)+1}}</span>: {{response}}</p>
+    <p style="color:red;" ng-if="anotherRequest"><br/>LOADING ANOTHER REQUEST<br/></p>
+  </div>
 </main>

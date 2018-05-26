@@ -7,14 +7,14 @@ function getIpConfig(req,res,nex){
       // 'ping -a '+curIp,
       'ipconfig',
       function(err, data, stderr){
-        console.log('the current working dir is : ',data);
-        console.log('CMD first get: ',cmd);
+        //console.log('the current working dir is : ',data);
+        //console.log('CMD first get: ',cmd);
         if(data){
           return res.status(200).send(data);
         }
       });
 }
-function getPing(){
+function getPing(req,res,next){
   if(req.params.ip){
     curIp = req.params.ip;
     cmd.get(
