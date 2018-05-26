@@ -9,6 +9,7 @@ const cookieParser = require('cookie-parser');
 const config = require('./config');
 const massive = require('massive');
 const {getIpConfig} = require("./controller/mainCtrl.js");
+const {getPing} = require("./controller/mainCtrl.js");
 //controllers for the server
 //const mainCtrl = require('./controller/mainCtrl.js');
 //app set up for express
@@ -46,6 +47,7 @@ app.use(passport.session());
 // const db = app.get('db');
 
 app.get('/api/iI/:ip',getIpConfig)
+app.get('/api/ping/:ip',getPing)
 //export app
 module.export = app;
 

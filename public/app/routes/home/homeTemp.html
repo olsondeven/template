@@ -4,5 +4,6 @@
     <button type="button" name="button" ng-click="validateIp(ipAdd)">Validate Ip Address</button>
   <p>You have typed: {{ipAdd}}</p>
   <p ng-if="!cmdResponse">Waiting for api call</p>
+  <p ng-if="loadingText">{{loadingText}}</p>
   <p ng-if="cmdResponse" style="white-space: pre-wrap;">Promise from API: {{"\n"+cmdResponse}}</p>
 </main>

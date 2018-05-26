@@ -23,24 +23,43 @@ angular.module('app').service('mainService', function ($http, $state) {
       return res;
     });
   };
+  this.getPing = function (ipAddress) {
+    console.log("main service PING: ", ipAddress);
+    return $http({
+      method: "GET",
+      url: "/api/ping/" + ipAddress,
+      data: {}
+    }).then(function (res) {
+      return res;
+    });
+  };
 }); //closing
-"use strict";
-"use strict";
 'use strict';
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
-  $scope.cmdResponse = null;
+  $scope.cmdResponse = [];
+  $scope.loadingText = null;
   $scope.validateIp = function (ipAdd) {
     //console.log("validateIp fired ip: ",ipAdd);
     //overstack credit for this validation
+    $scope.loadingText = "LOADING";
     if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAdd)) {
       mainService.getIpInformation(ipAdd).then(function (res) {
         console.log(res);
-        $scope.cmdResponse = res.data;
+        $scope.cmdResponse.push(res.data);
+        getPing(ipAdd);
       });
     } else {
       swal("You have entered an invalid IP address!");
     }
   };
+  var getPing = function getPing(ipAdd) {
+    console.log("frontend ctrl getping fired", ipAdd);
+    mainService(ipAdd).then(function (res) {
+      $scope.cmdResponse.push(res.data);
+    });
+  };
 }); //closing
+"use strict";
+"use strict";
 //# sourceMappingURL=bundle.js.map
