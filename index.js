@@ -55,3 +55,5 @@ module.export = app;
 app.listen(3000, function(){
   console.log('listening to port: ', config.getDefaultPort());
 });
+//notes from tim, linux server;VM on Nutinix
+//cidr notations

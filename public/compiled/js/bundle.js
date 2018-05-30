@@ -12,6 +12,31 @@ angular.module('app', ['ui.router']).config(function ($stateProvider, $urlRouter
 }); //closing
 'use strict';
 
+angular.module('app').service('mainService', function ($http, $state) {
+  this.getIpInformation = function (ipAddress) {
+    console.log("main service ip: ", ipAddress);
+    return $http({
+      method: "GET",
+      url: "/api/iI/" + ipAddress,
+      data: {}
+    }).then(function (res) {
+      return res;
+    });
+  };
+  this.getPing = function (ipAddress) {
+    console.log("main service PING: ", ipAddress);
+    return $http({
+      method: "GET",
+      url: "/api/ping/" + ipAddress,
+      data: {}
+    }).then(function (res) {
+      return res;
+    });
+  };
+}); //closing
+"use strict";
+'use strict';
+
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.cmdResponse = null;
   $scope.anotherRequest = false;
@@ -40,29 +65,4 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
   };
 }); //closing
 "use strict";
-"use strict";
-'use strict';
-
-angular.module('app').service('mainService', function ($http, $state) {
-  this.getIpInformation = function (ipAddress) {
-    console.log("main service ip: ", ipAddress);
-    return $http({
-      method: "GET",
-      url: "/api/iI/" + ipAddress,
-      data: {}
-    }).then(function (res) {
-      return res;
-    });
-  };
-  this.getPing = function (ipAddress) {
-    console.log("main service PING: ", ipAddress);
-    return $http({
-      method: "GET",
-      url: "/api/ping/" + ipAddress,
-      data: {}
-    }).then(function (res) {
-      return res;
-    });
-  };
-}); //closing
 //# sourceMappingURL=bundle.js.map
