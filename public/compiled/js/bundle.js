@@ -14,27 +14,24 @@ angular.module('app', ['ui.router']).config(function ($stateProvider, $urlRouter
 
 angular.module('app').service('mainService', function ($http, $state) {
   this.getIpInformation = function (ipAddress) {
-    console.log("main service ip: ", ipAddress);
     return $http({
       method: "GET",
-      url: "/api/iI/" + ipAddress,
+      url: "/api/config/" + ipAddress,
       data: {}
     }).then(function (res) {
       return res;
     });
   };
-  this.getPing = function (ipAddress) {
-    console.log("main service PING: ", ipAddress);
+  this.getOpenPorts = function (ipAddress) {
     return $http({
       method: "GET",
-      url: "/api/ping/" + ipAddress,
+      url: "/api/openP/" + ipAddress,
       data: {}
     }).then(function (res) {
       return res;
     });
   };
 }); //closing
-"use strict";
 'use strict';
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -49,20 +46,22 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
       mainService.getIpInformation(ipAdd).then(function (res) {
         $scope.cmdResponse = [];
         $scope.cmdResponse.push(res.data);
-        getPing(ipAdd);
+        getOpenPorts(ipAdd);
       });
     } else {
       swal("You have entered an invalid IP address!");
     }
   };
-  var getPing = function getPing(ipAdd) {
+  var getOpenPorts = function getOpenPorts(ipAdd) {
     console.log("frontend ctrl getping fired", ipAdd);
     $scope.anotherRequest = true;
-    mainService.getPing(ipAdd).then(function (res) {
+    mainService.getOpenPorts(ipAdd).then(function (res) {
+      console.log("get open ports response from server :", res);
       $scope.cmdResponse.push(res.data);
       $scope.anotherRequest = false;
     });
   };
 }); //closing
+"use strict";
 "use strict";
 //# sourceMappingURL=bundle.js.map

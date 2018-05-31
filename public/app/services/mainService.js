@@ -1,19 +1,17 @@
 angular.module('app').service('mainService', function($http, $state) {
   this.getIpInformation = function(ipAddress){
-    console.log("main service ip: ", ipAddress);
     return $http({
       method: "GET",
-      url: "/api/iI/"+ipAddress,
+      url: "/api/config/"+ipAddress,
       data: {}
     }).then(function(res){
       return res;
     });
   };
-  this.getPing = function(ipAddress){
-    console.log("main service PING: ", ipAddress);
+  this.getOpenPorts = function(ipAddress){
     return $http({
       method: "GET",
-      url: "/api/ping/"+ipAddress,
+      url: "/api/openP/"+ipAddress,
       data: {}
     }).then(function(res){
       return res;

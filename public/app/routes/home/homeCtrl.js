@@ -10,16 +10,17 @@ angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainS
       mainService.getIpInformation(ipAdd).then(function(res){
       $scope.cmdResponse = [];
       $scope.cmdResponse.push(res.data);
-      getPing(ipAdd);
+      getOpenPorts(ipAdd);
     });
   }else{
     swal("You have entered an invalid IP address!");
   }
   };
-  let getPing = function(ipAdd){
+  let getOpenPorts = function(ipAdd){
     console.log("frontend ctrl getping fired", ipAdd);
     $scope.anotherRequest = true;
-    mainService.getPing(ipAdd).then(function(res){
+    mainService.getOpenPorts(ipAdd).then(function(res){
+      console.log("get open ports response from server :",res);
       $scope.cmdResponse.push(res.data);
       $scope.anotherRequest = false;
     });
