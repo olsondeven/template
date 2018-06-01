@@ -41,5 +41,22 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
+.btn-cont {
+  width: 100%;
+  border: 1px solid red;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
+  .btn-cont label {
+    padding-right: 10px; }
+  .btn-cont button {
+    margin-right: 15px; }
+
+.scan-result-container {
+  width: 100%;
+  border: 1px solid blue;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center; }
 
 /*# sourceMappingURL=maps/styles.css.map */

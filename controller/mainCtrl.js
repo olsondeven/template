@@ -44,7 +44,17 @@ function getOpenPorts(req,res,next){
       });
   }
 }
-cmd.get('pwd',function(err, data, stderr){
-  console.log('the current working dir is : ',data)
-});
-module.exports = {getIpConfig,getOpenPorts};
+// cmd.get('pwd',function(err, data, stderr){
+//   console.log('the current working dir is : ',data)
+// });
+function getNetScan(req,res,next){
+  cmd.get("nmap 10.30.12.1-100",(err,data,stderr)=>{
+    console.log("\nNet Scan\n",data);
+    if(data){
+      return res.status(200).send(data);
+    }else{
+      return res.status(200).send(err);
+    }
+  });
+}
+module.exports = {getIpConfig,getOpenPorts,getNetScan};

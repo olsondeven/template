@@ -10,6 +10,7 @@ const config = require('./config');
 const massive = require('massive');
 const {getIpConfig} = require("./controller/mainCtrl.js");
 const {getOpenPorts} = require("./controller/mainCtrl.js");
+const {getNetScan} = require("./controller/mainCtrl.js");
 //controllers for the server
 //const mainCtrl = require('./controller/mainCtrl.js');
 //app set up for express
@@ -46,13 +47,15 @@ app.use(passport.session());
 // //declare a db object for requests
 // const db = app.get('db');
 
-//api endpoints for cmds
-app.get('/api/config/:ip',getIpConfig)
-app.get('/api/openP/:ip',getOpenPorts)
-//export app
+//////////////////////////
+//api endpoints for cmds//
+//////////////////////////
+app.get('/api/config/:ip',getIpConfig);
+app.get('/api/openP/:ip',getOpenPorts);
+app.get('/api/scanNet',getNetScan);
+
 module.export = app;
 
-// app.post('/api/cart',mainCtrl.postCart);
 app.listen(3000, function(){
   console.log('listening to port: ', config.getDefaultPort());
 });

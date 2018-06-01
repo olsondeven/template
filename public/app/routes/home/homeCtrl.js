@@ -3,7 +3,6 @@ angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainS
   $scope.anotherRequest = false;
   $scope.loadingText = "Push button to make call";
   $scope.validateIp = function(ipAdd){
-    //console.log("validateIp fired ip: ",ipAdd);
     //overstack credit for this validation
     if(/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAdd)){
       $scope.loadingText = "Request: ipconfig\nLOADING";
@@ -25,4 +24,7 @@ angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainS
       $scope.anotherRequest = false;
     });
   };
+  $scope.scanNet = ()=>{
+    //call service api call
+  }
 });//closing

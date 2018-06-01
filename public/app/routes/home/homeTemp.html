@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <main>
+  <div class="btn-cont">
     <label>Ip: <input id="ip" type="text" ng-model="ipAdd"></label>
-    <button type="button" name="button" ng-click="validateIp(ipAdd)">Validate Ip Address</button>
+    <button type="button" name="button" ng-click="validateIp(ipAdd)">Validate Ip Address</button><button type="button" ng-click="scanNet()">SCAN</button>
+  </div>
   <p>You have typed: {{ipAdd}}</p>
   <p ng-if="!cmdResponse" style="color:red;">{{loadingText}}
   </p>
-  <div ng-repeat="response in cmdResponse">
+  <div class="scan-result-container" ng-repeat="response in cmdResponse">
     <p ng-if="cmdResponse" style="white-space: pre-wrap;"><br/><span style="color:green;">Promise from API#{{cmdResponse.indexOf(response)+1}}</span>: {{response}}</p>
     <p style="color:red;" ng-if="anotherRequest"><br/>LOADING ANOTHER REQUEST<br/></p>
   </div>
