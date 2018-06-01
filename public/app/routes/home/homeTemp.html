@@ -4,14 +4,14 @@
     <label>Ip: <input id="ip" type="text" ng-model="ipAdd"></label>
     <button type="button" name="button" ng-click="validateIp(ipAdd)">Validate Ip Address</button><button type="button" ng-click="scanNet()">SCAN</button>
   </div>
+  <h2 ng-if="scanProgress">{{scanProgress}} waiting for {{requestCount}} seconds</h2>
   <div class="scan-result-container" ng-repeat="ipObj in cmdResponse">
-    <p ng-if="scanProgress">{{scanProgress}}</p>
     <div class="ip-card-cont">
-        <p>HOST: <span>{{ipObj.hostname}}</span></p>
+        <p>HOST: <span>{{ipObj.hostname}}</span><span ng-if="!ipObj.hostname">No Data</span></p>
         <p>IP: <span>{{ipObj.ip}}</span></p>
         <p>MAC: <span>{{ipObj.mac}}</span></p>
-        <p>OS: <span>{{ipObj.osNmap}}</span></p>
-        <p>VENDOR: <span>{{ipObj.vendor}}</span></p>
+        <p>OS: <span>{{ipObj.osNmap}}</span><span ng-if="!ipObj.osNmap">No Data</span></p>
+        <p>VENDOR: <span>{{ipObj.vendor}}</span><span ng-if="!ipObj.vendor">No Data</span></p>
         <table>
           <tr>
             <th>PORT</th>
@@ -19,8 +19,11 @@
             <th>SERVICE</th>
             <th>METHOD</th>
           </tr>
-          <tr ng-repeat="port in ipObj.openPorts">
+          <tr colspan="3"ng-repeat="port in ipObj.openPorts">
             <td ng-style="portFlag(value)" ng-repeat="(key,value) in port">{{value}}</td>
+          </tr>
+          <tr ng-if="!ipObj.openPorts">
+            <td colspan="4">NO OPEN PORTS</td>
           </tr>
         </table>
     </div>

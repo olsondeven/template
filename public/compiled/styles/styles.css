@@ -43,7 +43,9 @@ table {
 
 .btn-cont {
   width: 100%;
-  border: 1px solid red;
+  height: 25px;
+  border: 1px solid black;
+  background-color: #656569;
   display: flex;
   justify-content: flex-start;
   align-items: center; }
@@ -51,6 +53,10 @@ table {
     padding-right: 10px; }
   .btn-cont button {
     margin-right: 15px; }
+
+main h2 {
+  font-weight: bold;
+  color: #B3DCCF; }
 
 .scan-result-container {
   width: 100%;
@@ -60,20 +66,21 @@ table {
   align-items: center; }
   .scan-result-container .ip-card-cont {
     width: 60%;
-    border: 2px solid orange; }
-    .scan-result-container .ip-card-cont p span {
+    border: 3px solid black; }
+    .scan-result-container .ip-card-cont p {
+      margin: 5px;
       font-weight: bold; }
     .scan-result-container .ip-card-cont table, .scan-result-container .ip-card-cont th, .scan-result-container .ip-card-cont td, .scan-result-container .ip-card-cont tr {
       width: 100%;
       border: 1px solid black; }
     .scan-result-container .ip-card-cont table tr:nth-child(even) {
-      background-color: #eee; }
+      background-color: #DEE1E9; }
     .scan-result-container .ip-card-cont table tr:nth-child(odd) {
       background-color: #fff; }
     .scan-result-container .ip-card-cont th, .scan-result-container .ip-card-cont td {
       padding: 15px;
       text-align: left; }
     .scan-result-container .ip-card-cont table, .scan-result-container .ip-card-cont th {
-      background-color: green; }
+      background-color: #F9810F; }
 
 /*# sourceMappingURL=maps/styles.css.map */

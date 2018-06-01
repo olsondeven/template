@@ -44,7 +44,12 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
   $scope.cmdResponse = null;
   $scope.scanProgress = false;
   $scope.anotherRequest = false;
+  var c = 0;
   $scope.loadingText = "Push button to make call";
+  function myCounter() {
+    $scope.requestCount = ++c;
+    console.log("mycounter fired", $scope.requestCount);
+  }
   $scope.validateIp = function (ipAdd) {
     //overstack credit for this validation
     if (/^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/.test(ipAdd)) {
@@ -68,15 +73,18 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
     });
   };
   $scope.scanNet = function () {
-    $scope.scanProgress = "SCAN IN PROGRESS";
+    $scope.scanProgress = "SCAN IN PROGRESS....";
+    var myTimer = setInterval(myCounter, 1000);
     //call service api call
     mainService.getScanNet().then(function (res) {
       if (res.status == 200) {
         $scope.scanProgress = false;
+        clearInterval(myTimer);
         console.log("SCAN NET PROMISE RETURN", res);
         $scope.cmdResponse = res.data;
       } else {
         $scope.scanProgress = res.data;
+        clearInterval(myTimer);
       }
     });
   };
@@ -84,7 +92,7 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
   $scope.portFlag = function (port) {
     if (port == 80) {
       return {
-        "background-color": "red"
+        "background-color": "#D4524E"
       };
     }
   };
