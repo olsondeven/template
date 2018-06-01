@@ -29,8 +29,8 @@ angular.module('app').service('mainService', function ($http, $state) {
       return res;
     });
   };
-  this.scanNet = function () {
-    return $https({
+  this.getScanNet = function () {
+    return $http({
       method: "GET",
       url: "/api/scanNet"
     }).then(function (res) {
@@ -38,6 +38,7 @@ angular.module('app').service('mainService', function ($http, $state) {
     });
   };
 }); //closing
+"use strict";
 "use strict";
 'use strict';
 
@@ -69,7 +70,9 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
   };
   $scope.scanNet = function () {
     //call service api call
+    mainService.getScanNet().then(function (res) {
+      console.log("SCAN NET PROMISE RETURN", res);
+    });
   };
 }); //closing
-"use strict";
 //# sourceMappingURL=bundle.js.map

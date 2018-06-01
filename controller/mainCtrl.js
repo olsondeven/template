@@ -2,6 +2,8 @@
 const cmd = require('node-cmd');
 const fs = require('fs');
 const Parser = require('xml2js-parser');
+const nmap = require('node-nmap');
+nmap.nmapLocation = "nmap"; //default
 let fileCount = 0;
 let curIp = null;
 //function for getting ipconfig
@@ -47,14 +49,39 @@ function getOpenPorts(req,res,next){
 // cmd.get('pwd',function(err, data, stderr){
 //   console.log('the current working dir is : ',data)
 // });
+
+/////////////////////////
+///       SCAN        ///
+/////////////////////////
+
+//cmd package
+// function getNetScan(req,res,next){
+//   cmd.get("nmap 10.30.12.1-100",(err,data,stderr)=>{
+//     console.log("\nNet Scan\n",data);
+//     if(data){
+//       return res.status(200).send(data);
+//     }else{
+//       return res.status(200).send(err);
+//     }
+//   });
+// }
+
+//node-nmap package
 function getNetScan(req,res,next){
-  cmd.get("nmap 10.30.12.1-100",(err,data,stderr)=>{
-    console.log("\nNet Scan\n",data);
+  //this is the core of the package and runs the NMAP command, takes array or strings seperated by commas
+  let normalScan = new nmap.NmapScan("10.30.13.103");
+  normalScan.on('complete',(data)=>{
+    console.log('NORMAL SCAN COMPLETE: ',data);
     if(data){
       return res.status(200).send(data);
-    }else{
-      return res.status(200).send(err);
     }
   });
+  normalScan.on('error',(error)=>{
+    console.log('NORMAL SCAN ERROR:',error);
+  });
+  normalScan.startScan();
+  //node-nmap package
+  //this Scans for open ports as well as NMAP gathered OS information
+  // let openPortsOsScan = new nmap.OsAndPortScan("10.30.12.1-100");
 }
 module.exports = {getIpConfig,getOpenPorts,getNetScan};

@@ -26,5 +26,8 @@ angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainS
   };
   $scope.scanNet = ()=>{
     //call service api call
-  }
+    mainService.getScanNet().then((res)=>{
+      console.log("SCAN NET PROMISE RETURN", res);
+    });
+  };
 });//closing

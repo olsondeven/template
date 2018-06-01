@@ -15,8 +15,8 @@ angular.module('app').service('mainService', function($http, $state) {
       return res;
     });
   };
-  this.scanNet = ()=>{
-    return $https({
+  this.getScanNet = ()=>{
+    return $http({
       method: "GET",
       url: "/api/scanNet"
     }).then((res)=>{
