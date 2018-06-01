@@ -38,6 +38,7 @@ angular.module('app').service('mainService', function ($http, $state) {
     });
   };
 }); //closing
+"use strict";
 'use strict';
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
@@ -97,6 +98,5 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
     }
   };
 }); //closing
-"use strict";
 "use strict";
 //# sourceMappingURL=bundle.js.map
