@@ -1,5 +1,6 @@
 angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainService, $rootScope){
   $scope.cmdResponse = null;
+  $scope.scanProgress = false;
   $scope.anotherRequest = false;
   $scope.loadingText = "Push button to make call";
   $scope.validateIp = function(ipAdd){
@@ -25,9 +26,24 @@ angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainS
     });
   };
   $scope.scanNet = ()=>{
+    $scope.scanProgress = "SCAN IN PROGRESS";
     //call service api call
     mainService.getScanNet().then((res)=>{
-      console.log("SCAN NET PROMISE RETURN", res);
+      if(res.status == 200){
+        $scope.scanProgress = false;
+        console.log("SCAN NET PROMISE RETURN", res);
+        $scope.cmdResponse = res.data;
+      }else{
+        $scope.scanProgress = res.data;
+      }
     });
   };
+  //change background if port is flagged
+  $scope.portFlag = (port)=>{
+    if(port==80){
+      return {
+        "background-color":"red"
+      }
+    }
+  }
 });//closing

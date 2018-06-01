@@ -38,12 +38,11 @@ angular.module('app').service('mainService', function ($http, $state) {
     });
   };
 }); //closing
-"use strict";
-"use strict";
 'use strict';
 
 angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
   $scope.cmdResponse = null;
+  $scope.scanProgress = false;
   $scope.anotherRequest = false;
   $scope.loadingText = "Push button to make call";
   $scope.validateIp = function (ipAdd) {
@@ -69,10 +68,27 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
     });
   };
   $scope.scanNet = function () {
+    $scope.scanProgress = "SCAN IN PROGRESS";
     //call service api call
     mainService.getScanNet().then(function (res) {
-      console.log("SCAN NET PROMISE RETURN", res);
+      if (res.status == 200) {
+        $scope.scanProgress = false;
+        console.log("SCAN NET PROMISE RETURN", res);
+        $scope.cmdResponse = res.data;
+      } else {
+        $scope.scanProgress = res.data;
+      }
     });
   };
+  //change background if port is flagged
+  $scope.portFlag = function (port) {
+    if (port == 80) {
+      return {
+        "background-color": "red"
+      };
+    }
+  };
 }); //closing
+"use strict";
+"use strict";
 //# sourceMappingURL=bundle.js.map

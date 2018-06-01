@@ -69,7 +69,7 @@ function getOpenPorts(req,res,next){
 //node-nmap package
 function getNetScan(req,res,next){
   //this is the core of the package and runs the NMAP command, takes array or strings seperated by commas
-  let normalScan = new nmap.NmapScan("10.30.13.103");
+  let normalScan = new nmap.NmapScan("10.30.12.1-100");
   normalScan.on('complete',(data)=>{
     console.log('NORMAL SCAN COMPLETE: ',data);
     if(data){
@@ -78,6 +78,9 @@ function getNetScan(req,res,next){
   });
   normalScan.on('error',(error)=>{
     console.log('NORMAL SCAN ERROR:',error);
+    if(error){
+      return res.status(300).send(error);
+    }
   });
   normalScan.startScan();
   //node-nmap package

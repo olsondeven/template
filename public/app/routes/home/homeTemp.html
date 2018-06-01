@@ -4,11 +4,26 @@
     <label>Ip: <input id="ip" type="text" ng-model="ipAdd"></label>
     <button type="button" name="button" ng-click="validateIp(ipAdd)">Validate Ip Address</button><button type="button" ng-click="scanNet()">SCAN</button>
   </div>
-  <p>You have typed: {{ipAdd}}</p>
-  <p ng-if="!cmdResponse" style="color:red;">{{loadingText}}
-  </p>
-  <div class="scan-result-container" ng-repeat="response in cmdResponse">
-    <p ng-if="cmdResponse" style="white-space: pre-wrap;"><br/><span style="color:green;">Promise from API#{{cmdResponse.indexOf(response)+1}}</span>: {{response}}</p>
+  <div class="scan-result-container" ng-repeat="ipObj in cmdResponse">
+    <p ng-if="scanProgress">{{scanProgress}}</p>
+    <div class="ip-card-cont">
+        <p>HOST: <span>{{ipObj.hostname}}</span></p>
+        <p>IP: <span>{{ipObj.ip}}</span></p>
+        <p>MAC: <span>{{ipObj.mac}}</span></p>
+        <p>OS: <span>{{ipObj.osNmap}}</span></p>
+        <p>VENDOR: <span>{{ipObj.vendor}}</span></p>
+        <table>
+          <tr>
+            <th>PORT</th>
+            <th>PROTOCOL</th>
+            <th>SERVICE</th>
+            <th>METHOD</th>
+          </tr>
+          <tr ng-repeat="port in ipObj.openPorts">
+            <td ng-style="portFlag(value)" ng-repeat="(key,value) in port">{{value}}</td>
+          </tr>
+        </table>
+    </div>
     <p style="color:red;" ng-if="anotherRequest"><br/>LOADING ANOTHER REQUEST<br/></p>
   </div>
 </main>

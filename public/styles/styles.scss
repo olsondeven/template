@@ -13,8 +13,34 @@
 }
 .scan-result-container{
   width: 100%;
-  border: 1px solid blue;
+  margin-top: 15px;
   display: flex;
-  justify-content:flex-start;
+  justify-content:center;
   align-items: center;
+  .ip-card-cont{
+    width: 60%;
+    p{
+      span{
+        font-weight: bold;
+      }
+    }
+    border: 2px solid orange;
+    table, th, td, tr{
+      width: 100%;
+      border: 1px solid black;
+    }
+    table tr:nth-child(even){
+      background-color: #eee;
+    }
+    table tr:nth-child(odd){
+      background-color: #fff;
+    }
+    th, td {
+      padding: 15px;
+      text-align: left;
+    }
+    table, th{
+      background-color: green;
+    }
+  }
 }
