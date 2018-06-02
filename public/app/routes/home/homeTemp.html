@@ -2,9 +2,10 @@
 <main>
   <div class="btn-cont">
     <label>Ip: <input id="ip" type="text" ng-model="ipAdd"></label>
-    <button type="button" name="button" ng-click="validateIp(ipAdd)">Validate Ip Address</button><button type="button" ng-click="scanNet()">SCAN</button>
+    <button type="button" name="button" ng-click="validateIp(ipAdd)">Validate Ip Address</button><button type="button" ng-click="scanNet()">SCAN</button><button type="button" ng-click="cancelScan()">CANCEL SCAN</button>
   </div>
   <h2 ng-if="scanProgress">{{scanProgress}} waiting for {{requestCount}} seconds</h2>
+  <h1 ng-if="scanCancelled">{{scanCancelled}}</h1>
   <div class="scan-result-container" ng-repeat="ipObj in cmdResponse">
     <div class="ip-card-cont">
         <p>HOST: <span>{{ipObj.hostname}}</span><span ng-if="!ipObj.hostname">No Data</span></p>
@@ -19,7 +20,7 @@
             <th>SERVICE</th>
             <th>METHOD</th>
           </tr>
-          <tr colspan="3"ng-repeat="port in ipObj.openPorts">
+          <tr colspan="3" ng-repeat="port in ipObj.openPorts">
             <td ng-style="portFlag(value)" ng-repeat="(key,value) in port">{{value}}</td>
           </tr>
           <tr ng-if="!ipObj.openPorts">

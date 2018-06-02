@@ -37,19 +37,26 @@ angular.module('app').service('mainService', function ($http, $state) {
       return res;
     });
   };
+  this.destroy = function () {
+    return $http({
+      method: "DELETE",
+      url: "/api/destroyScan"
+    });
+  };
 }); //closing
+"use strict";
 "use strict";
 'use strict';
 
-angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope) {
+angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mainService, $rootScope, $interval, $timeout) {
   $scope.cmdResponse = null;
   $scope.scanProgress = false;
   $scope.anotherRequest = false;
-  var c = 0;
+  $scope.requestCount = 0;
   $scope.loadingText = "Push button to make call";
   function myCounter() {
-    $scope.requestCount = ++c;
-    console.log("mycounter fired", $scope.requestCount);
+    console.log("mycounter fired ", $scope.requestCount);
+    ++$scope.requestCount;
   }
   $scope.validateIp = function (ipAdd) {
     //overstack credit for this validation
@@ -75,20 +82,33 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
   };
   $scope.scanNet = function () {
     $scope.scanProgress = "SCAN IN PROGRESS....";
-    var myTimer = setInterval(myCounter, 1000);
+    // let myInterCounter = setInterval(myCounter,1000);
+    var myInterCounter = $interval(myCounter, 1000);
     //call service api call
     mainService.getScanNet().then(function (res) {
       if (res.status == 200) {
         $scope.scanProgress = false;
-        clearInterval(myTimer);
+        $interval.cancel(myInterCounter);
         console.log("SCAN NET PROMISE RETURN", res);
         $scope.cmdResponse = res.data;
       } else {
         $scope.scanProgress = res.data;
-        clearInterval(myTimer);
+        $interval.cancel(myInterCounter);
       }
     });
   };
+  $scope.cancelScan = function () {
+    console.log("Cancel front ctrl fired");
+    //main service call
+    mainService.destroy().then(function (res) {
+      console.log("Cancel return ", res);
+      $scope.scanCancelled = res.data;
+    });
+    $timeout(function () {
+      $scope.scanCancelled = null;
+    }, 5000);
+  };
+
   //change background if port is flagged
   $scope.portFlag = function (port) {
     if (port == 80) {
@@ -98,5 +118,4 @@ angular.module('app').controller('homeCtrl', function ($scope, $stateParams, mai
     }
   };
 }); //closing
-"use strict";
 //# sourceMappingURL=bundle.js.map

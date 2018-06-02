@@ -69,7 +69,8 @@ function getOpenPorts(req,res,next){
 //node-nmap package
 function getNetScan(req,res,next){
   //this is the core of the package and runs the NMAP command, takes array or strings seperated by commas
-  let normalScan = new nmap.NmapScan("10.30.12.1-100","-O");
+  // let normalScan = new nmap.NmapScan("10.30.12.1-100","-O");
+  var normalScan = new nmap.NmapScan("10.30.13.103","-O");
   normalScan.on('complete',(data)=>{
     console.log('NORMAL SCAN COMPLETE: ',data);
     if(data){
@@ -79,7 +80,7 @@ function getNetScan(req,res,next){
   normalScan.on('error',(error)=>{
     console.log('NORMAL SCAN ERROR:',error);
     if(error){
-      return res.status(300).send(error);
+      return res.status(400).send(error);
     }
   });
   normalScan.startScan();
@@ -87,4 +88,9 @@ function getNetScan(req,res,next){
   //this Scans for open ports as well as NMAP gathered OS information
   // let openPortsOsScan = new nmap.OsAndPortScan("10.30.12.1-100");
 }
-module.exports = {getIpConfig,getOpenPorts,getNetScan};
+//function to destroy scan in PROGRESS
+function deleteScan(req,res,next){
+  normalScan.cancelScan();
+  return res.status(200).send("SCAN WAS CANCELLED");
+}
+module.exports = {getIpConfig,getOpenPorts,getNetScan,deleteScan};

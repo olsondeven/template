@@ -43,7 +43,7 @@ table {
 
 .btn-cont {
   width: 100%;
-  height: 25px;
+  height: 35px;
   border: 1px solid black;
   background-color: #656569;
   display: flex;
@@ -70,13 +70,15 @@ main h2 {
     .scan-result-container .ip-card-cont p {
       margin: 5px;
       font-weight: bold; }
-    .scan-result-container .ip-card-cont table, .scan-result-container .ip-card-cont th, .scan-result-container .ip-card-cont td, .scan-result-container .ip-card-cont tr {
+    .scan-result-container .ip-card-cont table {
       width: 100%;
       border: 1px solid black; }
     .scan-result-container .ip-card-cont table tr:nth-child(even) {
-      background-color: #DEE1E9; }
+      background-color: #DEE1E9;
+      border: 1px solid black; }
     .scan-result-container .ip-card-cont table tr:nth-child(odd) {
-      background-color: #fff; }
+      background-color: #fff;
+      border: 1px solid black; }
     .scan-result-container .ip-card-cont th, .scan-result-container .ip-card-cont td {
       padding: 15px;
       text-align: left; }

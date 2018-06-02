@@ -11,6 +11,7 @@ const massive = require('massive');
 const {getIpConfig} = require("./controller/mainCtrl.js");
 const {getOpenPorts} = require("./controller/mainCtrl.js");
 const {getNetScan} = require("./controller/mainCtrl.js");
+const {deleteScan} = require("./controller/mainCtrl.js");
 //controllers for the server
 //const mainCtrl = require('./controller/mainCtrl.js');
 //app set up for express
@@ -53,6 +54,7 @@ app.use(passport.session());
 app.get('/api/config/:ip',getIpConfig);
 app.get('/api/openP/:ip',getOpenPorts);
 app.get('/api/scanNet',getNetScan);
+app.delete('/api/destroyScan',deleteScan);
 
 module.export = app;
 

@@ -23,4 +23,10 @@ angular.module('app').service('mainService', function($http, $state) {
       return res;
     });
   };
+  this.destroy = ()=>{
+    return $http({
+      method: "DELETE",
+      url: "/api/destroyScan"
+    });
+  };
 }); //closing

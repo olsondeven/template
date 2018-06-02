@@ -1,6 +1,6 @@
 .btn-cont{
   width: 100%;
-  height: 25px;
+  height: 35px;
   border: 1px solid black;
   background-color: #656569;
   display: flex;
@@ -35,15 +35,20 @@ main{
       }
     }
     border: 3px solid black;
-    table, th, td, tr{
+    table{
       width: 100%;
       border: 1px solid black;
     }
+    th,tr,td{
+      
+    }
     table tr:nth-child(even){
       background-color: #DEE1E9;
+      border: 1px solid black;
     }
     table tr:nth-child(odd){
       background-color: #fff;
+      border: 1px solid black;
     }
     th, td {
       padding: 15px;

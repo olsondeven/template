@@ -1,12 +1,12 @@
-angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainService, $rootScope){
+angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainService, $rootScope, $interval, $timeout){
   $scope.cmdResponse = null;
   $scope.scanProgress = false;
   $scope.anotherRequest = false;
-  let c = 0;
+  $scope.requestCount = 0;
   $scope.loadingText = "Push button to make call";
   function myCounter(){
-    $scope.requestCount = ++c;
-    console.log("mycounter fired",$scope.requestCount);
+    console.log("mycounter fired ",$scope.requestCount);
+    ++$scope.requestCount;
   }
   $scope.validateIp = function(ipAdd){
     //overstack credit for this validation
@@ -32,20 +32,31 @@ angular.module('app').controller('homeCtrl',function($scope, $stateParams, mainS
   };
   $scope.scanNet = ()=>{
     $scope.scanProgress = "SCAN IN PROGRESS....";
-    let myTimer = setInterval(myCounter,1000);
+    // let myInterCounter = setInterval(myCounter,1000);
+    let myInterCounter = $interval(myCounter,1000);
     //call service api call
     mainService.getScanNet().then((res)=>{
       if(res.status == 200){
         $scope.scanProgress = false;
-        clearInterval(myTimer);
+        $interval.cancel(myInterCounter);
         console.log("SCAN NET PROMISE RETURN", res);
         $scope.cmdResponse = res.data;
       }else{
         $scope.scanProgress = res.data;
-        clearInterval(myTimer);
+        $interval.cancel(myInterCounter);
       }
     });
   };
+  $scope.cancelScan = ()=>{
+    console.log("Cancel front ctrl fired");
+    //main service call
+    mainService.destroy().then((res)=>{
+      console.log("Cancel return ", res);
+      $scope.scanCancelled = res.data;
+    });
+    $timeout(()=>{$scope.scanCancelled = null;},5000);
+  }
+
   //change background if port is flagged
   $scope.portFlag = (port)=>{
     if(port==80){
